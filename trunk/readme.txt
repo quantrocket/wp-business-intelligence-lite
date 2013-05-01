@@ -34,7 +34,7 @@ OR
 1. Upload the wpbusinessintelligencelite.zip file via the 'Plugins->Add New' page of your WordPress dashboard
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
-A detailed installation guide is available on the [WP Business Intelligence Support] Portal(http://www.wpbusinessintelligence.com/support)
+A detailed installation guide is available on the [WP Business Intelligence Support Portal](http://www.wpbusinessintelligence.com/support)
 
 == Changelog ==
 
