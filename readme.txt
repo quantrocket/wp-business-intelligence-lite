@@ -1,8 +1,8 @@
 === WP Business Intelligence Lite ===
 Contributors: calberti
-Donate link: http://www.wpbusinessintelligence.com/contactus/
+Donate link: http://www.wpbusinessintelligence.com/contact-us/
 Tags: charts, tables, analytics, business intelligence, bi, reporting
-Requires at least: 3.3
+Requires at least: 3.0.1
 Tested up to: 3.5.1
 Stable tag: 1.0
 License: GPLv2 or later
@@ -22,17 +22,17 @@ Useful information can be found on the [WP Business Intelligence Support Portal]
 
 WP Business Intelligence uses NVD3 charts; in order to know more about NVD3 please visit [the project's page](http://nvd3.org/)
 
-Please take one minute to [send us a feedback](http://www.wpbusinessintelligence.com/contactus/)
+Please take one minute to [send us a feedback](http://www.wpbusinessintelligence.com/contact-us/)
 
 == Installation ==
 
-1. Upload the uncompressed folder `wpbusinessintelligencelite` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Upload the uncompressed folder `wp-business-intelligence-lite` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
 
 OR
 
 1. Upload the wpbusinessintelligencelite.zip file via the 'Plugins->Add New' page of your WordPress dashboard
-1. Activate the plugin through the 'Plugins' menu in WordPress
+2. Activate the plugin through the 'Plugins' menu in WordPress
 
 A detailed installation guide is available on the [WP Business Intelligence Support Portal](http://www.wpbusinessintelligence.com/support/wp-business-intelligence-faq/)
 
@@ -50,10 +50,9 @@ In order to get a full overview about WP Business Intelligence, please visit [th
 -
 
 == Screenshots ==
-
 1. Create and test a query
-1. Create and test a table view
-1. Create and test a chart view
-1. A sample dashboard
-1. Insert a chart or table in a page/post
+2. Create and test a table view
+3. Create and test a chart view
+4. A sample dashboard
+5. Insert a chart or table in a page/post
 
