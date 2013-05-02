@@ -50,9 +50,9 @@ In order to get a full overview about WP Business Intelligence, please visit [th
 -
 
 == Screenshots ==
-1. Create and test a query
-2. Create and test a table view
-3. Create and test a chart view
-4. A sample dashboard
-5. Insert a chart or table in a page/post
+1. [Create and test a query (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-1.png)
+2. [Create and test a table view (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-2.png)
+3. [Create and test a chart view (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-3.png)
+4. [A sample dashboard (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-4.png)
+5. [Insert a chart or table in a page/post (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-5.png)
 
