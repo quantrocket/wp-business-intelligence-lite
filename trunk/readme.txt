@@ -52,7 +52,7 @@ The steps required to create a new chart are:
 3. define chart parameters such as: axis precision, labels names, chart name, colors and save it
 4. insert the chart in your post/page with the following shortcode:
 
-`` [wpbusinessintelligence id="11" type="chart" iframe="n" ]Any text (chart name?)[/wpbusinessintelligence] ``
+` [wpbusinessintelligence id="11" type="chart" iframe="n" ]Any text (chart name?)[/wpbusinessintelligence] `
 
 ### How does the chart retrieves data? ###
 Data are retrieved at each page refresh with a SQL query on your live DB. So they are always up-to-date!
