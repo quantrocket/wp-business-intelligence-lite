@@ -190,7 +190,6 @@ $wpbi_url['chart']['phplib'] 			= 	'resources/open-flash-chart/php-ofc-library/o
 //Scripts, CSS
 $wpbi_url['colorpicker']['colorpicker'] = 	plugins_url('/resources/colorpicker/jquery.colorPicker.js', __FILE__);
 $wpbi_url['colorpicker']['css']			=	plugins_url('/resources/colorpicker/colorPicker.css', __FILE__);
-$wpbi_url['chart']['json'] 				=	plugins_url('/resources/open-flash-chart/js/json/json2.js', __FILE__);
 $wpbi_url['jquery']['iframe-auto-height']	= 	plugins_url('/resources/jquery-iframe-auto-height/js/jquery.iframe-auto-height.plugin.js', __FILE__);
 $wpbi_url['jquery']['alphanumeric']		= 	plugins_url('/resources/jquery-alphanumeric/jquery.alphanumeric.js', __FILE__);
 
