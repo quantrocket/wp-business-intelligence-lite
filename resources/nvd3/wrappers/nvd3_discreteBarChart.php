@@ -49,12 +49,12 @@ class nvd3_discreteBarChart
         $this->xAxisFormat = '.'.$chart->x_axis_precision.'f';
         $this->yAxisFormat = '.'.$chart->y_axis_precision.'f';
 
-        wp_enqueue_script('nvd3-tooltip', $this->nvd3Settings->wpbi_url['nvd3']['tooltip'], array('nvd3-nvd3') );
-        wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'], array('nvd3-nvd3') );
-        wp_enqueue_script('nvd3-legend', $this->nvd3Settings->wpbi_url['nvd3']['legend'], array('nvd3-nvd3') );
-        wp_enqueue_script('nvd3-axis', $this->nvd3Settings->wpbi_url['nvd3']['axis'], array('nvd3-nvd3') );
-        wp_enqueue_script('nvd3-discretebar', $this->nvd3Settings->wpbi_url['nvd3']['discretebar'], array('nvd3-nvd3') );
-        wp_enqueue_script('nvd3-discretebarchart', $this->nvd3Settings->wpbi_url['nvd3']['discretebarchart'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-tooltip', $this->nvd3Settings->wpbi_url['nvd3']['tooltip'] );
+        wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'] );
+        wp_enqueue_script('nvd3-legend', $this->nvd3Settings->wpbi_url['nvd3']['legend'] );
+        wp_enqueue_script('nvd3-axis', $this->nvd3Settings->wpbi_url['nvd3']['axis'] );
+        wp_enqueue_script('nvd3-discretebar', $this->nvd3Settings->wpbi_url['nvd3']['discretebar'] );
+        wp_enqueue_script('nvd3-discretebarchart', $this->nvd3Settings->wpbi_url['nvd3']['discretebarchart'] );
     }
 
     public function create_dataseries($chart)
