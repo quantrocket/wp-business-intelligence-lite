@@ -56,14 +56,14 @@ class nvd3_lineChart
             $this->hasTextLabels = true;
         }
 
-        wp_enqueue_script('nvd3-fisheye', $this->nvd3Settings->wpbi_url['nvd3']['fisheye'], ['nvd3-nvd3'] );
-        wp_enqueue_script('nvd3-tooltip', $this->nvd3Settings->wpbi_url['nvd3']['tooltip'], ['nvd3-nvd3'] );
-        wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'], ['nvd3-nvd3'] );
-        wp_enqueue_script('nvd3-legend', $this->nvd3Settings->wpbi_url['nvd3']['legend'], ['nvd3-nvd3'] );
-        wp_enqueue_script('nvd3-scatter', $this->nvd3Settings->wpbi_url['nvd3']['scatter'], ['nvd3-nvd3'] );
-        wp_enqueue_script('nvd3-axis', $this->nvd3Settings->wpbi_url['nvd3']['axis'], ['nvd3-nvd3'] );
-        wp_enqueue_script('nvd3-line', $this->nvd3Settings->wpbi_url['nvd3']['line'], ['nvd3-nvd3'] );
-        wp_enqueue_script('nvd3-linechart', $this->nvd3Settings->wpbi_url['nvd3']['linechart'], ['nvd3-nvd3'] );
+        wp_enqueue_script('nvd3-fisheye', $this->nvd3Settings->wpbi_url['nvd3']['fisheye'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-tooltip', $this->nvd3Settings->wpbi_url['nvd3']['tooltip'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-legend', $this->nvd3Settings->wpbi_url['nvd3']['legend'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-scatter', $this->nvd3Settings->wpbi_url['nvd3']['scatter'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-axis', $this->nvd3Settings->wpbi_url['nvd3']['axis'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-line', $this->nvd3Settings->wpbi_url['nvd3']['line'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-linechart', $this->nvd3Settings->wpbi_url['nvd3']['linechart'], array('nvd3-nvd3') );
 
     }
     public function create_dataseries($chart)
