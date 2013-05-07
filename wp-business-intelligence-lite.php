@@ -3,7 +3,6 @@
 Plugin Name: WP Business Intelligence Lite
 Plugin URI: http://www.wpbusinessintelligence.com
 Description: WP Business Intelligence Lite lets you create and insert dynamic charts into any post or page. You just have to connect to a database and run your SQL queries to retrieve the desired data.
-Version: 1.0
 Author: WP Business Intelligence
 Author URI: http://www.wpbusinessintelligence.com/who-we-are
 License: GPL3
@@ -72,7 +71,7 @@ function wpbi_admin_init() {
     wp_register_script( 'colorpicker-colorpicker', $wpbi_url['colorpicker']['colorpicker']);
     wp_register_script( 'chart-json', $wpbi_url['chart']['json']);
     wp_register_script( 'nvd3-d3js', $wpbi_url['nvd3']['d3js']);
-    wp_register_script( 'nvd3-nvd3', $wpbi_url['nvd3']['nvd3'], ['nvd3-d3js']);
+    wp_register_script( 'nvd3-nvd3', $wpbi_url['nvd3']['nvd3'], array('nvd3-d3js'));
 
 }
 
@@ -168,7 +167,7 @@ function wpbi_menu() {
 	//$wpdb->query($qy_fk);
 
     // Add a new top-level menu (ill-advised):
-    add_menu_page('WP BI', 'WP Business Intelligence', 'manage_options', $wpbi_url['slug']['preferences'], 'wpbi_page', plugins_url('wpbusinessintelligence/images/chart-icon.png'), '110');
+    add_menu_page('WP BI', 'WP Business Intelligence', 'manage_options', $wpbi_url['slug']['preferences'], 'wpbi_page', plugins_url('wp-business-intelligence-lite/images/chart-icon.png'), '110');
 
     // Add a second submenu to the custom top-level menu:
     add_submenu_page('wpbi', __($wpbi_dialog['page']['queries']['title'],'wpbi-menu'), __($wpbi_dialog['page']['queries']['title'],'wpbi-menu'), 'manage_options', $wpbi_url['slug']['queries'], 'queries_page');
@@ -192,7 +191,7 @@ function wpbi_plugin_scripts() {
     wp_register_script( 'colorpicker-colorpicker', $wpbi_url['colorpicker']['colorpicker']);
     wp_register_script( 'chart-json', $wpbi_url['chart']['json']);
     wp_register_script( 'nvd3-d3js', $wpbi_url['nvd3']['d3js']);
-    wp_register_script( 'nvd3-nvd3', $wpbi_url['nvd3']['nvd3'], ['nvd3-d3js']);
+    wp_register_script( 'nvd3-nvd3', $wpbi_url['nvd3']['nvd3'], array('nvd3-nvd3'));
 
 }
 

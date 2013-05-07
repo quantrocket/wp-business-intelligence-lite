@@ -43,10 +43,10 @@ class nvd3_pieChart
         $this->nvd3Settings = new nvd3_settings();
         $this->placeholder = new nvd3_placeholder('ph_'.str_replace(' ', '_', $chart->name));
 
-        wp_enqueue_script('nvd3-legend', $this->nvd3Settings->wpbi_url['nvd3']['legend'], ['nvd3-nvd3'] );
-        wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'], ['nvd3-nvd3'] );
-        wp_enqueue_script('nvd3-pie', $this->nvd3Settings->wpbi_url['nvd3']['pie'], ['nvd3-nvd3'] );
-        wp_enqueue_script('nvd3-piechart', $this->nvd3Settings->wpbi_url['nvd3']['piechart'], ['nvd3-nvd3'] );
+        wp_enqueue_script('nvd3-legend', $this->nvd3Settings->wpbi_url['nvd3']['legend'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-pie', $this->nvd3Settings->wpbi_url['nvd3']['pie'], array('nvd3-nvd3') );
+        wp_enqueue_script('nvd3-piechart', $this->nvd3Settings->wpbi_url['nvd3']['piechart'], array('nvd3-nvd3') );
     }
 
     public function create_dataseries($chart)
