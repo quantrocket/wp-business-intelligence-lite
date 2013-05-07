@@ -40,6 +40,8 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 
 = 1.0 =
 * First beta release
+= 1.0.1 =
+* Fixes on JS inclusion and icon chart
 
 == Frequently Asked Questions == 
 
