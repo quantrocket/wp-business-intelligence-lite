@@ -167,7 +167,7 @@ function wpbi_menu() {
 	//$wpdb->query($qy_fk);
 
     // Add a new top-level menu (ill-advised):
-    add_menu_page('WP BI', 'WP Business Intelligence', 'manage_options', $wpbi_url['slug']['preferences'], 'wpbi_page', plugins_url('wpbusinessintelligence/images/chart-icon.png'), '110');
+    add_menu_page('WP BI', 'WP Business Intelligence', 'manage_options', $wpbi_url['slug']['preferences'], 'wpbi_page', plugins_url('wp-business-intelligence-lite/images/chart-icon.png'), '110');
 
     // Add a second submenu to the custom top-level menu:
     add_submenu_page('wpbi', __($wpbi_dialog['page']['queries']['title'],'wpbi-menu'), __($wpbi_dialog['page']['queries']['title'],'wpbi-menu'), 'manage_options', $wpbi_url['slug']['queries'], 'queries_page');
