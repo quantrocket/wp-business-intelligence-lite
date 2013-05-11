@@ -1,6 +1,13 @@
 <script type="text/javascript" charset="utf-8">
     jQuery(document).ready(function() {
-        jQuery('#{TABLE_STYLE}').dataTable();
+        jQuery('#{TABLE_STYLE}').dataTable( {
+            "bPaginate": true,
+            "bLengthChange": true,
+            "bFilter": true,
+            "bSort": true,
+            "bInfo": true,
+            "bAutoWidth": true
+        } );
     } );
 </script>
 <table class="#" id="#" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; border-color:transparent; background-color:transparent; width:0%; height:0%; border:0px;">

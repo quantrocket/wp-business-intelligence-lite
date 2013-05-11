@@ -192,7 +192,7 @@ function wpbi_plugin_scripts() {
     wp_register_script( 'colorpicker-colorpicker', $wpbi_url['colorpicker']['colorpicker']);
     wp_register_script( 'chart-json', $wpbi_url['chart']['json']);
     wp_register_script( 'nvd3-d3js', $wpbi_url['nvd3']['d3js']);
-    wp_register_script( 'nvd3-nvd3', $wpbi_url['nvd3']['nvd3'], array('nvd3-nvd3'));
+    wp_register_script( 'nvd3-nvd3', $wpbi_url['nvd3']['nvd3'], array('nvd3-d3js'));
 
 }
 
