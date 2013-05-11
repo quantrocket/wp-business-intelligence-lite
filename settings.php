@@ -200,6 +200,12 @@ $wpbi_url['nvd3']['d3js']			        =	plugins_url('/resources/nvd3/js/lib/d3.v2.
 
 /**************************/
 
+/*** datatables files ***/
+$wpbi_url['datatables']['jquery']			=	plugins_url('/resources/datatables/js/jquery.dataTables.js', __FILE__);
+$wpbi_url['datatables']['jquerymin']		=	plugins_url('/resources/datatables/js/jquery.dataTables.min.js', __FILE__);
+
+/**************************/
+
 /***		Styles		***/
 $wpbi_url['styles']['directory'] 			= 	dirname(WP_PLUGIN_DIR.'/'.plugin_basename(__FILE__)).'/css/';
 $wpbi_url['styles']['url'] 				= 	plugins_url('/css/', __FILE__);

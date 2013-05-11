@@ -100,6 +100,8 @@ function set_rows($rows){
 
 function get_html(){
 
+    global $wpbi_url;
+
 	//Title
 	$title = '';
 	if(!is_null($this->title) && strlen($this->title)!=0){
@@ -171,7 +173,9 @@ function get_html(){
 			    ob_end_clean();
 				$table_body_row = $table_body_row.$output;
 				$table_body_row_col = '';
-		}		
+		}
+
+    wp_enqueue_script('datatables-jquery', $wpbi_url['datatables']['jquerymin'] );
 	
 	//Table
 	ob_start();

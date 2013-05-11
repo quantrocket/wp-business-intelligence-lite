@@ -520,6 +520,7 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 	
 		));
 
+    wp_enqueue_script('datatables-jquery', $wpbi_url['datatables']['jquerymin'] );
 	
 	//Parse tpl
 	$template_site->pparse('css');
@@ -719,6 +720,8 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		'VW_NEW_COLUMNS_OPTIONS'=> $columns_html
 	
 		));
+
+        wp_enqueue_script('datatables-jquery', $wpbi_url['datatables']['jquerymin'] );
 		
 		//Store output
 		ob_start();

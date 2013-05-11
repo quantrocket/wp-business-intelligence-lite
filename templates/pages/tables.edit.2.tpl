@@ -1,10 +1,10 @@
 <script type="text/javascript">
-$(document).ready(function() {   
+jQuery(document).ready(function() {
 	   //Input control
-	   $('#{P_VW_NAME}').alphanumeric({allow:" "});
-	   $('#{P_VW_TITLE}').alphanumeric({allow:".,-_;: "});
-	   $('#{P_VW_ROWS_PER_PG}').numeric();
-	   $('{P_VW_TX_COLUMN_TF}').alphanumeric({allow:" "});
+	   jQuery('#{P_VW_NAME}').alphanumeric({allow:" "});
+	   jQuery('#{P_VW_TITLE}').alphanumeric({allow:".,-_;: "});
+	   jQuery('#{P_VW_ROWS_PER_PG}').numeric();
+	   jQuery('{P_VW_TX_COLUMN_TF}').alphanumeric({allow:" "});
 	 });
 </script>
 <form method="post" id="edit_view_2" name="edit_view_2" action="{VW_EDIT_FORM_ACTION}">
