@@ -26,7 +26,7 @@ WP Business Intelligence uses NVD3 charts; in order to know more about NVD3 plea
 
 Please take one minute to [send us a feedback](http://www.wpbusinessintelligence.com/contact-us/)
 
-== Features ==
+= Features =
 
 1. Live connection to your WordPress DB via custom SQL queries
 2. Responsive charts/tables
@@ -67,7 +67,7 @@ The steps required to create a new chart are:
 3. define chart parameters such as: axis precision, labels names, chart name, colors and save it
 4. insert the chart in your post/page with the following shortcode:
 
-` [wpbusinessintelligence id="11" type="chart" iframe="n" ]Any text (chart name?)[/wpbusinessintelligence] `
+<pre>[wpbusinessintelligence id="11" type="chart" iframe="n" ]Any text (chart name?)[/wpbusinessintelligence]</pre>
 
 ### How does the chart retrieves data? ###
 Data are retrieved at each page refresh with a SQL query on your live DB. So they are always up-to-date!
@@ -80,26 +80,13 @@ We are trying to wrap as many D3 charts as possible in WP Business intelligence.
 In order to add more Datatables features you will have to edit the "table.tpl" file located in the /templates/views directory.
 At the very top of the file you will find the table initialisation call with the default options. You will have to edit this code in compliance with the [Datatables API](http://datatables.net/api).
 
-
 == Upgrade Notice == 
 
-### Upgrading from Lite to Pro or Enterprise ###
-1. Deactivate WPBI Lite from the "Plugins" page in your WP dashboard
-2. Install WPBI Pro or Enterprise as explained above for WPBI Lite
-3. Activate WP Business Intelligence
-4. (optional) Install the TinyMCE buttons for charts and tables insertion via the WP Editor menu.
+= 1.0.1 =
+Bug fix on JS inclusion that caused an error at plugin activation
 
-### Upgrading from version X.Y.Z to A.B.C ###
-= WARNING: this implies that you have not customized your code. Any changes will be lost with this procedure =
-
-1. Go to the "Plugins" page of your WP admin dashboard
-2. Click on the "Update" link corresponding to WPBI (if any)
-3. Follow the instructions displayed
-
-OR
-1. Connect to your web server via FTP
-2. Move to your web site root folder and then go to the "wp-content/plugins" folder
-3. Overwrite the existing wp-business-intelligence-lite folder with the new one downloaded from the WP Plugin portal
+= 1.0.2 =
+Tables are integrated with the DataTables jQuery plugin
 
 == Screenshots ==
 1. [Create and test a query (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-1.png)
@@ -107,4 +94,3 @@ OR
 3. [Create and test a chart view (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-3.png)
 4. [A sample dashboard (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-4.png)
 5. [Insert a chart or table in a page/post (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-5.png)
-
