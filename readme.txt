@@ -1,17 +1,17 @@
 === WP Business Intelligence Lite ===
 Contributors: calberti
 Donate link: http://www.wpbusinessintelligence.com/contact-us/
-Tags: charts, tables, d3, analytics, business intelligence, bi, reporting
+Tags: charts, tables, d3, line chart, pie chart, bar chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
 Tested up to: 3.5.1
 Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Embed dynamic web charts and tables in your site! Connect to your live WordPress instance DB to retrieve data in real-time!
+Dynamic web charts and tables for your site! Connect to your live WordPress instance DB to retrieve data in real-time and update charts and tables!
 
 == Description ==
-Adding charts and tables to your web site has never been that easy. WP Business Intelligence Lite is a WordPress plugin that transforms your WordPress platform in a reporting tool with charts and tables. Charts are powered by [D3](http://d3js.org), a powerful JavaScript library for manipulating documents based on data. Tables are powered by [Datatables](http://datatables.net) and provide sorting, filtering and dynamic paging by default. With a little coding you can implement the [Datatables API](http://datatables.net/api) and add the advanced features you need.
+Adding charts and tables to your web site has never been that easy. WP Business Intelligence Lite transforms your WordPress platform in a reporting tool with responsive charts and tables. Charts are powered by [D3](http://d3js.org), a powerful JavaScript library for manipulating documents based on data. Tables are powered by [DataTables](http://datatables.net) and provide sorting, filtering and dynamic paging by default. With a little coding you can implement the [DataTables API](http://datatables.net/api) and add the advanced features you need.
 The admin interface lets you create SQL queries to retrieve data from the DB. Once you have created at least one query that correctly retrieves data from your DB, you can define the type of chart (bar, (multi)line, pie) or table to be used to display them. A simple shortcode embeds the chart or table in any post or page. Each page refresh retrieves the data from the DB so that the information in the chart or table is always up-to-date.
 
 WARNING: this plugin is the WP Business Intelligence core. In order to get full advantages from WP Business Intelligence, you can get WP Business Intelligence Pro or Enterprise together with the TinyMCE editor's extensions from the [WP Business Intelligence web site](http://www.wpbusinessintelligence.com)
@@ -20,9 +20,20 @@ Useful information can be found on the [WP Business Intelligence Support Portal]
 
 [WP Business Intelligence Showcase](http://www.wpbusinessintelligence.com/showcase)
 
+[WP Business Intelligence FAQ](http://www.wpbusinessintelligence.com/support/wp-business-intelligence-faq/)
+
 WP Business Intelligence uses NVD3 charts; in order to know more about NVD3 please visit [the project's page](http://nvd3.org/)
 
 Please take one minute to [send us a feedback](http://www.wpbusinessintelligence.com/contact-us/)
+
+== Features ==
+
+1. Live connection to your WordPress DB via custom SQL queries
+2. Responsive charts/tables
+3. Dynamically filter data to be displayed in the chart
+4. Works in Chrome, Firefox, IE10
+5. Customize your charts (data precision, labels, colors, etc.)
+6. Charts based on D3 via [NVD3](http://nvd3.org/)
 
 == Installation ==
 
@@ -43,7 +54,7 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 = 1.0.1 =
 * Fixes on JS inclusion and icon chart
 = 1.0.2 =
-* First integration of "Datatables" tables
+* First integration of "DataTables" tables
 
 == Frequently Asked Questions == 
 
@@ -65,14 +76,30 @@ Data are retrieved at each page refresh with a SQL query on your live DB. So the
 The charts are powered by [D3](http://d3js.org), a powerful JavaScript library for manipulating documents based on data.
 We are trying to wrap as many D3 charts as possible in WP Business intelligence. [Have a look here for more info!](http://www.wpbusinessintelligence.com)
 
-### How do I extend the default Datatables features? ###
+### How do I extend the default DataTables features? ###
 In order to add more Datatables features you will have to edit the "table.tpl" file located in the /templates/views directory.
 At the very top of the file you will find the table initialisation call with the default options. You will have to edit this code in compliance with the [Datatables API](http://datatables.net/api).
 
 
 == Upgrade Notice == 
 
--
+### Upgrading from Lite to Pro or Enterprise ###
+1. Deactivate WPBI Lite from the "Plugins" page in your WP dashboard
+2. Install WPBI Pro or Enterprise as explained above for WPBI Lite
+3. Activate WP Business Intelligence
+4. (optional) Install the TinyMCE buttons for charts and tables insertion via the WP Editor menu.
+
+### Upgrading from version X.Y.Z to A.B.C ###
+= WARNING: this implies that you have not customized your code. Any changes will be lost with this procedure =
+
+1. Go to the "Plugins" page of your WP admin dashboard
+2. Click on the "Update" link corresponding to WPBI (if any)
+3. Follow the instructions displayed
+
+OR
+1. Connect to your web server via FTP
+2. Move to your web site root folder and then go to the "wp-content/plugins" folder
+3. Overwrite the existing wp-business-intelligence-lite folder with the new one downloaded from the WP Plugin portal
 
 == Screenshots ==
 1. [Create and test a query (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-1.png)
