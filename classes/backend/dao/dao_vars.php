@@ -40,7 +40,7 @@ function dao_vars($wpdb, $table_name){
 	$this->table_name= $table_name;
 }
 
-function select($vo_vars){
+function select($vo_vars=NULL){
 
 	$where_clause = "";
 

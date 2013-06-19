@@ -36,7 +36,7 @@ var $is_label;
 var $is_value;
 var $is_time;
 
-function vo_ch_cols($id, $ch_id, $col_label, $col_color, $is_label, $is_value, $is_time){
+function vo_ch_cols($id=NULL, $ch_id=NULL, $col_label=NULL, $col_color=NULL, $is_label=NULL, $is_value=NULL, $is_time=NULL){
 	$this->id = $id;
 	$this->ch_id = $ch_id;
 	$this->col_label = $col_label;

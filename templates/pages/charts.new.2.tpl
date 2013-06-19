@@ -259,7 +259,7 @@ function init_help() {
 	</table>
 
     </td>
-        <td align="left" valign="top"><table class="widefat">
+        <td align="left" valign="top" width="550px"><table class="widefat">
           <thead>
             <tr bgcolor="#CCCCCC" valign="top">
               <td align="left" scope="row"><strong>{CH_NEW_COLUMNS}</strong></td>

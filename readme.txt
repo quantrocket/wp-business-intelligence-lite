@@ -4,7 +4,7 @@ Donate link: http://www.wpbusinessintelligence.com/contact-us/
 Tags: charts, tables, d3, line chart, pie chart, bar chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,8 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * Fixes on JS inclusion and icon chart
 = 1.0.2 =
 * First integration of "DataTables" tables
+= 1.0.3 =
+* Code was cleaned up to remove some warnings
 
 == Frequently Asked Questions == 
 
@@ -87,6 +89,9 @@ Bug fix on JS inclusion that caused an error at plugin activation
 
 = 1.0.2 =
 Tables are integrated with the DataTables jQuery plugin
+
+= 1.0.2 =
+Warnings in Debug mode are removed.
 
 == Screenshots ==
 1. [Create and test a query (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-1.png)

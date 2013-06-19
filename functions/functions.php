@@ -427,16 +427,12 @@ function get_html_4_chart($id){
 		
 		//Import scripts		
 		echo '
-		
 		<link rel="stylesheet" href="'.$wpbi_url['nvd3']['css'].'" type="text/css" />
-		<script type="text/javascript" src="'.$wpbi_url['chart']['json'].'"></script>
 
 		<script type="text/javascript" src="'.$wpbi_url['nvd3']['d3js'].'"></script>
 		<script type="text/javascript" src="'.$wpbi_url['nvd3']['nvd3'].'"></script>
-
-
 		';
-		
+
 		//Set template variables
 		$template_site->assign_vars(array(
 			//WPBI Chart

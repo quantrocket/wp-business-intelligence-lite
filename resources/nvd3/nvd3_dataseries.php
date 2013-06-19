@@ -64,7 +64,11 @@ class nvd3_dataseries
     {
         $this->type = $chart->type;
         $this->name = $chart->name;
-        $this->color = $chart->chart->elements[$series]->colour;
+        if(isset( $chart->chart->elements[$series]->colour))
+        {
+            $this->color = $chart->chart->elements[$series]->colour;
+        }
+
 
         switch($chart->type){
             case self::STACKED_AREA:
@@ -111,7 +115,10 @@ class nvd3_dataseries
                 break;
 
             case self::PIE:
-                $this->key = $value->text;
+                if(isset($value->text))
+                {
+                    $this->key = $value->text;
+                }
                 $this->add_piechart_value($chart->x_axis_labels, $value, $series);
                 break;
 

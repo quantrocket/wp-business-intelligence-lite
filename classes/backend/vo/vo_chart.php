@@ -40,6 +40,7 @@ var $chart_title_color;
 var $chart_bg_color;
 var $chart_width;
 var $chart_width_percent;
+var $chart_tooltip;
 var $chart_height;
 var $chart_height_percent;
 var $chart_x_color;
@@ -65,7 +66,7 @@ var $chart_y_legend;
 var $chart_y_legend_color;
 var $chart_y_legend_size;
 
-function vo_chart($chart_id, $query_id, $chart_key, $chart_name, $chart_type, $chart_title, $chart_title_size, $chart_title_color, $chart_bg_color, $chart_width,$chart_width_percent, $chart_height, $chart_height_percent, $chart_x_color, $chart_x_precision, $chart_x_thickness, $chart_x_grid_color, $chart_x_grid_lines, $chart_x_labels_color, $chart_x_labels_size, $chart_x_labels_rotation, $chart_x_legend, $chart_x_legend_color, $chart_x_legend_size, $chart_y_color, $chart_y_precision, $chart_y_thickness, $chart_y_grid_color, $chart_y_grid_lines, $chart_y_labels_color, $chart_y_labels_size, $chart_y_labels_rotation, $chart_y_legend, $chart_y_legend_color, $chart_y_legend_size){
+function vo_chart($chart_id=NULL, $query_id=NULL, $chart_key=NULL, $chart_name=NULL, $chart_type=NULL, $chart_title=NULL, $chart_title_size=NULL, $chart_title_color=NULL, $chart_bg_color=NULL, $chart_width=NULL,$chart_width_percent=NULL, $chart_height=NULL, $chart_height_percent=NULL, $chart_x_color=NULL, $chart_x_precision=NULL, $chart_x_thickness=NULL, $chart_x_grid_color=NULL, $chart_x_grid_lines=NULL, $chart_x_labels_color=NULL, $chart_x_labels_size=NULL, $chart_x_labels_rotation=NULL, $chart_x_legend=NULL, $chart_x_legend_color=NULL, $chart_x_legend_size=NULL, $chart_y_color=NULL, $chart_y_precision=NULL, $chart_y_thickness=NULL, $chart_y_grid_color=NULL, $chart_y_grid_lines=NULL, $chart_y_labels_color=NULL, $chart_y_labels_size=NULL, $chart_y_labels_rotation=NULL, $chart_y_legend=NULL, $chart_y_legend_color=NULL, $chart_y_legend_size=NULL){
 
         $this->chart_id = $chart_id;
         $this->query_id = $query_id;

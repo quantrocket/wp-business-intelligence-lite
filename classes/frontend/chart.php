@@ -396,9 +396,30 @@ function create_element($name, $values){
 									break;
 	}
 	
-	//steps 
-	$this->y_axis_step = intval((($this->y_axis_max_val - $this->y_axis_min_val)*$this->y_axis_step_percent)/100);
-	$this->x_axis_step = intval((($this->x_axis_max_val - $this->x_axis_min_val)*$this->x_axis_step_percent)/100);
+	//steps
+    if(isset($this->x_axis_max_val))
+    {
+        if(!is_numeric($this->y_axis_max_val))
+        {
+            $this->y_axis_step = intval((($this->y_axis_max_val["value"] - $this->y_axis_min_val["value"])*$this->y_axis_step_percent)/100);
+        }
+        else
+        {
+            $this->y_axis_step = intval((($this->y_axis_max_val - $this->y_axis_min_val)*$this->y_axis_step_percent)/100);
+        }
+    }
+
+    if(isset($this->x_axis_max_val))
+    {
+        if( !is_numeric($this->x_axis_max_val))
+        {
+            $this->x_axis_step = intval((($this->x_axis_max_val["value"] - $this->x_axis_min_val["value"])*$this->x_axis_step_percent)/100);
+        }
+        else
+        {
+            $this->x_axis_step = intval((($this->x_axis_max_val - $this->x_axis_min_val)*$this->x_axis_step_percent)/100);
+        }
+    }
 	
 	return $this->elements[$name];
 }

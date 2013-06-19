@@ -117,10 +117,13 @@ class nvd3_chart
 
     public function setPlaceholder( $chart ){
 
-        $this->nvd3chart->height = $chart->height;
-        $this->nvd3chart->width = $chart->width;
-        $this->placeholderName = 'ph_'.str_replace(' ', '_', $chart->name);
+        if(isset ($this->nvd3_chart))
+        {
+            $this->nvd3chart->height = $chart->height;
+            $this->nvd3chart->width = $chart->width;
+        }
 
+        $this->placeholderName = 'ph_'.str_replace(' ', '_', $chart->name);
     }
 
     public function getCode()
@@ -131,7 +134,6 @@ class nvd3_chart
     public function getData()
     {
         $data = "";
-
 
         switch($this->type){
             case self::LINE:

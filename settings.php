@@ -117,7 +117,7 @@ $wpbi_settings['value']['edit'] 				= 'edit';
 $wpbi_settings['value']['save'] 				= 'save';
 $wpbi_settings['value']['set'] 				= 'set';
 $wpbi_settings['value']['drop'] 				= 'drop';
-$wpbi_settings['value']['edit-test'] 			= 'edit_test';
+$wpbi_settings['value']['edit-test'] 			= 'edit-test';
 
 /**************************/
 
