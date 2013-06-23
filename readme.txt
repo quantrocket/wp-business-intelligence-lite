@@ -8,7 +8,7 @@ Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Dynamic web charts and tables for your site! Connect to your live WordPress instance DB to retrieve data in real-time and update charts and tables!
+Charts and tables directly connected to the database of your site! The WPBI charts and tables retrieve data at each page refresh directly from your database. You can embed each chart or table with a simple shortcode in any post or page.
 
 == Description ==
 Adding charts and tables to your web site has never been that easy. WP Business Intelligence Lite transforms your WordPress platform in a reporting tool with responsive charts and tables. Charts are powered by [D3](http://d3js.org), a powerful JavaScript library for manipulating documents based on data. Tables are powered by [DataTables](http://datatables.net) and provide sorting, filtering and dynamic paging by default. With a little coding you can implement the [DataTables API](http://datatables.net/api) and add the advanced features you need.
