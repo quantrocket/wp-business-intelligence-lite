@@ -403,6 +403,8 @@ if($_POST[$wpbi_settings['parameter']['action']] != 'test') {
     $pagination->set_current_page(isset( $_GET[$pagination->pg_parameter] ) ? abs( (int) $_GET[$pagination->pg_parameter] ) : 1);
     $pagination->set_rows($total_rows);
     $pagination->set_css_class('widefat post fixed');
+    $pagination->set_css_style('widefat-pagination.css');
+    $pagination->set_pagination_tpl_path($wpbi_url['tpl']);
     $pagination->set_pagination_stats($wpbi_dialog['table']['pagination']['stats']);
     $pagination->set_paginate_links(
                     paginate_links( array(
