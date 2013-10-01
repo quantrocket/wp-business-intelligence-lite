@@ -47,7 +47,7 @@ class nvd3_chart
     const BAR_ROUND_3D			= 10;
     const BAR_HORIZONTAL		= 11;
     const BAR_STACKED  			= 12;
-    const CANDLE				= 13;
+    const DONUT	    			= 13;
     const LINE 					= 14;
     const LINE_AREA				= 15;
     const PIE					= 16;
@@ -87,6 +87,11 @@ class nvd3_chart
 
             case self::PIE:
                 $this->nvd3chart = new nvd3_pieChart($chart);
+                break;
+
+            case self::DONUT:
+                $this->nvd3chart = new nvd3_pieChart($chart);
+                $this->nvd3chart->donut = "true";
                 break;
 
             case self::SCATTER:
@@ -144,6 +149,7 @@ class nvd3_chart
             case self::BAR:
             case self::BAR_STACKED:
             case self::BAR_HORIZONTAL:
+            case self::DONUT:
             case self::PIE:
                 $i = 0;
                 foreach ( $this->nvd3chart->dataSeries as $key => $series )

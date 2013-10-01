@@ -102,6 +102,7 @@ function init_help() {
             jQuery('#{P_CH_Y_PRECISION}').show();
             break;
         case '{CH_EDIT_TYPE_PIE}':
+        case '{CH_EDIT_TYPE_DONUT}':
             jQuery("#help_linechart").hide();
             jQuery("#help_cumulinechart").hide();
             jQuery("#help_hbarchart").hide();
@@ -232,6 +233,7 @@ function init_help() {
 						<option value="1" {SELECTED_1}>{CH_EDIT_TYPE_BAR}</option>
                         <option value="14" {SELECTED_14}>{CH_EDIT_TYPE_LINE}</option>
 						<option value="16" {SELECTED_16}>{CH_EDIT_TYPE_PIE}</option>
+                        <option value="13" {SELECTED_13}>{CH_EDIT_TYPE_DONUT}</option>
 					</select>                </td>
 	        </tr>
             <tr valign="top">

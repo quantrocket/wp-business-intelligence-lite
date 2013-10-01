@@ -106,7 +106,7 @@ $wpbi_settings['parameter']['charts_help'] 		= '<div id="help_barchart"><p><span
                                                    <div id="help_linechart"><p><span style="font-weight:bold">Line Chart</span></p><p>Each column marked as "value" will be plotted as a line.</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>
                                                    <div id="help_multibarchart"><p><span style="font-weight:bold">Multibar Chart</span></p><p>Select one column as "label".<br/>All the other columns shall be "values" to be represented as bars grouped by label.</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>
                                                    <div id="help_scatterchart"><p><span style="font-weight:bold">Scatter Chart</span></p><p>If only 2 columns are selected as "Value" they are used as X and Y coordinates of points in the order displayed.<br/>If more than 2 "Values" are selected they shall be a multiple of 3 and will be interpreted as X, Y and size of each point.</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>
-                                                   <div id="help_piechart"><p><span style="font-weight:bold">Pie Chart</span><p>For pie charts select one column as "label" <br/>and then another that can be either "value" only or both "value" and "label".</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>
+                                                   <div id="help_piechart"><p><span style="font-weight:bold">Pie/Donut Chart</span><p>For pie/donut charts select one column as "label" <br/>and then another that can be either "value" only or both "value" and "label".</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>
                                                    <div id="help_cumulinechart"><p><span style="font-weight:bold">Cumulative Line Chart</span><p>Each column selected as "value" will be plotted as a separate line<br/>with the possibility to align to 0 all the lines on any point of the X axis.</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>
                                                    <div id="help_lineandbarchart"><p><span style="font-weight:bold">Line And Bar Chart</span><p>This chart plots the first selected column as a bar chart and the second as a line</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>
                                                    <div id="help_stackedareachart"><p><span style="font-weight:bold">Stacked Area Chart</span><p>Each column selected as "value" will be plotted as a separate line with filled area.<br/>Each line can be plotted separately by clicking on it.</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>
@@ -117,7 +117,7 @@ $wpbi_settings['value']['edit'] 				= 'edit';
 $wpbi_settings['value']['save'] 				= 'save';
 $wpbi_settings['value']['set'] 				= 'set';
 $wpbi_settings['value']['drop'] 				= 'drop';
-$wpbi_settings['value']['edit-test'] 			= 'edit-test';
+$wpbi_settings['value']['edit-test'] 			= 'edit_test';
 
 /**************************/
 
@@ -195,7 +195,7 @@ $wpbi_url['jquery']['alphanumeric']		= 	plugins_url('/resources/jquery-alphanume
 
 /*** nvd3 files ***/
 $wpbi_url['nvd3']['css']			        =	plugins_url('/resources/nvd3/js/src/nv.d3.css', __FILE__);
-$wpbi_url['nvd3']['nvd3']			        =	plugins_url('/resources/nvd3/js/nv.d3.js', __FILE__);
+$wpbi_url['nvd3']['nvd3']			        =	plugins_url('/resources/nvd3/js/nv.d3.min.js', __FILE__);
 $wpbi_url['nvd3']['d3js']			        =	plugins_url('/resources/nvd3/js/lib/d3.v2.js', __FILE__);
 
 /**************************/

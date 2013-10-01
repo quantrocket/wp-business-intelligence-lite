@@ -37,16 +37,18 @@ class nvd3_pieChart
     var $width = "400px";
     var $placeholder = NULL;
     var $nvd3Settings = NULL;
+    var $donut = "false";
 
     public function __construct($chart)
     {
         $this->nvd3Settings = new nvd3_settings();
         $this->placeholder = new nvd3_placeholder('ph_'.str_replace(' ', '_', $chart->name));
 
-        wp_enqueue_script('nvd3-legend', $this->nvd3Settings->wpbi_url['nvd3']['legend'] );
-        wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'] );
+        //wp_enqueue_script('nvd3-legend', $this->nvd3Settings->wpbi_url['nvd3']['legend'] );
+        //wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'] );
+        wp_enqueue_script('nvd3-fisheye', $this->nvd3Settings->wpbi_url['nvd3']['fisheye'] );
         wp_enqueue_script('nvd3-pie', $this->nvd3Settings->wpbi_url['nvd3']['pie'] );
-        wp_enqueue_script('nvd3-piechart', $this->nvd3Settings->wpbi_url['nvd3']['piechart'] );
+        //wp_enqueue_script('nvd3-piechart', $this->nvd3Settings->wpbi_url['nvd3']['piechart'] );
     }
 
     public function create_dataseries($chart)
@@ -83,13 +85,12 @@ class nvd3_pieChart
                     .x(function(d) { return d.key })
                     .y(function(d) { return d.y })
                     .showLabels($this->showLabels)
-                    .values(function(d) { return d })
                     .color(d3.scale.category10().range())
                     .width(width)
-                    .height(height);
+                    .height(height).donut($this->donut);
 
                 d3.select('#".$this->placeholder->name." svg')
-                        .datum([nvd3Data_".$this->placeholder->name."])
+                        .datum(nvd3Data_".$this->placeholder->name.")
                         .transition().duration($this->transitionDuration)
                         .attr('width', width)
                         .attr('height', height)

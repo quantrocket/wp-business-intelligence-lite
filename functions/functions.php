@@ -315,6 +315,7 @@ function get_html_4_chart($id){
 		
 		//Assign values and labels
 		switch($wpbi_chart->type){
+            case chart::DONUT:
 			case chart::PIE:				if(sizeof($label_x) > 0){
 														$wpbi_chart	-> set_x_axis_labels($label_x,
 														$vo_chart->chart_x_labels_size, 

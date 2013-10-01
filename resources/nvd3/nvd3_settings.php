@@ -36,7 +36,7 @@ class nvd3_settings
         $this->wpbi_url = array(
             "nvd3" => array(
                 "css"               =>	plugins_url('/js/src/nv.d3.css', __FILE__),
-                "nvd3"              =>	plugins_url('/js/nv.d3.js', __FILE__),
+                "nvd3"              =>	plugins_url('/js/nv.d3.min.js', __FILE__),
                 "d3js"              =>	plugins_url('/js/lib/d3.v2.js', __FILE__),
                 "fisheye"           => 	plugins_url('/js/lib/fisheye.js', __FILE__),
                 "tooltip"           =>	plugins_url('/js/src/tooltip.js', __FILE__),

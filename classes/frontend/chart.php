@@ -91,7 +91,7 @@ const BAR_DOME				= 9;
 const BAR_ROUND_3D			= 10;
 const BAR_HORIZONTAL		= 11;
 const BAR_STACKED			= 12;
-const CANDLE				= 13;
+const DONUT 				= 13;
 const LINE 					= 14;
 const LINE_AREA				= 15;
 const PIE					= 16;
@@ -186,8 +186,9 @@ function build(){
 											}
 											
 											break;
-											
-		case self::PIE:						break;
+
+        case self::DONUT:
+        case self::PIE:						break;
 		
 		case self::RADAR:					//Increase max value for better chart's look and feel
 											//$this->y_axis_max_val += $this->y_axis_step;
@@ -316,9 +317,8 @@ function create_element($name, $values){
 												$this->elements[$name] = new bar_stack();
 											}
 											break;
-		case self::CANDLE:					$this->elements[$name] = new candle('#9933CC');
-											break;
-		case self::PIE:						$this->elements[$name] = new pie();
+		case self::DONUT:
+        case self::PIE:						$this->elements[$name] = new pie();
 											//hide labels if none (otherwise it shows values)
 											if($this->x_axis_labels == NULL) {
 												$this->elements[$name]->set_no_labels();
@@ -345,7 +345,8 @@ function create_element($name, $values){
 		case self::BAR_STACKED:		//assign array data
 									$this->elements[$name]->append_stack( $values );
 									break;
-									
+
+        case self::DONUT:
 		case self::PIE:				//assign array data
 									$this->elements[$name]->set_values($values);
 									break;
@@ -551,7 +552,8 @@ function set_y_axis_labels($y_axis_labels, $y_axis_labels_size, $y_axis_labels_c
 	switch($this->type){
 		case self::RADAR:	$this->y_axis_labels = new radar_spoke_labels($y_axis_labels);
 							break;
-		case self::PIE:		//do nothing
+        case self::DONUT:
+        case self::PIE:		//do nothing
 							break;
 		default:			$this->y_axis_labels = new y_axis_labels();
 							$this->y_axis_labels->set_labels($y_axis_labels);

@@ -339,6 +339,7 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['tes
 		
 		//Assign values and labels
 		switch($wpbi_chart->type){
+            case chart::DONUT:
 			case chart::PIE:				if(sizeof($label_x) > 0){
 														$wpbi_chart	-> set_x_axis_labels($label_x,
 														$_POST[$wpbi_settings['parameter']['ch-x-label-size']],
@@ -606,6 +607,7 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
 
 		//Assign values and labels
 		switch($wpbi_chart->type){
+            case chart::DONUT:
 			case chart::PIE:				if(sizeof($label_x) > 0){
 														$wpbi_chart	-> set_x_axis_labels($label_x,
 														$vo_chart->chart_x_labels_size, 
@@ -1077,8 +1079,9 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 		'CH_EDIT_TYPE_BAR_ROUND_3D' 			=> $wpbi_dialog['charts']['type']['bar-round-3d'],
 		'CH_EDIT_TYPE_BAR_HORIZONTAL' 			=> $wpbi_dialog['charts']['type']['bar-horizontal'],
 		'CH_EDIT_TYPE_BAR_STACKED' 			=> $wpbi_dialog['charts']['type']['bar-stacked'],
-		'CH_EDIT_TYPE_CANDLE' 			=> $wpbi_dialog['charts']['type']['candle'],
+		//'CH_EDIT_TYPE_CANDLE' 			=> $wpbi_dialog['charts']['type']['candle'],
 		'CH_EDIT_TYPE_PIE' 			=> $wpbi_dialog['charts']['type']['pie'],
+        'CH_EDIT_TYPE_DONUT' 			=> $wpbi_dialog['charts']['type']['donut'],
 		'CH_EDIT_TYPE_SCATTER' 			=> $wpbi_dialog['charts']['type']['scatter'],
 		'CH_EDIT_TYPE_SCATTER_LINE' 			=> $wpbi_dialog['charts']['type']['scatter-line'],
         'CH_EDIT_TYPE_CUMULATIVE_LINE' 			=> $wpbi_dialog['charts']['type']['cumulative-line'],
@@ -1491,8 +1494,9 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		//'CH_NEW_TYPE_BAR_ROUND_3D' 			=> $wpbi_dialog['charts']['type']['bar-round-3d'],
 		'CH_NEW_TYPE_BAR_HORIZONTAL' 			=> $wpbi_dialog['charts']['type']['bar-horizontal'],
 		'CH_NEW_TYPE_BAR_STACKED' 			=> $wpbi_dialog['charts']['type']['bar-stacked'],
-		'CH_NEW_TYPE_CANDLE' 			=> $wpbi_dialog['charts']['type']['candle'],
+		//'CH_NEW_TYPE_CANDLE' 			=> $wpbi_dialog['charts']['type']['candle'],
 		'CH_NEW_TYPE_PIE' 			=> $wpbi_dialog['charts']['type']['pie'],
+        'CH_NEW_TYPE_DONUT' 			=> $wpbi_dialog['charts']['type']['donut'],
 		'CH_NEW_TYPE_SCATTER' 			=> $wpbi_dialog['charts']['type']['scatter'],
 		'CH_NEW_TYPE_SCATTER_LINE' 			=> $wpbi_dialog['charts']['type']['scatter-line'],
         'CH_NEW_TYPE_CUMULATIVE_LINE' 			=> $wpbi_dialog['charts']['type']['cumulative-line'],
@@ -1539,10 +1543,10 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 			WHEN CHART_TYPE = ".chart::BAR_ROUND_3D." 			THEN '".$wpbi_dialog['charts']['type']['bar-round-3d']."'
 			WHEN CHART_TYPE = ".chart::BAR_HORIZONTAL."			THEN '".$wpbi_dialog['charts']['type']['bar-horizontal']."'
 			WHEN CHART_TYPE = ".chart::BAR_STACKED." 			THEN '".$wpbi_dialog['charts']['type']['bar-stacked']."'
-			WHEN CHART_TYPE = ".chart::CANDLE." 					THEN '".$wpbi_dialog['charts']['type']['candle']."'
 			WHEN CHART_TYPE = ".chart::LINE ." 					THEN '".$wpbi_dialog['charts']['type']['line']."'
 			WHEN CHART_TYPE = ".chart::LINE_AREA." 				THEN '".$wpbi_dialog['charts']['type']['line-area']."'
 			WHEN CHART_TYPE = ".chart::PIE." 					THEN '".$wpbi_dialog['charts']['type']['pie']."'
+			WHEN CHART_TYPE = ".chart::DONUT." 					THEN '".$wpbi_dialog['charts']['type']['donut']."'
 			WHEN CHART_TYPE = ".chart::RADAR." 					THEN '".$wpbi_dialog['charts']['type']['radar']."'
 			WHEN CHART_TYPE = ".chart::SCATTER." 				THEN '".$wpbi_dialog['charts']['type']['scatter']."'
 			WHEN CHART_TYPE = ".chart::SCATTER_LINE." 			THEN '".$wpbi_dialog['charts']['type']['scatter-line']."'

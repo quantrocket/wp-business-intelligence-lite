@@ -120,13 +120,13 @@ function wpmybusinessintelligence_button() {
    }
  
    if ( get_user_option('rich_editing') == 'true' ) {
-	 add_filter( 'mce_buttons', 'register_button' );
+	 add_filter( 'mce_buttons', 'register_wpbi_button' );
      add_filter( 'mce_external_plugins', 'add_plugin' ); 
    }
  
 }
 
-function register_button( $buttons ) {
+function register_wpbi_button( $buttons ) {
  array_push( $buttons, "|", $wpbi_settings['tinymce']['tag'] );
  return $buttons;
 }

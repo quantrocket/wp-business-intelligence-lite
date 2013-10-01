@@ -32,7 +32,7 @@
 //##########################     ENGLISH      ###########################
 //#######################################################################
 
-$wpbi_dialog['disclaimer']['software']['version']				= 	__('1.0.0', 'wpbusinessintelligence');
+$wpbi_dialog['disclaimer']['software']['version']				= 	__('1.0.4', 'wpbusinessintelligence');
 $wpbi_dialog['disclaimer']['license']['gpl']					= 	__('
 	<b>Terms of use</b><br>
 	<br>
@@ -230,6 +230,7 @@ $wpbi_dialog['charts']['type']['bar-horizontal']			= 	__('Bar (Horizontal)', 'wp
 $wpbi_dialog['charts']['type']['bar-stacked']				= 	__('Multi Bar', 'wpbusinessintelligence');
 $wpbi_dialog['charts']['type']['candle']					= 	__('Bar (Candle)', 'wpbusinessintelligence');
 $wpbi_dialog['charts']['type']['pie']						= 	__('Pie', 'wpbusinessintelligence');
+$wpbi_dialog['charts']['type']['donut']						= 	__('Donut', 'wpbusinessintelligence');
 $wpbi_dialog['charts']['type']['scatter']					= 	__('Scatter', 'wpbusinessintelligence');
 $wpbi_dialog['charts']['type']['scatter-line']			= 	__('Scatter (Line)', 'wpbusinessintelligence');
 $wpbi_dialog['charts']['type']['cumulative-line']			= 	__('Cumulative Line', 'wpbusinessintelligence');

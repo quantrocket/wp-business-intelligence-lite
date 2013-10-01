@@ -48,7 +48,7 @@ class nvd3_dataseries
     const BAR_ROUND_3D			= 10;
     const BAR_HORIZONTAL		= 11;
     const BAR_STACKED  			= 12;
-    const CANDLE				= 13;
+    const DONUT 				= 13;
     const LINE 					= 14;
     const LINE_AREA				= 15;
     const PIE					= 16;
@@ -115,6 +115,7 @@ class nvd3_dataseries
                 break;
 
             case self::PIE:
+            case self::DONUT:
                 if(isset($value->text))
                 {
                     $this->key = $value->text;
@@ -177,6 +178,26 @@ class nvd3_dataseries
                 $i++;
             }
 
+        }
+
+        // remove the last comma
+        $this->values = substr($temp, 0, strlen($temp) - 1);
+
+        $this->values = '[ '.$this->values.' ]';
+    }
+
+    function add_piechart_value_new($labels, $elements, $series = 0)
+    {
+        $i = 0;
+        $temp ="";
+        if(!is_null($this->name))
+        {
+            $this->key = $this->name;
+        }
+        foreach ($elements->values as $value)
+        {
+            $temp.= ' { "label" : "' . $value->label . '", "value" : ' . $value->value . '},';
+            $i++;
         }
 
         // remove the last comma
@@ -279,7 +300,12 @@ class nvd3_dataseries
                 $data .=' ]';
                 break;
             case self::PIE:
-                $data = $this->values;
+            case self::DONUT:
+                /*$this->name = null;
+                $this->color = null;
+                $this->type = null;
+                $data = '[ ' .$this->toPrettyString().' ]';*/
+				$data = $this->values;
                 break;
             case self::SCATTER:
                 $data = 'key: "'.$this->key . '", color: "'.$this->color.'" , values:' .$this->values;
