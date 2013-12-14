@@ -301,11 +301,7 @@ class nvd3_dataseries
                 break;
             case self::PIE:
             case self::DONUT:
-                /*$this->name = null;
-                $this->color = null;
-                $this->type = null;
-                $data = '[ ' .$this->toPrettyString().' ]';*/
-				$data = $this->values;
+                $data = $this->values;
                 break;
             case self::SCATTER:
                 $data = 'key: "'.$this->key . '", color: "'.$this->color.'" , values:' .$this->values;

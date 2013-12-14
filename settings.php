@@ -80,6 +80,7 @@ $wpbi_settings['parameter']['ch-x-grid-step']= 'ch_x_grid_step';
 $wpbi_settings['parameter']['ch-x-axis-thick']= 'ch_x_axis_thick';
 $wpbi_settings['parameter']['ch-x-axis-color']= 'ch_x_axis_color';
 $wpbi_settings['parameter']['ch-y-precision'] 		= 'ch_y_precision';
+$wpbi_settings['parameter']['ch-y-currency'] 		= 'ch_y_currency';
 $wpbi_settings['parameter']['ch-y-legend']		= 'ch_y_label';
 $wpbi_settings['parameter']['ch-y-legend-size']	= 'ch_y_legend_size';
 $wpbi_settings['parameter']['ch-y-legend-color']= 'ch_y_legend_color';

@@ -181,6 +181,7 @@ $wpbi_dialog['form']['label']['chart-width']				= 	__('Width', 'wpbusinessintell
 $wpbi_dialog['form']['label']['chart-height']				= 	__('Height', 'wpbusinessintelligence');
 $wpbi_dialog['form']['label']['chart-x-precision']				= 	__('X axis precision', 'wpbusinessintelligence');
 $wpbi_dialog['form']['label']['chart-y-precision']				= 	__('Y axis precision', 'wpbusinessintelligence');
+$wpbi_dialog['form']['label']['chart-y-currency']				= 	__('Y axis currency', 'wpbusinessintelligence');
 $wpbi_dialog['form']['label']['chart-rows-pg']			= 	__('Rows per page (0 = no pagination)', 'wpbusinessintelligence');
 $wpbi_dialog['form']['label']['chart-col']				= 	__('Column', 'wpbusinessintelligence');
 $wpbi_dialog['form']['label']['chart-col-label']			= 	__('Label', 'wpbusinessintelligence');
