@@ -231,7 +231,8 @@ function init_help() {
                   <option value="1" {SELECTED_1}>{CH_NEW_TYPE_BAR}</option>
                   <option value="14" {SELECTED_14}>{CH_NEW_TYPE_LINE}</option>
                   <option value="16" {SELECTED_16}>{CH_NEW_TYPE_PIE}</option>
-					</select>                </td>
+                  <option value="13" {SELECTED_13}>{CH_EDIT_TYPE_DONUT}</option>                </select>
+</td>
 	        </tr>
             <tr valign="top">
 				<td width="199" align="right" scope="row"><div align="left">{CH_NEW_WIDTH}</div></td>

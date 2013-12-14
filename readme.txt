@@ -1,7 +1,7 @@
 === WP Business Intelligence Lite ===
 Contributors: calberti
 Donate link: http://www.wpbusinessintelligence.com/contact-us/
-Tags: charts, tables, d3, line chart, pie chart, bar chart, nvd3, data analytics, business intelligence, bi, reporting
+Tags: charts, tables, d3, line chart, pie chart, bar chart, donut chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
 Tested up to: 3.6.1
 Stable tag: 1.0.5
@@ -59,6 +59,10 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * Code was cleaned up to remove some warnings
 = 1.0.4 =
 * Bug fix with queries pagination
+= 1.0.5 =
+* TinyMCE button registration warning fixed.
+* Donut chart added
+* Version 1.1.13 of NVD3 integrated
 
 == Frequently Asked Questions == 
 
@@ -92,7 +96,7 @@ Bug fix on JS inclusion that caused an error at plugin activation
 = 1.0.2 =
 Tables are integrated with the DataTables jQuery plugin
 
-= 1.0.2 =
+= 1.0.3 =
 Warnings in Debug mode are removed.
 
 == Screenshots ==

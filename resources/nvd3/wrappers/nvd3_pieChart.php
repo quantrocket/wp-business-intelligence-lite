@@ -87,7 +87,7 @@ class nvd3_pieChart
                     .showLabels($this->showLabels)
                     .color(d3.scale.category10().range())
                     .width(width)
-                    .height(height).donut($this->donut);
+ .height(height).donut($this->donut);
 
                 d3.select('#".$this->placeholder->name." svg')
                         .datum(nvd3Data_".$this->placeholder->name.")
