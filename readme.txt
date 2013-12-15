@@ -4,7 +4,7 @@ Donate link: http://www.wpbusinessintelligence.com/contact-us/
 Tags: charts, tables, d3, line chart, pie chart, bar chart, donut chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
 Tested up to: 3.7.1
-Stable tag: 1.0.6
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,9 +63,7 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * TinyMCE button registration warning fixed.
 * Donut chart added
 * Version 1.1.13 of NVD3 integrated
-= 1.0.6 =
-* Added configurable currency to line and bar
-* Renamed button registration function to avoid conflicts with other themes
+
 == Frequently Asked Questions == 
 
 In order to get a full overview about WP Business Intelligence, please visit [the official documentation page](http://www.wpbusinessintelligence.com/support/wp-business-intelligence-faq/)

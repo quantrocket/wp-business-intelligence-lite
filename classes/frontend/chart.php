@@ -44,7 +44,6 @@ var $x_axis = NULL;
 var $y_axis = NULL;
 var $x_axis_precision = 1;
 var $y_axis_precision = 1;
-var $y_axis_currency = '$';
 var $y_legend = NULL;
 var $x_legend = NULL;
 var $x_axis_labels = NULL;
@@ -319,7 +318,7 @@ function create_element($name, $values){
 											}
 											break;
 		case self::DONUT:
-		case self::PIE:						$this->elements[$name] = new pie();
+        case self::PIE:						$this->elements[$name] = new pie();
 											//hide labels if none (otherwise it shows values)
 											if($this->x_axis_labels == NULL) {
 												$this->elements[$name]->set_no_labels();
@@ -498,11 +497,6 @@ function set_x_precision($x_precision){
 //Set chart y axis precision
 function set_y_precision($y_precision){
     $this->y_axis_precision = $y_precision;
-}
-
-//Set chart y axis currency
-function set_y_currency($y_currency){
-    $this->y_axis_currency = $y_currency;
 }
 
 //Set chart x_axis labels color 

@@ -49,16 +49,11 @@ function select($vo_chart){
 		$where_clause = "where `chart_id` = $chart_id";
 	}
 
-	$query = "SELECT `CHART_ID`, `QUERY_ID`, `CHART_KEY`, `CHART_NAME`, `CHART_TYPE`, `CHART_TITLE`, `CHART_TITLE_SIZE`,
-	    `CHART_TITLE_COLOR`, `CHART_BG_COLOR`, `CHART_WIDTH`, `CHART_WIDTH_PERCENT`, `CHART_HEIGHT`, `CHART_HEIGHT_PERCENT`,
-	    `CHART_X_COLOR`, `CHART_X_PRECISION`, `CHART_X_THICKNESS`, `CHART_X_GRID_COLOR`, `CHART_X_GRID_LINES`, `CHART_X_LABELS_COLOR`,
-	    `CHART_X_LABELS_SIZE`, `CHART_X_LABELS_ROTATION`, `CHART_X_LEGEND`, `CHART_X_LEGEND_COLOR`, `CHART_X_LEGEND_SIZE`, `CHART_Y_COLOR`,
-	    `CHART_Y_PRECISION`, `CHART_Y_CURRENCY`, `CHART_Y_THICKNESS`, `CHART_Y_GRID_COLOR`, `CHART_Y_GRID_LINES`, `CHART_Y_LABELS_COLOR`, `CHART_Y_LABELS_SIZE`,
-	    `CHART_Y_LABELS_ROTATION`, `CHART_Y_LEGEND`, `CHART_Y_LEGEND_COLOR`, `CHART_Y_LEGEND_SIZE` FROM ".$this->table_name." $where_clause order by `CHART_NAME` asc";
+	$query = "SELECT `CHART_ID`, `QUERY_ID`, `CHART_KEY`, `CHART_NAME`, `CHART_TYPE`, `CHART_TITLE`, `CHART_TITLE_SIZE`, `CHART_TITLE_COLOR`, `CHART_BG_COLOR`, `CHART_WIDTH`, `CHART_WIDTH_PERCENT`, `CHART_HEIGHT`, `CHART_HEIGHT_PERCENT`, `CHART_X_COLOR`, `CHART_X_PRECISION`, `CHART_X_THICKNESS`, `CHART_X_GRID_COLOR`, `CHART_X_GRID_LINES`, `CHART_X_LABELS_COLOR`, `CHART_X_LABELS_SIZE`, `CHART_X_LABELS_ROTATION`, `CHART_X_LEGEND`, `CHART_X_LEGEND_COLOR`, `CHART_X_LEGEND_SIZE`, `CHART_Y_COLOR`, `CHART_Y_PRECISION`, `CHART_Y_THICKNESS`, `CHART_Y_GRID_COLOR`, `CHART_Y_GRID_LINES`, `CHART_Y_LABELS_COLOR`, `CHART_Y_LABELS_SIZE`, `CHART_Y_LABELS_ROTATION`, `CHART_Y_LEGEND`, `CHART_Y_LEGEND_COLOR`, `CHART_Y_LEGEND_SIZE` FROM ".$this->table_name." $where_clause order by `CHART_NAME` asc";
 	$rows = $this->wpdb->get_results($query);	
 	$vo_chart = array();
 	foreach($rows as $row){
-		$item = new vo_chart($row->CHART_ID, $row->QUERY_ID, $row->CHART_KEY, $row->CHART_NAME, $row->CHART_TYPE, $row->CHART_TITLE, $row->CHART_TITLE_SIZE, $row->CHART_TITLE_COLOR, $row->CHART_BG_COLOR, $row->CHART_WIDTH, $row->CHART_WIDTH_PERCENT, $row->CHART_HEIGHT, $row->CHART_HEIGHT_PERCENT, $row->CHART_X_COLOR, $row->CHART_X_PRECISION, $row->CHART_X_THICKNESS, $row->CHART_X_GRID_COLOR, $row->CHART_X_GRID_LINES, $row->CHART_X_LABELS_COLOR, $row->CHART_X_LABELS_SIZE, $row->CHART_X_LABELS_ROTATION, $row->CHART_X_LEGEND, $row->CHART_X_LEGEND_COLOR, $row->CHART_X_LEGEND_SIZE, $row->CHART_Y_COLOR, $row->CHART_Y_PRECISION, $row->CHART_Y_CURRENCY, $row->CHART_Y_THICKNESS, $row->CHART_Y_GRID_COLOR, $row->CHART_Y_GRID_LINES, $row->CHART_Y_LABELS_COLOR, $row->CHART_Y_LABELS_SIZE, $row->CHART_Y_LABELS_ROTATION, $row->CHART_Y_LEGEND, $row->CHART_Y_LEGEND_COLOR, $row->CHART_Y_LEGEND_SIZE);
+		$item = new vo_chart($row->CHART_ID, $row->QUERY_ID, $row->CHART_KEY, $row->CHART_NAME, $row->CHART_TYPE, $row->CHART_TITLE, $row->CHART_TITLE_SIZE, $row->CHART_TITLE_COLOR, $row->CHART_BG_COLOR, $row->CHART_WIDTH, $row->CHART_WIDTH_PERCENT, $row->CHART_HEIGHT, $row->CHART_HEIGHT_PERCENT, $row->CHART_X_COLOR, $row->CHART_X_PRECISION, $row->CHART_X_THICKNESS, $row->CHART_X_GRID_COLOR, $row->CHART_X_GRID_LINES, $row->CHART_X_LABELS_COLOR, $row->CHART_X_LABELS_SIZE, $row->CHART_X_LABELS_ROTATION, $row->CHART_X_LEGEND, $row->CHART_X_LEGEND_COLOR, $row->CHART_X_LEGEND_SIZE, $row->CHART_Y_COLOR, $row->CHART_Y_PRECISION, $row->CHART_Y_THICKNESS, $row->CHART_Y_GRID_COLOR, $row->CHART_Y_GRID_LINES, $row->CHART_Y_LABELS_COLOR, $row->CHART_Y_LABELS_SIZE, $row->CHART_Y_LABELS_ROTATION, $row->CHART_Y_LEGEND, $row->CHART_Y_LEGEND_COLOR, $row->CHART_Y_LEGEND_SIZE);
 		array_push($vo_chart, $item);
 	}
 
@@ -75,15 +70,11 @@ function select_by_key($vo_chart){
 		$where_clause = "where `CHART_KEY` = '$chart_key'";
 	}
 
-	$query = "SELECT `CHART_ID`, `QUERY_ID`, `CHART_KEY`, `CHART_NAME`, `CHART_TYPE`, `CHART_TITLE`, `CHART_TITLE_SIZE`,
-	`CHART_TITLE_COLOR`, `CHART_BG_COLOR`, `CHART_WIDTH`, `CHART_WIDTH_PERCENT`, `CHART_HEIGHT`, `CHART_HEIGHT_PERCENT`,
-	`CHART_X_COLOR`, `CHART_X_PRECISION`, `CHART_X_THICKNESS`, `CHART_X_GRID_COLOR`, `CHART_X_GRID_LINES`, `CHART_X_LABELS_COLOR`,
-	`CHART_X_LABELS_SIZE`, `CHART_X_LABELS_ROTATION`, `CHART_X_LEGEND`, `CHART_X_LEGEND_COLOR`, `CHART_X_LEGEND_SIZE`, `CHART_Y_COLOR`,
-	`CHART_Y_PRECISION`, `CHART_Y_CURRENCY`, `CHART_Y_THICKNESS`, `CHART_Y_GRID_COLOR`, `CHART_Y_GRID_LINES`, `CHART_Y_LABELS_COLOR`, `CHART_Y_LABELS_SIZE`, `CHART_Y_LABELS_ROTATION`, `CHART_Y_LEGEND`, `CHART_Y_LEGEND_COLOR`, `CHART_Y_LEGEND_SIZE` FROM ".$this->table_name." $where_clause order by `CHART_NAME` asc";
+	$query = "SELECT `CHART_ID`, `QUERY_ID`, `CHART_KEY`, `CHART_NAME`, `CHART_TYPE`, `CHART_TITLE`, `CHART_TITLE_SIZE`, `CHART_TITLE_COLOR`, `CHART_BG_COLOR`, `CHART_WIDTH`, `CHART_WIDTH_PERCENT`, `CHART_HEIGHT`, `CHART_HEIGHT_PERCENT`, `CHART_X_COLOR`, `CHART_X_PRECISION`, `CHART_X_THICKNESS`, `CHART_X_GRID_COLOR`, `CHART_X_GRID_LINES`, `CHART_X_LABELS_COLOR`, `CHART_X_LABELS_SIZE`, `CHART_X_LABELS_ROTATION`, `CHART_X_LEGEND`, `CHART_X_LEGEND_COLOR`, `CHART_X_LEGEND_SIZE`, `CHART_Y_COLOR`,  `CHART_Y_PRECISION`, `CHART_Y_THICKNESS`, `CHART_Y_GRID_COLOR`, `CHART_Y_GRID_LINES`, `CHART_Y_LABELS_COLOR`, `CHART_Y_LABELS_SIZE`, `CHART_Y_LABELS_ROTATION`, `CHART_Y_LEGEND`, `CHART_Y_LEGEND_COLOR`, `CHART_Y_LEGEND_SIZE` FROM ".$this->table_name." $where_clause order by `CHART_NAME` asc";
 	$rows = $this->wpdb->get_results($query);	
 	$vo_chart = array();
 	foreach($rows as $row){
-		$item = new vo_chart($row->CHART_ID, $row->QUERY_ID, $row->CHART_KEY, $row->CHART_NAME, $row->CHART_TYPE, $row->CHART_TITLE, $row->CHART_TITLE_SIZE, $row->CHART_TITLE_COLOR, $row->CHART_BG_COLOR, $row->CHART_WIDTH, $row->CHART_WIDTH_PERCENT, $row->CHART_HEIGHT, $row->CHART_HEIGHT_PERCENT, $row->CHART_X_COLOR, $row->CHART_X_PRECISION, $row->CHART_X_THICKNESS, $row->CHART_X_GRID_COLOR, $row->CHART_X_GRID_LINES, $row->CHART_X_LABELS_COLOR, $row->CHART_X_LABELS_SIZE, $row->CHART_X_LABELS_ROTATION, $row->CHART_X_LEGEND, $row->CHART_X_LEGEND_COLOR, $row->CHART_X_LEGEND_SIZE, $row->CHART_Y_COLOR, $row->CHART_Y_PRECISION, $row->CHART_Y_CURRENCY, $row->CHART_Y_THICKNESS, $row->CHART_Y_GRID_COLOR, $row->CHART_Y_GRID_LINES, $row->CHART_Y_LABELS_COLOR, $row->CHART_Y_LABELS_SIZE, $row->CHART_Y_LABELS_ROTATION, $row->CHART_Y_LEGEND, $row->CHART_Y_LEGEND_COLOR, $row->CHART_Y_LEGEND_SIZE);
+		$item = new vo_chart($row->CHART_ID, $row->QUERY_ID, $row->CHART_KEY, $row->CHART_NAME, $row->CHART_TYPE, $row->CHART_TITLE, $row->CHART_TITLE_SIZE, $row->CHART_TITLE_COLOR, $row->CHART_BG_COLOR, $row->CHART_WIDTH, $row->CHART_WIDTH_PERCENT, $row->CHART_HEIGHT, $row->CHART_HEIGHT_PERCENT, $row->CHART_X_COLOR, $row->CHART_X_PRECISION, $row->CHART_X_THICKNESS, $row->CHART_X_GRID_COLOR, $row->CHART_X_GRID_LINES, $row->CHART_X_LABELS_COLOR, $row->CHART_X_LABELS_SIZE, $row->CHART_X_LABELS_ROTATION, $row->CHART_X_LEGEND, $row->CHART_X_LEGEND_COLOR, $row->CHART_X_LEGEND_SIZE, $row->CHART_Y_COLOR, $row->CHART_Y_PRECISION, $row->CHART_Y_THICKNESS, $row->CHART_Y_GRID_COLOR, $row->CHART_Y_GRID_LINES, $row->CHART_Y_LABELS_COLOR, $row->CHART_Y_LABELS_SIZE, $row->CHART_Y_LABELS_ROTATION, $row->CHART_Y_LEGEND, $row->CHART_Y_LEGEND_COLOR, $row->CHART_Y_LEGEND_SIZE);
 		array_push($vo_chart, $item);
 	}
 
@@ -119,7 +110,6 @@ function add($vo_chart){
     $chart_x_legend_size = $vo_chart->chart_x_legend_size;
     $chart_y_color = $vo_chart->chart_y_color;
     $chart_y_precision = $vo_chart->chart_y_axis_precision;
-    $chart_y_currency = $vo_chart->chart_y_axis_currency;
     $chart_y_thickness = $vo_chart->chart_y_thickness;
     $chart_y_grid_color = $vo_chart->chart_y_grid_color;
     $chart_y_grid_lines = $vo_chart->chart_y_grid_lines;
@@ -157,7 +147,6 @@ function add($vo_chart){
 				`CHART_X_LEGEND_SIZE` ,
 				`CHART_Y_COLOR` ,
 				`CHART_Y_PRECISION` ,
-				`CHART_Y_CURRENCY` ,
 				`CHART_Y_THICKNESS` ,
 				`CHART_Y_GRID_COLOR` ,
 				`CHART_Y_GRID_LINES` ,
@@ -195,7 +184,6 @@ function add($vo_chart){
 				'$chart_x_legend_size' ,
 				'$chart_y_color' ,
 				'$chart_y_precision' ,
-				'$chart_y_currency' ,
 				'$chart_y_thickness' ,
 				'$chart_y_grid_color' ,
 				'$chart_y_grid_lines' ,
@@ -239,7 +227,6 @@ function edit($vo_chart_old, $vo_chart_new){
     $chart_x_legend_size = $vo_chart_new->chart_x_legend_size;
     $chart_y_color = $vo_chart_new->chart_y_color;
     $chart_y_precision = $vo_chart_new->chart_y_axis_precision;
-    $chart_y_currency = $vo_chart_new->chart_y_axis_currency;
     $chart_y_thickness = $vo_chart_new->chart_y_thickness;
     $chart_y_grid_color = $vo_chart_new->chart_y_grid_color;
     $chart_y_grid_lines = $vo_chart_new->chart_y_grid_lines;
@@ -276,7 +263,6 @@ function edit($vo_chart_old, $vo_chart_new){
 				`CHART_X_LEGEND_SIZE` =  '$chart_x_legend_size',
 				`CHART_Y_COLOR` =  '$chart_y_color',
 				`CHART_Y_PRECISION` =  '$chart_y_precision',
-				`CHART_Y_CURRENCY` =  '$chart_y_currency',
 				`CHART_Y_THICKNESS` =  '$chart_y_thickness',
 				`CHART_Y_GRID_COLOR` =  '$chart_y_grid_color',
 				`CHART_Y_GRID_LINES` =  '$chart_y_grid_lines',

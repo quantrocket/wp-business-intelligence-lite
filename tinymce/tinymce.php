@@ -121,7 +121,7 @@ function wpmybusinessintelligence_button() {
  
    if ( get_user_option('rich_editing') == 'true' ) {
 	 add_filter( 'mce_buttons', 'register_wpbi_button' );
-     add_filter( 'mce_external_plugins', 'add_wpbi_plugin' );
+     add_filter( 'mce_external_plugins', 'add_plugin' ); 
    }
  
 }
@@ -131,7 +131,7 @@ function register_wpbi_button( $buttons ) {
  return $buttons;
 }
 
-function add_wpbi_plugin( $plugin_array ) {
+function add_plugin( $plugin_array ) {
    //$plugin_array[$wpbi_settings['tinymce']['tag']] = $wpbi_settings['tinymce']['js'];
    return $plugin_array;
 }

@@ -158,53 +158,6 @@ class nvd3_dataseries
     }
 
 
-    function add_linechart_value($chart, $elements, $series = 0)
-    {
-        $i = 0;
-        $temp ="";
-
-        if($chart->x_axis_istime)
-        {
-            foreach ($elements->values as $value)
-            {
-               $temp.= ' { x : '. $chart->x_axis_labels->labels[$i] .', y : ' . $value .' },';
-                $i++;
-            }
-
-        }else{
-            foreach ($elements->values as $value)
-            {
-                $temp.= ' { x : "'. $chart->x_axis_labels->labels[$i] .'", y : ' . $value .' },';
-                $i++;
-            }
-
-        }
-
-        // remove the last comma
-        $this->values = substr($temp, 0, strlen($temp) - 1);
-
-        $this->values = '[ '.$this->values.' ]';
-    }
-
-    function add_piechart_value_new($labels, $elements, $series = 0)
-    {
-        $i = 0;
-        $temp ="";
-        if(!is_null($this->name))
-        {
-            $this->key = $this->name;
-        }
-        foreach ($elements->values as $value)
-        {
-            $temp.= ' { "label" : "' . $value->label . '", "value" : ' . $value->value . '},';
-            $i++;
-        }
-
-        // remove the last comma
-        $this->values = substr($temp, 0, strlen($temp) - 1);
-
-        $this->values = '[ '.$this->values.' ]';
-    }
 
     function add_piechart_value($labels, $elements, $series = 0)
     {

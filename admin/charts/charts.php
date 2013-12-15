@@ -78,7 +78,6 @@ if($_POST[$wpbi_settings['parameter']['action']] == 'add'){
 	$vo_chart->set_chart_x_legend_color($_POST[$wpbi_settings['parameter']['ch-x-legend-color']]);
 	$vo_chart->set_chart_x_legend_size($_POST[$wpbi_settings['parameter']['ch-x-legend-size']]);
     $vo_chart->set_chart_y_precision($_POST[$wpbi_settings['parameter']['ch-y-precision']]);
-    $vo_chart->set_chart_y_currency($_POST[$wpbi_settings['parameter']['ch-y-currency']]);
 	$vo_chart->set_chart_y_color($_POST[$wpbi_settings['parameter']['ch-y-axis-color']]);
 	$vo_chart->set_chart_y_thickness($_POST[$wpbi_settings['parameter']['ch-y-axis-thick']]);
 	$vo_chart->set_chart_y_grid_color($_POST[$wpbi_settings['parameter']['ch-y-grid-color']]);
@@ -239,9 +238,6 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['tes
         $_POST[$wpbi_settings['parameter']['ch-y-precision']] = is_numeric($_POST[$wpbi_settings['parameter']['ch-y-precision']]) ?
                                                                 abs(intval($_POST[$wpbi_settings['parameter']['ch-y-precision']])) :
                                                                 '1';
-        $_POST[$wpbi_settings['parameter']['ch-y-currency']] = isset($_POST[$wpbi_settings['parameter']['ch-y-currency']]) ?
-                                                                $_POST[$wpbi_settings['parameter']['ch-y-currency']] :
-                                                                '$';
 		$_POST[$wpbi_settings['parameter']['ch-y-legend-size']] = is_numeric($_POST[$wpbi_settings['parameter']['ch-y-legend-size']]) ?
 																abs(intval($_POST[$wpbi_settings['parameter']['ch-y-legend-size']])) :
 																'15';
@@ -284,7 +280,6 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['tes
 		$wpbi_chart	-> set_height($_POST[$wpbi_settings['parameter']['ch-height']].$_POST[$wpbi_settings['parameter']['ch-height-percent']]);
         $wpbi_chart	-> set_x_precision($_POST[$wpbi_settings['parameter']['ch-x-precision']]);
         $wpbi_chart	-> set_y_precision($_POST[$wpbi_settings['parameter']['ch-y-precision']]);
-        $wpbi_chart	-> set_y_currency($_POST[$wpbi_settings['parameter']['ch-y-currency']]);
 		$wpbi_chart	-> set_bg_colour($_POST[$wpbi_settings['parameter']['ch-bgcolor']]);
 		$wpbi_chart	-> set_title(($_POST[$wpbi_settings['parameter']['ch-title']]));
 		$wpbi_chart	-> set_title_color(($_POST[$wpbi_settings['parameter']['ch-title-color']]));
@@ -562,7 +557,6 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
 		$wpbi_chart	-> set_y_axis_step_percent($vo_chart->chart_y_grid_lines);
         $wpbi_chart	-> set_x_precision($_POST[$wpbi_settings['parameter']['ch-x-precision']]);
         $wpbi_chart	-> set_y_precision($_POST[$wpbi_settings['parameter']['ch-y-precision']]);
-        $wpbi_chart	-> set_y_currency($_POST[$wpbi_settings['parameter']['ch-y-currency']]);
 
 		//Get values, labels, colors
 		$label_color = array();
@@ -918,7 +912,6 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 		'CH_EDIT_HEIGHT'			=> $wpbi_dialog['form']['label']['chart-height'],
         'CH_EDIT_X_PRECISION'			=> $wpbi_dialog['form']['label']['chart-x-precision'],
         'CH_EDIT_Y_PRECISION'			=> $wpbi_dialog['form']['label']['chart-y-precision'],
-        'CH_EDIT_Y_CURRENCY'			=> $wpbi_dialog['form']['label']['chart-y-currency'],
 		'V_CH_HEIGHT_CHECKED'	=> isset($_POST[$wpbi_settings['parameter']['ch-height-percent']]) ||
 									($_POST[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['edit-test'] &&
 									$vo_chart->chart_height_percent) ? 'checked' : '',
@@ -926,7 +919,6 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 		'P_CH_HEIGHT' 			=> $wpbi_settings['parameter']['ch-height'],
         'P_CH_X_PRECISION' 			=> $wpbi_settings['parameter']['ch-x-precision'],
         'P_CH_Y_PRECISION' 			=> $wpbi_settings['parameter']['ch-y-precision'],
-        'P_CH_Y_CURRENCY' 			=> $wpbi_settings['parameter']['ch-y-currency'],
 		'V_CH_HEIGHT' 			=> 	is_numeric($_POST[$wpbi_settings['parameter']['ch-height']]) ?
 									abs(intval($_POST[$wpbi_settings['parameter']['ch-height']])) :
 									$vo_chart->chart_height,
@@ -984,9 +976,6 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
         'V_CH_Y_PRECISION' 		=> 	is_numeric($_POST[$wpbi_settings['parameter']['ch-y-precision']]) ?
                                     abs(intval($_POST[$wpbi_settings['parameter']['ch-y-precision']])) :
                                     $vo_chart->chart_y_axis_precision,
-        'V_CH_Y_CURRENCY' 		=> 	isset($_POST[$wpbi_settings['parameter']['ch-y-currency']]) ?
-                                    $_POST[$wpbi_settings['parameter']['ch-y-currency']] :
-                                    $vo_chart->chart_y_axis_currency,
 		'CH_EDIT_Y_LEGEND'			=> $wpbi_dialog['form']['label']['ch-y-legend'],
 		'V_CH_Y_LEGEND'	=> isset($_POST[$wpbi_settings['parameter']['ch-y-legend']])?$_POST[$wpbi_settings['parameter']['ch-y-legend']]:$vo_chart->chart_y_legend,
 		'P_CH_Y_LEGEND' 	=> 	$wpbi_settings['parameter']['ch-y-legend'],
@@ -1147,7 +1136,6 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 	$vo_new_chart->set_chart_x_legend_size($_POST[$wpbi_settings['parameter']['ch-x-legend-size']]);
 	$vo_new_chart->set_chart_y_color($_POST[$wpbi_settings['parameter']['ch-y-axis-color']]);
     $vo_new_chart->set_chart_y_precision($_POST[$wpbi_settings['parameter']['ch-y-precision']]);
-    $vo_new_chart->set_chart_y_currency($_POST[$wpbi_settings['parameter']['ch-y-currency']]);
 	$vo_new_chart->set_chart_y_thickness($_POST[$wpbi_settings['parameter']['ch-y-axis-thick']]);
 	$vo_new_chart->set_chart_y_grid_color($_POST[$wpbi_settings['parameter']['ch-y-grid-color']]);
 	$vo_new_chart->set_chart_y_grid_lines($_POST[$wpbi_settings['parameter']['ch-y-grid-step']]);
@@ -1334,13 +1322,11 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		'CH_NEW_HEIGHT'			=> $wpbi_dialog['form']['label']['chart-height'],
         'CH_NEW_X_PRECISION'			=> $wpbi_dialog['form']['label']['chart-x-precision'],
         'CH_NEW_Y_PRECISION'			=> $wpbi_dialog['form']['label']['chart-y-precision'],
-        'CH_NEW_Y_CURRENCY'			=> $wpbi_dialog['form']['label']['chart-y-currency'],
 		'V_CH_HEIGHT_CHECKED'	=> isset($_POST[$wpbi_settings['parameter']['ch-height-percent']]) ? 'checked' : '',
 		'P_CH_HEIGHT_PERCENT' 	=> $wpbi_settings['parameter']['ch-height-percent'],
 		'P_CH_HEIGHT' 			=> $wpbi_settings['parameter']['ch-height'],
         'P_CH_X_PRECISION' 			=> $wpbi_settings['parameter']['ch-x-precision'],
         'P_CH_Y_PRECISION' 			=> $wpbi_settings['parameter']['ch-y-precision'],
-        'P_CH_Y_CURRENCY' 			=> $wpbi_settings['parameter']['ch-y-currency'],
 		'V_CH_HEIGHT' 			=> 	is_numeric($_POST[$wpbi_settings['parameter']['ch-height']]) ?
 									abs(intval($_POST[$wpbi_settings['parameter']['ch-height']])) :
 									'400',
@@ -1398,9 +1384,6 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
         'V_CH_Y_PRECISION' 	    => 	is_numeric($_POST[$wpbi_settings['parameter']['ch-y-precision']]) ?
                                     abs(intval($_POST[$wpbi_settings['parameter']['ch-y-precision']])) :
                                     '1',
-        'V_CH_Y_CURRENCY' 	    => 	isset($_POST[$wpbi_settings['parameter']['ch-y-currency']]) ?
-                                    $_POST[$wpbi_settings['parameter']['ch-y-currency']] :
-                                    "$",
 		'CH_NEW_Y_LEGEND'			=> $wpbi_dialog['form']['label']['ch-y-legend'],
 		'V_CH_Y_LEGEND'	=> $_POST[$wpbi_settings['parameter']['ch-y-legend']],
 		'P_CH_Y_LEGEND' 	=> 	$wpbi_settings['parameter']['ch-y-legend'],
