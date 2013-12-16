@@ -414,6 +414,7 @@ function get_html_4_chart($id){
 		$wpbi_chart	-> set_x_axis_thickness($vo_chart->chart_x_thickness);
         $wpbi_chart	-> set_x_precision($vo_chart->chart_x_axis_precision);
         $wpbi_chart	-> set_y_precision($vo_chart-> chart_y_axis_precision);
+        $wpbi_chart	-> set_y_currency($vo_chart-> chart_y_axis_currency);
 		
 		//Main legend for stacked chart
 		if($wpbi_chart->type == chart::BAR_STACKED){

@@ -3,7 +3,7 @@
 Plugin Name: WP Business Intelligence Lite
 Plugin URI: http://www.wpbusinessintelligence.com
 Description: WP Business Intelligence Lite lets you create and insert dynamic charts into any post or page. You just have to connect to a database and run your SQL queries to retrieve the desired data.
-Version: 1.0.5
+Version: 1.0.6
 Author: WP Business Intelligence
 Author URI: http://www.wpbusinessintelligence.com/who-we-are
 License: GPL3
@@ -142,6 +142,16 @@ function wpbi_initWPDBconnection()
 }
 
 
+// Update DB tables when necessary
+
+function apply_db_updates($qy_table_databases, $qy_table_queries, $qy_table_views, $qy_tb_cols, $qy_ch_cols, $qy_chart_views, $qy_table_vars){
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
+    //necessary for upgrade from 1.0.5 to 1.0.6
+    dbDelta( $qy_chart_views );
+}
+
+
 // Create the menu box wpbi (Connections, Queries, Charts)
 function wpbi_menu() {
 	
@@ -159,12 +169,14 @@ function wpbi_menu() {
 
 	$wpdb->query($qy_table_databases);
 	$wpdb->query($qy_table_queries);
-	$wpdb->query($qy_table_views);
+  	$wpdb->query($qy_table_views);
 	$wpdb->query($qy_tb_cols);
 	$wpdb->query($qy_chart_views);
 	$wpdb->query($qy_ch_cols);
 	$wpdb->query($qy_table_vars);
 	//$wpdb->query($qy_fk);
+
+    apply_db_updates($qy_table_databases, $qy_table_queries, $qy_table_views, $qy_tb_cols, $qy_ch_cols, $qy_chart_views, $qy_table_vars);
 
     // Add a new top-level menu (ill-advised):
     add_menu_page('WP BI', 'WP Business Intelligence', 'manage_options', $wpbi_url['slug']['preferences'], 'wpbi_page', plugins_url('wp-business-intelligence-lite/images/chart-icon.png'), '110');
