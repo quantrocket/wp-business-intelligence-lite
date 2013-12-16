@@ -101,6 +101,9 @@ Tables are integrated with the DataTables jQuery plugin
 = 1.0.3 =
 Warnings in Debug mode are removed.
 
+= 1.0.6 =
+A new column to the charts_view table is added
+
 == Screenshots ==
 1. [Create and test a query (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-1.png)
 2. [Create and test a table view (click to enlarge)](http://www.wpbusinessintelligence.com/wp-content/uploads/assets/screenshot-2.png)
