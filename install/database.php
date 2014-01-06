@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `'.$wpbi_sql['tname']['cols'].'` (
 ';
 
 $qy_chart_views = "
-CREATE TABLE ".$wpbi_sql['tname']['charts']." (
+CREATE TABLE IF NOT EXISTS ".$wpbi_sql['tname']['charts']." (
 CHART_ID int(11) NOT NULL AUTO_INCREMENT,
   QUERY_ID int(11) NOT NULL,
   CHART_KEY varchar(32) NOT NULL,
@@ -109,7 +109,6 @@ CHART_ID int(11) NOT NULL AUTO_INCREMENT,
   CHART_X_LEGEND_SIZE int(11) NOT NULL,
   CHART_Y_COLOR varchar(7) NOT NULL,
   CHART_Y_PRECISION int(11) NOT NULL,
-  CHART_Y_CURRENCY varchar(11) NOT NULL,
   CHART_Y_THICKNESS int(11) NOT NULL,
   CHART_Y_GRID_COLOR varchar(7) NOT NULL,
   CHART_Y_GRID_LINES int(11) NOT NULL,
