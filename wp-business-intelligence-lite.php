@@ -144,11 +144,12 @@ function wpbi_initWPDBconnection()
 
 // Update DB tables when necessary
 
-function apply_db_updates($qy_table_databases, $qy_table_queries, $qy_table_views, $qy_tb_cols, $qy_ch_cols, $qy_chart_views, $qy_table_vars){
+function apply_db_updates(){
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
     //necessary for upgrade from 1.0.5 to 1.0.6
-    dbDelta( $qy_chart_views );
+    $sql = "ALTER TABLE wp_wpbi_charts ADD COLUMN CHART_Y_CURRENCY varchar(11) NOT NULL AFTER CHART_Y_PRECISION;";
+    dbDelta($sql);
 }
 
 
@@ -176,7 +177,7 @@ function wpbi_menu() {
 	$wpdb->query($qy_table_vars);
 	//$wpdb->query($qy_fk);
 
-    apply_db_updates($qy_table_databases, $qy_table_queries, $qy_table_views, $qy_tb_cols, $qy_ch_cols, $qy_chart_views, $qy_table_vars);
+    apply_db_updates();
 
     // Add a new top-level menu (ill-advised):
     add_menu_page('WP BI', 'WP Business Intelligence', 'manage_options', $wpbi_url['slug']['preferences'], 'wpbi_page', plugins_url('wp-business-intelligence-lite/images/chart-icon.png'), '110');
