@@ -147,9 +147,10 @@ function wpbi_initWPDBconnection()
 function apply_db_updates(){
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
+    global $qy_chart_views;
+
     //necessary for upgrade from 1.0.5 to 1.0.6
-    $sql = "ALTER TABLE wp_wpbi_charts ADD COLUMN CHART_Y_CURRENCY varchar(11) NOT NULL AFTER CHART_Y_PRECISION;";
-    dbDelta($sql);
+    dbDelta( $qy_chart_views );
 }
 
 
