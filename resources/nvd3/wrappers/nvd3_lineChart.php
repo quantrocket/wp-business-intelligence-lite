@@ -120,8 +120,15 @@ class nvd3_lineChart
         }
         else
         {
+            foreach($this->dataSeries as $series)
+            {
+                $ds = $series;
+            }
+
             return "nv.addGraph(function() {
                 chart = nv.models.lineChart();
+
+                var dataSeries = " . $ds->values ."
 
                 chart.x(function(d, i) { return i });
 
@@ -130,6 +137,11 @@ class nvd3_lineChart
                 chart.yAxis
                       .axisLabel('".$this->yAxisLabel."')
                       .tickFormat(d3.format('".$this->yAxisFormat."'));
+
+                chart.xAxis
+                      .tickFormat(function(d){
+                        return dataSeries[d].x;
+                        });
 
                 d3.select('#".$this->placeholder->name." svg')
                     .datum(nvd3Data_".$this->placeholder->name.")

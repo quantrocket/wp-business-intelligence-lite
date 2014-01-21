@@ -174,7 +174,14 @@ class nvd3_dataseries
         }else{
             foreach ($elements->values as $value)
             {
-                $temp.= ' { x : "'. $chart->x_axis_labels->labels[$i] .'", y : ' . $value .' },';
+                if(isset($chart->x_axis_labels))
+                {
+                    $temp.= ' { x : "'. $chart->x_axis_labels->labels[$i] .'", y : ' . $value .' },';
+                }
+                else
+                {
+                    $temp.= ' { x : "'. $i .'", y : ' . $value .' },';
+                }
                 $i++;
             }
 
