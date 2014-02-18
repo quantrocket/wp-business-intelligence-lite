@@ -67,6 +67,8 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * Renamed button registration function to avoid conflicts with other themes
 = 1.0.7 =
 * Added support for text labels to line charts
+= 1.1 =
+* Security vulnerability fixed and control over bar charts color added.
 == Frequently Asked Questions == 
 
 In order to get a full overview about WP Business Intelligence, please visit [the official documentation page](http://www.wpbusinessintelligence.com/support/wp-business-intelligence-faq/)
