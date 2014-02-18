@@ -28,6 +28,8 @@
 	
 ******************************************************************************/
 
+/* Used by the TinyMCE buttons */
+$wpbi_url['iframe']['src']		 			= 	plugins_url('/view.php', __FILE__);
 
 /***	Global settings	***/
 $wpbi_settings['parameter']['debug'] 			= false;

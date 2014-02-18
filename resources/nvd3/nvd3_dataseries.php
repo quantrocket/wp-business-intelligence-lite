@@ -145,10 +145,23 @@ class nvd3_dataseries
         {
             $this->key = $elements->text;
         }
-        foreach ($elements->values as $value)
+
+        if(strcmp($elements->colour, "#ffffff"))
         {
-            $temp.= ' { "label" : "' . $labels->labels[$i] . '", "value" : ' . $value . '},';
-            $i++;
+
+            foreach ($elements->values as $value)
+            {
+                $temp.= ' { "label" : "' . $labels->labels[$i] . '", "value" : ' . $value . ', "color" : "'. $elements->colour .'"},';
+                $i++;
+            }
+        }
+        else
+        {
+            foreach ($elements->values as $value)
+            {
+                $temp.= ' { "label" : "' . $labels->labels[$i] . '", "value" : ' . $value . '},';
+                $i++;
+            }
         }
 
         // remove the last comma

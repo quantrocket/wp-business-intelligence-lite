@@ -312,7 +312,7 @@ function create_element($name, $values){
 											break;
 		case self::BAR_ROUND_3D:			$this->elements[$name] = new bar_round3d();
 											break;
-		case self::BAR_HORIZONTAL:			$this->elements[$name] = new hbar();
+		case self::BAR_HORIZONTAL:			$this->elements[$name] = new hbar('#81AC00');
 											break;
 		case self::BAR_STACKED:				if(!isset($this->elements[$name])){
 												$this->elements[$name] = new bar_stack();
