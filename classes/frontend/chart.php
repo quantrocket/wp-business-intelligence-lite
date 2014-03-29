@@ -360,7 +360,7 @@ function create_element($name, $values){
 									break;
 									
 		case self::BAR_HORIZONTAL:	$this->x_axis_max_val = ($this->x_axis_max_val > max($values)) ? $this->x_axis_max_val : max($values);
-break;
+
 
 		default:					//Set legend
 									$this->elements[$name]->set_key( $name, $this->element_name_font_size );

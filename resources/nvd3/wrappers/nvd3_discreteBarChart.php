@@ -95,16 +95,7 @@ class nvd3_discreteBarChart
                 d3.selectAll('.nv-bar').attr('class', '".$this->placeholder->name."Class');
 
                 return chart;
-            },
-            function(){
-                d3.selectAll('.".$this->placeholder->name."Class').on('click',
-                    function(d){
-                        //Add this lines to enable actions on click
-                        //console.log(d.value);
-                        //console.log(d.label);
-                        //console.log('" . $this->placeholder->name . "');
-
-                                    });";
+            });";
     }
 
     // create the CSS style for the placeholder
