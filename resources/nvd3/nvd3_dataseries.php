@@ -59,6 +59,13 @@ class nvd3_dataseries
     const STACKED_AREA          = 21;
     const MULTI_LINE_FOCUS      = 22;
     const LINE_AND_BAR          = 23;
+    const HEATMAP               = 24;
+    const TREEMAP               = 25;
+    const SUNBURST              = 26;
+    const RTTREE      		    = 27;
+    const ZOOMABLEBUBBLES	    = 28;
+    const SANKEY        	    = 29;
+    const HIERARCHICALBARS 	    = 30;
 
     function __construct($chart, $value = NULL, $series = 0)
     {
@@ -145,7 +152,7 @@ class nvd3_dataseries
         {
             $this->key = $elements->text;
         }
-
+        
         if(strcmp($elements->colour, "#ffffff"))
         {
 

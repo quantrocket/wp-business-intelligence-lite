@@ -276,7 +276,7 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['tes
 																abs(intval($_POST[$wpbi_settings['parameter']['ch-title-size']])) :
 																'15';
 		//Create chart
-		$wpbi_chart = new chart();
+		$wpbi_chart = new chart($my_test_rows);
 
 		$wpbi_chart	-> set_name('My Chart');
 		$wpbi_chart	-> set_tooltip($wpbi_dialog['charts']['default']['tooltip']);
@@ -466,7 +466,7 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['tes
 			'CH_NEW_CHART_RESIZE'       => 'chart_resize',
 			'CH_NEW_CHART_JSON' 		=> $wpbi_chart->get_json_code(),
             'CH_NEW_CHART_NVD3_CODE'        => $wpbi_chart->get_nvd3_chart_code(),
-            'CH_NEW_CHART_NVD3_JSLIBS'      => $wpbi_chart->get_nvd3_chart_jslibs(),
+            'CH_NEW_CHART_NVD3_HTML'      => $wpbi_chart->get_nvd3_chart_html(),
             'CH_NEW_CHART_NVD3_DATA'        => $wpbi_chart->get_nvd3_chart_data(),
             'CH_NEW_CHART_NVD3_PLACEHOLDER' => $wpbi_chart->get_nvd3_chart_placeholder()
 
@@ -547,7 +547,7 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
 	}
 
 		//Create chart
-		$wpbi_chart = new chart();
+		$wpbi_chart = new chart($my_test_rows);
 
 		$wpbi_chart	-> set_name($vo_chart->chart_name);
 		$wpbi_chart	-> set_tooltip($vo_chart->chart_tooltip);
@@ -731,7 +731,7 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
 			'CH_NEW_CHART_RESIZE'   => 'chart_resize',
 			'CH_NEW_CHART_JSON' 		=> $wpbi_chart->get_json_code(),
             'CH_NEW_CHART_NVD3_CODE'        => $wpbi_chart->get_nvd3_chart_code(),
-            'CH_NEW_CHART_NVD3_JSLIBS'      => $wpbi_chart->get_nvd3_chart_jslibs(),
+            'CH_NEW_CHART_NVD3_HTML'      => $wpbi_chart->get_nvd3_chart_html(),
             'CH_NEW_CHART_NVD3_DATA'        => $wpbi_chart->get_nvd3_chart_data(),
             'CH_NEW_CHART_NVD3_PLACEHOLDER' => $wpbi_chart->get_nvd3_chart_placeholder()
 		)
@@ -1541,8 +1541,6 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 	//To be displayed only when the user is not testing a new chart
 	if($_POST[$wpbi_settings['parameter']['action']] != 'test') {
 	
-		//Get saved queries
-		$wpbi_chart = new chart();       
 
 		$qy_charts = "
 			SELECT `CHART_ID`, 
@@ -1607,6 +1605,9 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		
 		//Execute query limitng the resultset
 		$qy_charts_rows = $wpdb->get_results($query->limit_qy_to($pagination->item_start-1, $pagination->pg_interval),'ARRAY_N');
+
+        //Get saved queries
+        $wpbi_chart = new chart($qy_charts_rows);
 		
 		//Output table
 		$column_headers = array($wpbi_dialog['header']['charts']['name'],$wpbi_dialog['header']['charts']['type'] ,$wpbi_dialog['header']['charts']['query'],$wpbi_dialog['header']['queries']['statement']);

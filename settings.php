@@ -199,7 +199,7 @@ $wpbi_url['jquery']['alphanumeric']		= 	plugins_url('/resources/jquery-alphanume
 /*** nvd3 files ***/
 $wpbi_url['nvd3']['css']			        =	plugins_url('/resources/nvd3/js/src/nv.d3.css', __FILE__);
 $wpbi_url['nvd3']['nvd3']			        =	plugins_url('/resources/nvd3/js/nv.d3.min.js', __FILE__);
-$wpbi_url['nvd3']['d3js']			        =	plugins_url('/resources/nvd3/js/lib/d3.v2.js', __FILE__);
+$wpbi_url['nvd3']['d3js']			        =	plugins_url('/resources/nvd3/js/lib/d3.v3.js', __FILE__);
 
 /**************************/
 

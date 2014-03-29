@@ -250,7 +250,7 @@ function get_html_4_chart($id){
 	}		
 		
 		//Create chart
-		$wpbi_chart = new chart();
+		$wpbi_chart = new chart($my_test_rows);
 		$wpbi_chart	-> set_name($vo_chart->chart_name);
 		$wpbi_chart	-> set_tooltip($vo_chart->chart_tooltip);
 		$wpbi_chart	-> set_width($vo_chart->chart_width.($vo_chart->chart_width_percent ? '%' : ''));
@@ -277,7 +277,8 @@ function get_html_4_chart($id){
 					}
 				
 					if(in_array($col_idx, $values_cols)){ //create different array of values for each selected column
-						$current_value = floatval($my_test_row[$col_idx]);
+
+						$current_value = is_string($my_test_row[$col_idx]) ? $my_test_row[$col_idx] : floatval($my_test_row[$col_idx]);
 						if(isset($data[$tx_label_cols[$col_idx]])){
 							array_push($data[$tx_label_cols[$col_idx]], $current_value);
 						} else{
@@ -444,7 +445,7 @@ function get_html_4_chart($id){
 			'CH_NEW_CHART_RESIZE'       => 'chart_resize',
 			'CH_NEW_CHART_JSON' 		=> $wpbi_chart->get_json_code(),
             'CH_NEW_CHART_NVD3_CODE'    => $wpbi_chart->get_nvd3_chart_code(),
-            'CH_NEW_CHART_NVD3_JSLIBS'  => $wpbi_chart->get_nvd3_chart_jslibs(),
+            'CH_NEW_CHART_NVD3_HTML'  => $wpbi_chart->get_nvd3_chart_html(),
             'CH_NEW_CHART_NVD3_DATA'    => $wpbi_chart->get_nvd3_chart_data(),
             'CH_NEW_CHART_NVD3_PLACEHOLDER' => $wpbi_chart->get_nvd3_chart_placeholder()
 		)

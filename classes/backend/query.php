@@ -82,6 +82,12 @@ function parse_variables($stmt){
                 case 'page_id':
                     $new_stmt = str_replace('{{{'.$token.'}}}', $GLOBALS['page_id'], $new_stmt);
                     break;
+                case 'post_id':
+                    $new_stmt = str_replace('{{{'.$token.'}}}', $GLOBALS['id'], $new_stmt);
+                    break;
+                case 'subsite_id':
+                    $new_stmt = str_replace('{{{'.$token.'}}}', $GLOBALS['blog_id'], $new_stmt);
+                    break;
             }
         }
     }

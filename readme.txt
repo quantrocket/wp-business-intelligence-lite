@@ -1,10 +1,10 @@
 === WP Business Intelligence Lite ===
-Contributors: calberti
+Contributors: Claudio Alberti
 Donate link: http://www.wpbusinessintelligence.com/contact-us/
 Tags: charts, tables, d3, line chart, pie chart, bar chart, donut chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
-Tested up to: 3.8
-Stable tag: 1.1
+Tested up to: 3.8.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,7 +69,11 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * Added support for text labels to line charts
 = 1.1 =
 * Security vulnerability fixed and control over bar charts color added.
+= 1.2 =
+* Some major bug fixes and support of click event on bar chart (example for developers to be extended to other charts)
+
 == Frequently Asked Questions == 
+
 
 In order to get a full overview about WP Business Intelligence, please visit [the official documentation page](http://www.wpbusinessintelligence.com/support/wp-business-intelligence-faq/)
 

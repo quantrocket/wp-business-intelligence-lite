@@ -121,7 +121,7 @@ class nvd3_pieChart
         return $this->placeholder->render();
     }
 
-    public function getJSlibs()
+    public function getHtml()
     {
         return '';
     }

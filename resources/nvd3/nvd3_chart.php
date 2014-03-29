@@ -29,6 +29,7 @@ class nvd3_chart
 {
     var $nvd3chart = NULL;
     var $nvd3_utils = NULL;
+    var $d3_dataMap = NULL;
     var $nvd3_js_libs = NULL;
     var $dataSeries = NULL;
     var $code = NULL;
@@ -58,10 +59,19 @@ class nvd3_chart
     const STACKED_AREA          = 21;
     const MULTI_LINE_FOCUS      = 22;
     const LINE_AND_BAR          = 23;
+    const HEATMAP               = 24;
+    const TREEMAP               = 25;
+    const SUNBURST              = 26;
+    const RTTREE      		    = 27;
+    const ZOOMABLEBUBBLES       = 28;
+    const SANKEY                = 29;
+    const HIERARCHICALBARS      = 30;
 
-    public function __construct()
+
+    public function __construct($rows)
     {
         $this->nvd3_utils = new nvd3_utils();
+        $this->d3_dataMap = new d3_dataMap($rows);
     }
 
     public function create_dataseries($chart)
@@ -173,16 +183,16 @@ class nvd3_chart
                 break;
         }
 
-        $data = "nvd3Data_$this->placeholderName = ".$data.';';
+        $data = "var nvd3Data_$this->placeholderName = ".$data.';';
 
         $sanitized = $this->nvd3_utils->strip_null_fields($data);
 
         return $sanitized;
     }
 
-    public function getJSlibs()
+    public function getHtml()
     {
-        return $this->nvd3chart->getJSlibs();
+        return $this->nvd3chart->getHtml();
     }
 
     public function getPlaceholder()

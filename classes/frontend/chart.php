@@ -103,12 +103,19 @@ const CUMULATIVE_LINE		= 20;
 const STACKED_AREA  		= 21;
 const MULTI_LINE_FOCUS 		= 22;
 const LINE_AND_BAR   		= 23;
+const HEATMAP   		    = 24;
+const TREEMAP   		    = 25;
+const SUNBURST   		    = 26;
+const RTTREE      		    = 27;
+const ZOOMABLEBUBBLES       = 28;
+const SANKEY                = 29;
+const HIERARCHICALBARS      = 30;
 
 
 //Constructor
-function chart(){
+function __construct($rows){
 	$this->chart = new open_flash_chart();
-    $this->nvd3_chart = new nvd3_chart();
+    $this->nvd3_chart = new nvd3_chart($rows);
 	$this->x_axis = new x_axis();
 	$this->y_axis = new y_axis();
 }
@@ -353,7 +360,8 @@ function create_element($name, $values){
 									break;
 									
 		case self::BAR_HORIZONTAL:	$this->x_axis_max_val = ($this->x_axis_max_val > max($values)) ? $this->x_axis_max_val : max($values);
-		
+break;
+
 		default:					//Set legend
 									$this->elements[$name]->set_key( $name, $this->element_name_font_size );
 									//assign array data
@@ -461,9 +469,9 @@ function get_nvd3_chart_code()
     return $jsCode;
 }
 
-function get_nvd3_chart_jslibs()
+function get_nvd3_chart_html()
 {
-    $jsCode = $this->nvd3_chart->getJSlibs();
+    $jsCode = $this->nvd3_chart->getHtml();
     return $jsCode;
 }
 

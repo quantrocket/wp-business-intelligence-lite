@@ -80,19 +80,31 @@ class nvd3_discreteBarChart
                               .staggerLabels( $this->staggerLabels )
                               .tooltips( $this->tooltips )
                               .showValues( $this->showLabels )
+                              .valueFormat(d3.format('$this->yAxisFormat'));
 
                 chart.yAxis
                     .tickFormat(d3.format('$this->yAxisFormat'));
 
-                  d3.select('#".$this->placeholder->name." svg')
-                      .datum(nvd3Data_".$this->placeholder->name.")
-                      .transition().duration(".$this->transitionDuration.")
-                      .call(chart);
+                d3.select('#".$this->placeholder->name." svg')
+                    .datum(nvd3Data_".$this->placeholder->name.")
+                    .transition().duration(".$this->transitionDuration.")
+                    .call(chart);
 
                   nv.utils.windowResize(chart.update);
 
-                  return chart;
-            });";
+                d3.selectAll('.nv-bar').attr('class', '".$this->placeholder->name."Class');
+
+                return chart;
+            },
+            function(){
+                d3.selectAll('.".$this->placeholder->name."Class').on('click',
+                    function(d){
+                        //Add this lines to enable actions on click
+                        //console.log(d.value);
+                        //console.log(d.label);
+                        //console.log('" . $this->placeholder->name . "');
+
+                                    });";
     }
 
     // create the CSS style for the placeholder
@@ -111,8 +123,10 @@ class nvd3_discreteBarChart
         return $this->placeholder->render();
     }
 
-    public function getJSlibs()
+    public function getHtml()
     {
-        return '';
+        global $wpbi_url;
+        return '<link rel="stylesheet" href="'. $wpbi_url['styles']['url'] . 'style_barchart.css" />
+                <div id="barfancybox"><div id="innerbarfancybox"></div></div>';
     }
 }

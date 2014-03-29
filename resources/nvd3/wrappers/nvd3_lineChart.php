@@ -175,7 +175,7 @@ class nvd3_lineChart
         return $this->placeholder->render();
     }
 
-    public function getJSlibs()
+    public function getHtml()
     {
         return '';
     }
