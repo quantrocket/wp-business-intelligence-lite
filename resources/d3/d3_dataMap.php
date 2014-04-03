@@ -79,7 +79,6 @@ class d3_dataMap {
                     $this->buildHierarchyBubble($hierarchicArray, $this->loaded_rows[$i], 0, $total, $previous);
                 }
             }
-
         }
 
         $rootNode = array();
@@ -169,7 +168,7 @@ class d3_dataMap {
     {
         $row_keys = array_keys($row);
 
-        if($depth == (count($row) - 5))
+        if($depth == (count($row) - 3))
         {
             $node = $this->searchKeyValue($hierarchy, $row[$row_keys[$depth]], "name" );
             //$node = -1;

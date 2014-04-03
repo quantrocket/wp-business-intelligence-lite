@@ -4,7 +4,7 @@ Donate link: http://www.wpbusinessintelligence.com/contact-us/
 Tags: charts, tables, d3, line chart, pie chart, bar chart, donut chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
 Tested up to: 3.8.1
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,8 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * Security vulnerability fixed and control over bar charts color added.
 = 1.2 =
 * Some major bug fixes and support of click event on bar chart (example for developers to be extended to other charts)
+= 1.2.1 =
+* Missing include added to includes.php
 
 == Frequently Asked Questions == 
 
