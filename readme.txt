@@ -3,8 +3,8 @@ Contributors: Claudio Alberti
 Donate link: http://www.wpbusinessintelligence.com/contact-us/
 Tags: charts, tables, d3, line chart, pie chart, bar chart, donut chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
-Tested up to: 3.8.1
-Stable tag: 1.2.1
+Tested up to: 3.8.3
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,8 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * Some major bug fixes and support of click event on bar chart (example for developers to be extended to other charts)
 = 1.2.1 =
 * Missing include added to includes.php
+= 1.3 =
+* Removed file with potential vulnerability
 
 == Frequently Asked Questions == 
 
