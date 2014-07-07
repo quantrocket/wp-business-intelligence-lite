@@ -1610,7 +1610,7 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
         $wpbi_chart = new chart($qy_charts_rows);
 		
 		//Output table
-		$column_headers = array($wpbi_dialog['header']['charts']['name'],$wpbi_dialog['header']['charts']['type'] ,$wpbi_dialog['header']['charts']['query'],$wpbi_dialog['header']['queries']['statement']);
+		$column_headers = array($wpbi_dialog['header']['charts']['id'],$wpbi_dialog['header']['charts']['name'],$wpbi_dialog['header']['charts']['type'] ,$wpbi_dialog['header']['charts']['query'],$wpbi_dialog['header']['queries']['statement']);
 		$single_actions = array ( 	"edit"  => array ( 	"label" 	=> $wpbi_dialog['action']['label']['edit'],
 		                                   				"page" 		=> $wpbi_url['slug']['charts'],
 		                                   				"action" 	=> $wpbi_settings['value']['edit'],

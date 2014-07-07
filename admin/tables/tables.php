@@ -640,7 +640,7 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		$my_test_db = new wpdb($vo_database->user,$vo_database->pass,$vo_database->name,$vo_database->host);
 		$query = new query($vo_query->statement, $wpdb, $wpbi_sql['tname']['vars']);
 	
-		//Execute query limitng the resultset
+		//Execute query limiting the resultset
 		$my_test_rows = $my_test_db->get_results($query->limit_qy_to(0, 1),'ARRAY_N');
 		$my_test_cols = $my_test_db->get_col_info('name');
 	
@@ -776,7 +776,7 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		$qy_tables_rows = $wpdb->get_results($query->limit_qy_to($pagination->item_start-1, $pagination->pg_interval),'ARRAY_N');
 		
 		//Output table
-		$column_headers = array($wpbi_dialog['header']['tables']['name'],$wpbi_dialog['header']['tables']['query'],$wpbi_dialog['header']['queries']['statement']);
+		$column_headers = array($wpbi_dialog['header']['tables']['id'],$wpbi_dialog['header']['tables']['name'],$wpbi_dialog['header']['tables']['query'],$wpbi_dialog['header']['queries']['statement']);
 		$single_actions = array ( 	"edit"  => array ( 	"label" 	=> $wpbi_dialog['action']['label']['edit'],
 		                                   				"page" 		=> $wpbi_url['slug']['tables'],
 		                                   				"action" 	=> $wpbi_settings['value']['edit'],

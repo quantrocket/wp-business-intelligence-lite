@@ -114,11 +114,17 @@ function get_html(){
 		$html = $html.'			
 			<thead>
 				<tr>
-					<th width="50">
+					<th width="40">
 						<input type="checkbox" id="header_'.$this->gobal_checkbox_id.'" name="header_'.$this->gobal_checkbox_id.'" onclick="jQuery(\'input[type=checkbox]\').attr(\'checked\', jQuery(\'#header_'.$this->gobal_checkbox_id.'\').is(\':checked\')) "/></th>
 			';
 		foreach($this->cols as $col){
-			$html = $html. '<th>'.($col).'</th>';
+            if($col == 'ID'){
+                $html = $html. '<th width="40">'.($col).'</th>';
+            }
+            else
+            {
+                $html = $html. '<th>'.($col).'</th>';
+            }
 		}
 		$html = $html. '
 			</tr>
@@ -131,11 +137,17 @@ function get_html(){
 		$html = $html.'			
 			<tfoot>
 				<tr>
-					<th width="50">
+					<th width="40">
 			    		<input type="checkbox" id="footer_'.$this->gobal_checkbox_id.'" name="footer_'.$this->gobal_checkbox_id.'" onclick="jQuery(\'input[type=checkbox]\').attr(\'checked\', jQuery(\'#footer_'.$this->gobal_checkbox_id.'\').is(\':checked\')) "/></th>
 			';
 		foreach($this->cols as $col){
-			$html = $html. '<th>'.($col).'</th>';
+            if($col == 'ID'){
+                $html = $html. '<th width="40">'.($col).'</th>';
+            }
+            else
+            {
+                $html = $html. '<th>'.($col).'</th>';
+            }
 		}
 		$html = $html. '
 			</tr>
@@ -154,6 +166,7 @@ function get_html(){
 						}
 						if($col_idx==0){
 							$html = $html. '<th><input type="checkbox" name="'.$this->checkbox_id.'[]" value="'.$value.'"></th>';
+                            $html = $html. '<td>'.$value.'</td>';
 						}
 						else if($col_idx==1){
 							$html = $html. '

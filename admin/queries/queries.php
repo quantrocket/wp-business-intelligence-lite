@@ -424,7 +424,7 @@ if($_POST[$wpbi_settings['parameter']['action']] != 'test') {
 	$qy_queries_rows = $wpdb->get_results($query->limit_qy_to($pagination->item_start-1, $pagination->pg_interval),'ARRAY_N');
 	
 	//Output table
-	$column_headers = array($wpbi_dialog['header']['queries']['name'],$wpbi_dialog['header']['queries']['database'],$wpbi_dialog['header']['queries']['statement']);
+	$column_headers = array($wpbi_dialog['header']['queries']['id'], $wpbi_dialog['header']['queries']['name'],$wpbi_dialog['header']['queries']['database'],$wpbi_dialog['header']['queries']['statement']);
 	$single_actions = array ( 	"edit"  => array ( 	"label" 	=> $wpbi_dialog['action']['label']['edit'],
 	                                   				"page" 		=> $wpbi_url['slug']['queries'],
 	                                   				"action" 	=> $wpbi_settings['value']['edit'],

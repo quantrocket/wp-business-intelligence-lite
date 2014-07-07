@@ -259,7 +259,7 @@ if($_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['edit
 	$qy_databases_rows = $wpdb->get_results($query->limit_qy_to($pagination->item_start-1, $pagination->pg_interval),'ARRAY_N');
 	
 	//Output table
-	$column_headers = array($wpbi_dialog['header']['connections']['alias'],$wpbi_dialog['header']['connections']['name'],$wpbi_dialog['header']['connections']['host'], $wpbi_dialog['header']['connections']['user']);
+	$column_headers = array($wpbi_dialog['header']['connections']['id'],$wpbi_dialog['header']['connections']['alias'],$wpbi_dialog['header']['connections']['name'],$wpbi_dialog['header']['connections']['host'], $wpbi_dialog['header']['connections']['user']);
 	$single_actions = array ( 	"edit"  => array ( 	"label" 	=> "Edit",
 	                                   				"page" 		=> $wpbi_url['slug']['connections'],
 	                                   				"action" 	=> $wpbi_settings['value']['edit'],

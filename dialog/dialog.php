@@ -32,14 +32,14 @@
 //##########################     ENGLISH      ###########################
 //#######################################################################
 
-$wpbi_dialog['disclaimer']['software']['version']				= 	__('1.0.4', 'wpbusinessintelligence');
+$wpbi_dialog['disclaimer']['software']['version']				= 	__('1.4', 'wpbusinessintelligence');
 $wpbi_dialog['disclaimer']['license']['gpl']					= 	__('
 	<b>Terms of use</b><br>
 	<br>
 	WP Business Intelligence v', 'wpbusinessintelligence').$wpbi_dialog['disclaimer']['software']['version'].__('	<br>
 	Author: WP Business Intelligence	<br>
 	Website: <a href="http://www.wpbusinessintelligence.com">www.wpbusinessintelligence.com</a>	<br>
-	Contact: <a href="http://www.wpbusinessintelligence.com/contacts/">http://www.wpbusinessintelligence.com/contactus/</a> 	<br>
+	Contact: <a href="http://www.wpbusinessintelligence.com/contacts/">www.wpbusinessintelligence.com/contactus/</a> 	<br>
 	<br>
 	WP Business Intelligence is free software; you can redistribute it and/or modify	<br>
     it under the terms of the GNU General Public License as published by	<br>
@@ -92,12 +92,13 @@ $wpbi_dialog['action']['label']['drop'] 					= 	__('Drop', 'wpbusinessintelligen
 
 //Preferences
 $wpbi_dialog['page']['wpbi']['title'] 				= 	__('Welcome to WP Business Intelligence Lite', 'wpbusinessintelligence');
-$wpbi_dialog['page']['wpbi']['description'] 			= 	__('WP Business Intelligence Lite is a Wordpress plugin that transform your site in a powerful Business Intelligence tool.
+$wpbi_dialog['page']['wpbi']['description'] 			= 	__('WP Business Intelligence Lite is a Wordpress plugin that transforms your site in a powerful Business Intelligence tool.
 <br><br>
-All the documentation and tutorials can be found at <a href="www.wpbusinessintelligence.com">www.wpbusinessintelligence.com</a><br><br>
+All the documentation and tutorials can be found at <a href="http://www.wpbusinessintelligence.com">www.wpbusinessintelligence.com</a><br><br>
 
 If you like WP Business Intelligence Lite, you may be interested in the following extensions: <br>
-<b>WP Business Intelligence Pro</b>: With 10+ chart types, connection to unlimited DBs and 24/7 support.<br>
+<b>WP Business Intelligence Pro</b>: 11 chart types, connection to unlimited DBs and 24/7 support.<br>
+<b>WP Business Intelligence Enterprise</b>: 18 chart types, dashboards and connection to Oracle, MSSQL and PostgreSQL DBs.<br>
 <b>WP Business Intelligence Chart - TinyMCE Button</b>: Extend TinyMCE\'s functionalities by adding a chart button. <br>
 <b>WP Business Intelligence Table - TinyMCE Button</b>: Extend TinyMCE\'s functionalities by adding a table button.<br>
 ', 'wpbusinessintelligence');
@@ -114,6 +115,7 @@ $wpbi_dialog['field']['connections']['user']				= 	__('Username', 'wpbusinessint
 $wpbi_dialog['field']['connections']['pass']				= 	__('Password', 'wpbusinessintelligence');
 $wpbi_dialog['header']['connections']['alias']			= 	__('DB Connection', 'wpbusinessintelligence');
 $wpbi_dialog['header']['connections']['name'] 			= 	__('DB Name', 'wpbusinessintelligence');
+$wpbi_dialog['header']['connections']['id'] 				= 	__('ID', 'wpbusinessintelligence');
 $wpbi_dialog['header']['connections']['host'] 			= 	__('DB Host', 'wpbusinessintelligence');
 $wpbi_dialog['header']['connections']['user']				= 	__('DB Username', 'wpbusinessintelligence');
 
@@ -124,6 +126,7 @@ $wpbi_dialog['field']['queries']['connection'] 			= 	__('Connection', 'wpbusines
 $wpbi_dialog['field']['queries']['name'] 					= 	__('Query name', 'wpbusinessintelligence');
 $wpbi_dialog['field']['queries']['statement']				= 	__('SQL Statement', 'wpbusinessintelligence');
 $wpbi_dialog['header']['queries']['name'] 				= 	__('Name', 'wpbusinessintelligence');
+$wpbi_dialog['header']['queries']['id'] 				= 	__('ID', 'wpbusinessintelligence');
 $wpbi_dialog['header']['queries']['database'] 			= 	__('Database', 'wpbusinessintelligence');
 $wpbi_dialog['header']['queries']['statement']			= 	__('Statement', 'wpbusinessintelligence');
 $wpbi_dialog['query']['new']['test']						= 	__('<i>The query returned <b>%d</b> records; anyway the testing tool displays only the first %d</i>', 'wpbusinessintelligence');
@@ -157,6 +160,7 @@ $wpbi_dialog['form']['label']['table-col-istime']			= 	__('Is Time', 'wpbusiness
 $wpbi_dialog['form']['option']['table-style-default']		= 	__('WordPress', 'wpbusinessintelligence');
 $wpbi_dialog['header']['tables']['name'] 					= 	__('Name', 'wpbusinessintelligence');
 $wpbi_dialog['header']['tables']['query'] 				= 	__('Associated Query', 'wpbusinessintelligence');
+$wpbi_dialog['header']['tables']['id'] 				= 	__('ID', 'wpbusinessintelligence');
 $wpbi_dialog['table']['saved']['test']					= 	__('Testing table <b>%s</b><p><i>%s</i></p>', 'wpbusinessintelligence');
 $wpbi_dialog['table']['saved']['edit']					= 	__('Editing table <b>%s</b><p><i>%s</i></p>', 'wpbusinessintelligence');
 
@@ -164,6 +168,7 @@ $wpbi_dialog['table']['saved']['edit']					= 	__('Editing table <b>%s</b><p><i>%
 $wpbi_dialog['header']['charts']['name'] 					= 	__('Name', 'wpbusinessintelligence');
 $wpbi_dialog['header']['charts']['type'] 					= 	__('Type', 'wpbusinessintelligence');
 $wpbi_dialog['header']['charts']['query'] 				= 	__('Associated Query', 'wpbusinessintelligence');
+$wpbi_dialog['header']['charts']['id'] 				= 	__('ID', 'wpbusinessintelligence');
 $wpbi_dialog['page']['charts']['title'] 					= 	__('Charts', 'wpbusinessintelligence');
 $wpbi_dialog['page']['charts']['description'] 			= 	__('Select a query and click on "Set" to create a new chart.', 'wpbusinessintelligence');
 $wpbi_dialog['field']['charts']['title'] 					= 	__('Title', 'wpbusinessintelligence');
