@@ -71,5 +71,4 @@ include_once($filepath.'/resources/nvd3/wrappers/nvd3_discreteBarChart.php');
 include_once($filepath.'/resources/nvd3/wrappers/nvd3_lineChart.php');
 include_once($filepath.'/resources/nvd3/wrappers/nvd3_pieChart.php');
 include_once($filepath.'/resources/d3/d3_dataMap.php');
-
 ?>

@@ -36,9 +36,11 @@ $template_site->set_filenames(array(
 	)
 );
 
+$dialog = $wpbi_dialog['page']['wpbi']['title'];
+
 $template_site->assign_vars(array(
-'PG_TITLE' => $wpbi_dialog['page']['wpbi']['title'],
-'PG_DESCRIPTION' => $wpbi_dialog['page']['wpbi']['description'].'<hr>'.$wpbi_dialog['disclaimer']['license']['gpl']
+'PG_TITLE' => $dialog,
+'PG_DESCRIPTION' => $wpbi_dialog['page']['wpbi']['description'].'<hr>'.$wpbi_dialog['disclaimer']['license']['commercial']
 )
 );
 $pg_output = '';

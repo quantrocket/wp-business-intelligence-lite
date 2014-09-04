@@ -106,7 +106,7 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 	'V_VAR_VALUE' 			=> isset($_POST[$wpbi_settings['parameter']['var_value']]) ? $_POST[$wpbi_settings['parameter']['var_value']]: $vo_vars->var_value,
 	'P_VAR_ACTION' 		=> $wpbi_settings['parameter']['action'],
 	'V_EDIT_ACTION' 		=> $wpbi_settings['value']['edit'],
-	'LBL_BTN_EDIT' 		=> $wpbi_dialog['label']['button']['edit'],
+	'LBL_BTN_EDIT' 		=> $wpbi_dialog['label']['button']['add'],
 	'VAR_EDIT_FORM_ACTION'=> substr((substr(strrchr($_SERVER['REQUEST_URI'], '/'), 1)),  0, strpos((substr(strrchr($_SERVER['REQUEST_URI'], '/'), 1)), '&'))
 	)
 	);
@@ -194,7 +194,7 @@ if($_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['edit
 	$qy_variables_rows = $wpdb->get_results($query->limit_qy_to($pagination->item_start-1, $pagination->pg_interval),'ARRAY_N');
 	
 	//Output table
-	$column_headers = array($wpbi_dialog['header']['variables']['name'],$wpbi_dialog['header']['variables']['value']);
+	$column_headers = array('ID', $wpbi_dialog['header']['variables']['name'],$wpbi_dialog['header']['variables']['value']);
 	$single_actions = array ( 	"edit"  => array ( 	"label" 	=> "Edit",
 	                                   				"page" 		=> $wpbi_url['slug']['variables'],
 	                                   				"action" 	=> $wpbi_settings['value']['edit'],

@@ -39,6 +39,7 @@ var $visible_cols = NULL;
 var $title = NULL;
 var $table_tpl_path = NULL;
 var $table_pagination = NULL;
+var $can_download = false;
 
 function table(){
 
@@ -96,6 +97,11 @@ function set_css_style($css_style){
 
 function set_rows($rows){
 	$this->rows = $rows;
+}
+
+
+function set_can_download($can_download = 0){
+    $this->can_download = $can_download;
 }
 
 function get_html(){
@@ -176,13 +182,23 @@ function get_html(){
 		}
 
     wp_enqueue_script('datatables-jquery', $wpbi_url['datatables']['jquerymin'] );
+
+    $can_download = '';
+
+    if($this->can_download > 0)
+    {
+		$url = site_url();
+        $table_id = str_replace(' ', '', $this->title);
+        $can_download = '<a href="#" id="download_' . $table_id . '"><img id="tablecsv" title="download table data" src="' . $url . '/wp-content/plugins/wp-business-intelligence/images/CSV.png"></a>';
+    }
 	
 	//Table
 	ob_start();
 	$this->tpl_table->assign_vars(array(
+	'TABLE_DOWNLOAD'=> $can_download,
 	'TABLE_TITLE'	=> $title,
 	'TABLE_PAGINATION'	=> ($this->table_pagination == NULL) ? '' : $this->table_pagination,
-	'TABLE_STYLE'	=> $this->css_style,
+	'TABLE_ID'	    => str_replace(' ', '', $this->title),
 	'TABLE_CLASS'	=> $this->css_class,
 	'TABLE_HEADER' 	=> $table_header,
 	'TABLE_FOOTER' 	=> $table_footer,

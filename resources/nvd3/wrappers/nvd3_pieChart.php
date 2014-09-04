@@ -42,7 +42,7 @@ class nvd3_pieChart
     public function __construct($chart)
     {
         $this->nvd3Settings = new nvd3_settings();
-        $this->placeholder = new nvd3_placeholder('ph_'.str_replace(' ', '_', $chart->name));
+        $this->placeholder = new nvd3_placeholder($chart);
 
         //wp_enqueue_script('nvd3-legend', $this->nvd3Settings->wpbi_url['nvd3']['legend'] );
         //wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'] );

@@ -43,6 +43,7 @@ var $single_actions = array();
 var $global_actions = array();
 var $action_param_name = 'action';
 var $checkbox_id = 'post';
+var $can_download = false;
 
 function table_form(){
 
@@ -88,6 +89,10 @@ function has_footer($has_footer){
 	$this->has_footer = $has_footer;
 }
 
+function can_download($can_download){
+    $this->can_download = $can_download;
+}
+
 function encode_html($encode_html){
 	$this->encode_html = $encode_html;
 }
@@ -123,7 +128,7 @@ function get_html(){
             }
             else
             {
-                $html = $html. '<th>'.($col).'</th>';
+			    $html = $html. '<th>'.($col).'</th>';
             }
 		}
 		$html = $html. '
@@ -167,7 +172,7 @@ function get_html(){
 						if($col_idx==0){
 							$html = $html. '<th><input type="checkbox" name="'.$this->checkbox_id.'[]" value="'.$value.'"></th>';
                             $html = $html. '<td>'.$value.'</td>';
-						}
+                        }
 						else if($col_idx==1){
 							$html = $html. '
 							<td>

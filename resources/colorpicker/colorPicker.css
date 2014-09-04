@@ -6,6 +6,7 @@ div.color_picker {
   background: url(arrow.gif) no-repeat top right;
   cursor: pointer;
   line-height: 16px;
+    margin-left: 4px;
 }
 
 div#color_selector {

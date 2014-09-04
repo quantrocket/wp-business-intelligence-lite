@@ -184,6 +184,7 @@ class nvd3_chart
         }
 
         $data = "var nvd3Data_$this->placeholderName = ".$data.';';
+        $data .= "chartData = nvd3Data_$this->placeholderName;";
 
         $sanitized = $this->nvd3_utils->strip_null_fields($data);
 

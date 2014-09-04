@@ -49,7 +49,8 @@ function select($vo_ch_cols){
 		$where_clause = "where `chart_id` = $id";
 	}
 
-	$query = "SELECT `COL_ID`, `CHART_ID`, `COL_LABEL`, `COL_COLOR`, `IS_LABEL`, `IS_VALUE`, `IS_TIME` FROM ".$this->table_name." $where_clause order by COL_ID asc";
+	$query = "SELECT `COL_ID`, `CHART_ID`, `COL_LABEL`, `COL_COLOR`, `IS_LABEL`, `IS_VALUE`, `IS_TIME` FROM "
+        .$this->table_name." $where_clause order by COL_ID asc";
 	$rows = $this->wpdb->get_results($query);	
 	$vo_ch_cols = array();
 	foreach($rows as $row){

@@ -50,12 +50,14 @@ $wpbi_settings['parameter']['db_name'] 		= 'db_name';
 $wpbi_settings['parameter']['db_host'] 		= 'db_host';
 $wpbi_settings['parameter']['db_user'] 		= 'db_user';
 $wpbi_settings['parameter']['db_pass'] 		= 'db_pass';
+$wpbi_settings['parameter']['db_type'] 		= 'db_type';
 $wpbi_settings['parameter']['tb-name'] 		= 'tb_name';
 $wpbi_settings['parameter']['tb-id'] 			= 'tb_id';
 $wpbi_settings['parameter']['tb-title'] 		= 'tb_title';
 $wpbi_settings['parameter']['tb-style'] 		= 'tb_style';
 $wpbi_settings['parameter']['tb-header'] 		= 'tb_header';
 $wpbi_settings['parameter']['tb-footer'] 		= 'tb_footer';
+$wpbi_settings['parameter']['tb-download'] 		= 'tb_download';
 $wpbi_settings['parameter']['tb-html-values'] 	= 'tb_html_values';
 $wpbi_settings['parameter']['tb-row-pg'] 		= 'tb_row_pg';
 $wpbi_settings['parameter']['action'] 			= 'action';
@@ -70,6 +72,8 @@ $wpbi_settings['parameter']['ch-width'] 		= 'ch_width';
 $wpbi_settings['parameter']['ch-width-percent']= 'ch_width_percent';
 $wpbi_settings['parameter']['ch-height'] 		= 'ch_height';
 $wpbi_settings['parameter']['ch-height-percent']= 'ch_height_percent';
+$wpbi_settings['parameter']['ch-stacked']   = 'ch_stacked';
+$wpbi_settings['parameter']['ch-snapshot']   = 'ch_snapshot';
 $wpbi_settings['parameter']['ch-x-precision'] 		= 'ch_x_precision';
 $wpbi_settings['parameter']['ch-x-legend']		= 'ch_x_label';
 $wpbi_settings['parameter']['ch-x-legend-size']	= 'ch_x_legend_size';
@@ -82,6 +86,7 @@ $wpbi_settings['parameter']['ch-x-grid-step']= 'ch_x_grid_step';
 $wpbi_settings['parameter']['ch-x-axis-thick']= 'ch_x_axis_thick';
 $wpbi_settings['parameter']['ch-x-axis-color']= 'ch_x_axis_color';
 $wpbi_settings['parameter']['ch-y-precision'] 		= 'ch_y_precision';
+$wpbi_settings['parameter']['ch-y-range'] 		= 'ch_y_range';
 $wpbi_settings['parameter']['ch-y-currency'] 		= 'ch_y_currency';
 $wpbi_settings['parameter']['ch-y-legend']		= 'ch_y_label';
 $wpbi_settings['parameter']['ch-y-legend-size']	= 'ch_y_legend_size';
@@ -97,6 +102,7 @@ $wpbi_settings['parameter']['ch-x-column-cb']= 'x_column';
 $wpbi_settings['parameter']['ch-x-column-cb']= 'y_column';
 $wpbi_settings['parameter']['ch-v-column-cb']= 'v_column';
 $wpbi_settings['parameter']['ch-istime-column-cb']= 'istime_column';
+$wpbi_settings['parameter']['ch-time-format']= 'time_format';
 $wpbi_settings['parameter']['ch-tx-column-tf']= 'tx_column';
 $wpbi_settings['parameter']['tb-tx-column-tf']= 'tx_column';
 $wpbi_settings['parameter']['tb-cb-column-tf']= 'cb_column';
@@ -114,11 +120,13 @@ $wpbi_settings['parameter']['charts_help'] 		= '<div id="help_barchart"><p><span
                                                    <div id="help_lineandbarchart"><p><span style="font-weight:bold">Line And Bar Chart</span><p>This chart plots the first selected column as a bar chart and the second as a line</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>
                                                    <div id="help_stackedareachart"><p><span style="font-weight:bold">Stacked Area Chart</span><p>Each column selected as "value" will be plotted as a separate line with filled area.<br/>Each line can be plotted separately by clicking on it.</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>
                                                    <div id="help_focuslinechart"><p><span style="font-weight:bold">Multi Line With Focus</span><p>This is a multi line chart with the possibility to zoom a speific segment of the X axis.</p><p><a href="http://www.wpbusinessintelligence.com/wp-business-intelligence-faq" target="_blank">See the FAQ</a> for more details.</p></div>';
-$wpbi_settings['value']['add'] 				= 'add';
+
+
+$wpbi_settings['value']['add'] 				    = 'add';
 $wpbi_settings['value']['test'] 				= 'test';
 $wpbi_settings['value']['edit'] 				= 'edit';
 $wpbi_settings['value']['save'] 				= 'save';
-$wpbi_settings['value']['set'] 				= 'set';
+$wpbi_settings['value']['set'] 					= 'set';
 $wpbi_settings['value']['drop'] 				= 'drop';
 $wpbi_settings['value']['edit-test'] 			= 'edit_test';
 
@@ -143,6 +151,9 @@ $wpbi_url['page']['preferences'] 	= 	'admin/preferences/preferences.php';
 $wpbi_url['page']['variables'] 	= 	'admin/variables/variables.php';
 /**************************/
 
+/* Used by the TinyMCE buttons */
+$wpbi_url['iframe']['src']		 			= 	plugins_url('/view.php', __FILE__);
+
 /***	Page Slugs		***/
 $wpbi_url['slug']['queries'] 		= 	'queries';
 $wpbi_url['slug']['tables'] 		= 	'tables';
@@ -162,7 +173,7 @@ $wpbi_url['tpl']['queries-new'] 		= 	'pages/queries.new.tpl';
 $wpbi_url['tpl']['queries-edit'] 		= 	'pages/queries.edit.tpl';
 $wpbi_url['tpl']['connections-edit'] 	= 	'pages/connections.edit.tpl';
 $wpbi_url['tpl']['connections-new'] 	= 	'pages/connections.new.tpl';
-$wpbi_url['tpl']['variables-edit'] 	= 	'pages/variables.edit.tpl';
+$wpbi_url['tpl']['variables-edit'] 	    = 	'pages/variables.edit.tpl';
 $wpbi_url['tpl']['variables-new'] 		= 	'pages/variables.new.tpl';
 $wpbi_url['tpl']['tables-new-1']		= 	'pages/tables.new.1.tpl';
 $wpbi_url['tpl']['tables-new-2']		= 	'pages/tables.new.2.tpl';
@@ -195,11 +206,20 @@ $wpbi_url['colorpicker']['colorpicker'] = 	plugins_url('/resources/colorpicker/j
 $wpbi_url['colorpicker']['css']			=	plugins_url('/resources/colorpicker/colorPicker.css', __FILE__);
 $wpbi_url['jquery']['iframe-auto-height']	= 	plugins_url('/resources/jquery-iframe-auto-height/js/jquery.iframe-auto-height.plugin.js', __FILE__);
 $wpbi_url['jquery']['alphanumeric']		= 	plugins_url('/resources/jquery-alphanumeric/jquery.alphanumeric.js', __FILE__);
+$wpbi_url['wpbi']['wpbi']               =   plugins_url('/js/wpbi.js', __FILE__);
+$wpbi_url['wpbi']['dash']               =   plugins_url('/js/wpbidash.js', __FILE__);
+$wpbi_url['wpbi']['canvg']              =   plugins_url('/js/canvg.js', __FILE__);
+$wpbi_url['wpbi']['rgbcolor']           =   plugins_url('/js/rgbcolor.js', __FILE__);
+$wpbi_url['wpbi']['svgenie']            =   plugins_url('/js/svgenie.js', __FILE__);
+$wpbi_url['wpbi']['jspdf']            =   plugins_url('/js/jspdf.min.js', __FILE__);
+$wpbi_url['wpbi']['jssvgtopdf']            =   plugins_url('/js/jspdf.plugin.svgToPdf.js', __FILE__);
 
 /*** nvd3 files ***/
 $wpbi_url['nvd3']['css']			        =	plugins_url('/resources/nvd3/js/src/nv.d3.css', __FILE__);
 $wpbi_url['nvd3']['nvd3']			        =	plugins_url('/resources/nvd3/js/nv.d3.min.js', __FILE__);
 $wpbi_url['nvd3']['d3js']			        =	plugins_url('/resources/nvd3/js/lib/d3.v3.js', __FILE__);
+
+
 
 /**************************/
 

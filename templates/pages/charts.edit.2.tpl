@@ -57,7 +57,15 @@ function init_help() {
             jQuery("#help_focuslinechart").hide();
             jQuery("#help_lineandbarchart").hide();
             jQuery('#{P_CH_X_PRECISION}').show();
+            jQuery('#xPrecisionLabel').show();
+            jQuery('#yPrecisionLabel').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
+            jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#yRangeLabel').show();
+            jQuery('#{P_CH_STACKED}').hide();
+            jQuery('#stackedLabel').hide();
+            jQuery('#{P_CH_Y_CURRENCY}').hide();
+            jQuery('#yCurrencyLabel').hide();
             break;
         case '{CH_EDIT_TYPE_BAR_HORIZONTAL}':
             jQuery("#help_linechart").hide();
@@ -72,6 +80,14 @@ function init_help() {
             jQuery("#help_lineandbarchart").hide();
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
+            jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#yRangeLabel').show();
+            jQuery('#xPrecisionLabel').show();
+            jQuery('#yPrecisionLabel').show();
+            jQuery('#{P_CH_STACKED}').show();
+            jQuery('#stackedLabel').show();
+            jQuery('#{P_CH_Y_CURRENCY}').hide();
+            jQuery('#yCurrencyLabel').hide();
             break;
         case '{CH_EDIT_TYPE_BAR_STACKED}':
             jQuery("#help_linechart").hide();
@@ -86,6 +102,14 @@ function init_help() {
             jQuery("#help_lineandbarchart").hide();
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
+            jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#xPrecisionLabel').show();
+            jQuery('#yPrecisionLabel').show();
+            jQuery('#yRangeLabel').show();
+            jQuery('#{P_CH_STACKED}').show();
+            jQuery('#stackedLabel').show();
+            jQuery('#{P_CH_Y_CURRENCY}').hide();
+            jQuery('#yCurrencyLabel').hide();
             break;
         case '{CH_EDIT_TYPE_LINE}':
             jQuery("#help_linechart").show();
@@ -100,6 +124,14 @@ function init_help() {
             jQuery("#help_lineandbarchart").hide();
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
+            jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#yRangeLabel').show();
+            jQuery('#xPrecisionLabel').show();
+            jQuery('#yPrecisionLabel').show();
+            jQuery('#{P_CH_STACKED}').hide();
+            jQuery('#stackedLabel').hide();
+            jQuery('#{P_CH_Y_CURRENCY}').hide();
+            jQuery('#yCurrencyLabel').hide();
             break;
         case '{CH_EDIT_TYPE_PIE}':
         case '{CH_EDIT_TYPE_DONUT}':
@@ -115,7 +147,14 @@ function init_help() {
             jQuery("#help_lineandbarchart").hide();
             jQuery('#{P_CH_X_PRECISION}').hide();
             jQuery('#{P_CH_Y_PRECISION}').hide();
-
+            jQuery('#{P_CH_Y_RANGE}').hide();
+            jQuery('#yRangeLabel').hide();
+            jQuery('#xPrecisionLabel').hide();
+            jQuery('#yPrecisionLabel').hide();
+            jQuery('#{P_CH_STACKED}').hide();
+            jQuery('#stackedLabel').hide();
+            jQuery('#{P_CH_Y_CURRENCY}').hide();
+            jQuery('#yCurrencyLabel').hide();
             break;
         case '{CH_EDIT_TYPE_SCATTER}':
             jQuery("#help_linechart").hide();
@@ -130,6 +169,14 @@ function init_help() {
             jQuery("#help_lineandbarchart").hide();
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
+            jQuery('#{P_CH_Y_RANGE}').hide();
+            jQuery('#yRangeLabel').hide();
+            jQuery('#xPrecisionLabel').show();
+            jQuery('#yPrecisionLabel').show();
+            jQuery('#{P_CH_STACKED}').hide();
+            jQuery('#stackedLabel').hide();
+            jQuery('#{P_CH_Y_CURRENCY}').hide();
+            jQuery('#yCurrencyLabel').hide();
             break;
         case '{CH_EDIT_TYPE_CUMULATIVE_LINE}':
             jQuery("#help_linechart").hide();
@@ -144,6 +191,14 @@ function init_help() {
             jQuery("#help_lineandbarchart").hide();
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
+            jQuery('#{P_CH_Y_RANGE}').hide();
+            jQuery('#yRangeLabel').hide();
+            jQuery('#xPrecisionLabel').show();
+            jQuery('#yPrecisionLabel').show();
+            jQuery('#{P_CH_STACKED}').hide();
+            jQuery('#stackedLabel').hide();
+            jQuery('#{P_CH_Y_CURRENCY}').hide();
+            jQuery('#yCurrencyLabel').hide();
             break;
         case '{CH_EDIT_TYPE_STACKED_AREA}':
             jQuery("#help_linechart").hide();
@@ -158,6 +213,14 @@ function init_help() {
             jQuery("#help_lineandbarchart").hide();
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
+            jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#yRangeLabel').show();
+            jQuery('#xPrecisionLabel').show();
+            jQuery('#yPrecisionLabel').show();
+            jQuery('#{P_CH_STACKED}').hide();
+            jQuery('#stackedLabel').hide();
+            jQuery('#{P_CH_Y_CURRENCY}').hide();
+            jQuery('#yCurrencyLabel').hide();
             break;
         case '{CH_EDIT_TYPE_MULTI_LINE_FOCUS}':
             jQuery("#help_linechart").hide();
@@ -172,6 +235,14 @@ function init_help() {
             jQuery("#help_lineandbarchart").hide();
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
+            jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#yRangeLabel').show();
+            jQuery('#xPrecisionLabel').show();
+            jQuery('#yPrecisionLabel').show();
+            jQuery('#{P_CH_STACKED}').hide();
+            jQuery('#stackedLabel').hide();
+            jQuery('#{P_CH_Y_CURRENCY}').hide();
+            jQuery('#yCurrencyLabel').hide();
             break;
         case '{CH_EDIT_TYPE_LINE_AND_BAR}':
             jQuery("#help_linechart").hide();
@@ -186,6 +257,14 @@ function init_help() {
             jQuery("#help_lineandbarchart").show();
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
+            jQuery('#{P_CH_Y_RANGE}').hide();
+            jQuery('#yRangeLabel').hide();
+            jQuery('#xPrecisionLabel').show();
+            jQuery('#yPrecisionLabel').show();
+            jQuery('#{P_CH_STACKED}').hide();
+            jQuery('#stackedLabel').hide();
+            jQuery('#{P_CH_Y_CURRENCY}').show();
+            jQuery('#yCurrencyLabel').show();
             break;
         default:
             jQuery("#help_linechart").hide();
@@ -200,6 +279,14 @@ function init_help() {
             jQuery("#help_focuslinechart").hide();
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
+            jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#yRangeLabel').show();
+            jQuery('#xPrecisionLabel').show();
+            jQuery('#yPrecisionLabel').show();
+            jQuery('#{P_CH_STACKED}').hide();
+            jQuery('#stackedLabel').hide();
+            jQuery('#{P_CH_Y_CURRENCY}').hide();
+            jQuery('#yCurrencyLabel').hide();
             break;
     }
 };
@@ -247,16 +334,44 @@ function init_help() {
 			  <input type="checkbox" name="{P_CH_HEIGHT_PERCENT}" value="%" {V_CH_HEIGHT_CHECKED}>%</td>
 	        </tr>
             <tr valign="top">
-                <td width="30" align="right" scope="row"><div align="left">{CH_EDIT_X_PRECISION}</div></td>
+                <td width="30" align="right" scope="row"><div id="xPrecisionLabel"  align="left">{CH_EDIT_X_PRECISION}</div></td>
                 <td align="left" valign="top">
                     <input style="width:30px;" name="{P_CH_X_PRECISION}" type="text" id="{P_CH_X_PRECISION}" value="{V_CH_X_PRECISION}" maxlength="1">
                 </td>
             </tr>
             <tr valign="top">
-                <td width="30" align="right" scope="row"><div align="left">{CH_EDIT_Y_PRECISION}</div></td>
+                <td width="30" align="right" scope="row"><div id="yPrecisionLabel"  align="left">{CH_EDIT_Y_PRECISION}</div></td>
                 <td align="left" valign="top">
                     <input style="width:30px;" name="{P_CH_Y_PRECISION}" type="text" id="{P_CH_Y_PRECISION}" value="{V_CH_Y_PRECISION}" maxlength="1">
 
+            </tr>
+            <tr valign="top">
+                <td width="120" align="right" scope="row"><div id="yRangeLabel"  align="left">{CH_EDIT_Y_RANGE}</div></td>
+                <td align="left" valign="top">
+                    <input style="width:120px;" name="{P_CH_Y_RANGE}" type="text" id="{P_CH_Y_RANGE}" value="{V_CH_Y_RANGE}" maxlength="32">
+
+            </tr>
+            <tr valign="top">
+                <td width="199" align="right" scope="row"><div id="timeFormatLabel" align="left">{CH_EDIT_TIME_FORMAT}</div></td>
+                <td align="left" valign="top">
+                    <input style="width:180px;" name="{P_CH_TIME_FORMAT}" type="text" id="{P_CH_TIME_FORMAT}" value="{V_CH_TIME_FORMAT}" maxlength="32">
+
+            </tr>
+            <tr valign="top">
+                <td width="30" align="right" scope="row"><div align="left">{CH_EDIT_SNAPSHOT}</div></td>
+                <td align="left" valign="top">
+                    <input type="checkbox" name="{P_CH_SNAPSHOT}" value="1" {V_CH_SNAPSHOT_CHECKED}></td>
+            </tr>
+            <tr valign="top">
+                <td width="30" align="right" scope="row"><div id="stackedLabel" align="left">{CH_EDIT_STACKED}</div></td>
+                <td align="left" valign="top">
+                    <input type="checkbox" id="{P_CH_STACKED}" name="{P_CH_STACKED}" value="1" {V_CH_STACKED_CHECKED}></td>
+            </tr>
+
+            <tr valign="top">
+                <td width="30" align="right" scope="row"><div id="yCurrencyLabel" align="left">{CH_EDIT_Y_CURRENCY}</div></td>
+                <td align="left" valign="top">
+                    <input style="width:40px;" name="{P_CH_Y_CURRENCY}" type="text" id="{P_CH_Y_CURRENCY}" value="{V_CH_Y_CURRENCY}" maxlength="3">
             </tr>
 		</tbody>
 	</table>
@@ -284,9 +399,11 @@ function init_help() {
 		<input type="hidden" id="{P_CH_ACTION}" name="{P_CH_ACTION}" value="">
         <input type="hidden" id="{P_CH_QY}" name="{P_CH_QY}" value="{V_CH_QY}">
         <input type="hidden" id="{P_CH_ID}" name="{P_CH_ID}" value="{V_CH_ID}">
-		<input type="submit" class="button-primary" value="{LBL_BTN_EDIT}" onmousedown="jQuery('input[name={P_CH_ACTION}]').attr('value', '{V_EDIT_ACTION}')">
-		<input type="submit" class="button-primary" value="{LBL_BTN_TEST}" onmousedown="jQuery('input[name={P_CH_ACTION}]').attr('value', '{V_TEST_ACTION}')"> 
-	{CH_TEST_RESULT}
+        <div>
+        <div id="savebutton" style="float: left;"><input type="submit" class="button-primary" value="{LBL_BTN_EDIT}" onmousedown="jQuery('input[name={P_CH_ACTION}]').attr('value', '{V_EDIT_ACTION}')"></div>
+		<div id="testbutton" style="margin-left: 60px;"><input type="submit" class="button-primary" value="{LBL_BTN_TEST}" onmousedown="jQuery('input[name={P_CH_ACTION}]').attr('value', '{V_TEST_ACTION}')"></div>
+        </div>
+    {CH_TEST_RESULT}
   </p>
 </form>
 

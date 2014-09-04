@@ -5,4 +5,4 @@
 			$j('iframe.iframe-wpbi').iframeAutoHeight();
 	});
 </script>
-<iframe class="iframe-wpbi" frameborder="0" width="100%" marginheight="0" marginwidth="0" scrolling="no" src="{IFRAME_SRC}"></iframe>
+<iframe class="iframe-wpbi" frameborder="0" width="{IFRAME_WIDTH}" marginheight="0" marginwidth="0" scrolling="no" src="{IFRAME_SRC}"></iframe>

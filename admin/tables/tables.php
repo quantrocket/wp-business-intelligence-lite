@@ -58,6 +58,7 @@ if($_POST[$wpbi_settings['parameter']['action']] == 'add'){
 								$_POST[$wpbi_settings['parameter']['tb-style']],
 								isset($_POST[$wpbi_settings['parameter']['tb-header']]) ? 1 : 0,
 								isset($_POST[$wpbi_settings['parameter']['tb-footer']]) ? 1 : 0,
+                                isset($_POST[$wpbi_settings['parameter']['tb-download']]) ? 1 : 0,
 								md5(date('YmdHis').rand(100)), 
 								isset($_POST[$wpbi_settings['parameter']['tb-html-values']]) ? 1 : 0
 							);
@@ -124,7 +125,7 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['drop
 if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['copy'] && isset($_GET[$wpbi_settings['parameter']['tb-id']])){
 	//Copy table metadata
 	$selected_tables = $_GET[$wpbi_settings['parameter']['tb-id']];
-	$vo_table = new vo_table(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);						
+	$vo_table = new vo_table(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	$vo_table->set_id($selected_tables); 
 	$dao_table = new dao_table($wpdb, $wpbi_sql['tname']['tables']);
 	$vo_table = $dao_table->select($vo_table);
@@ -219,7 +220,7 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['tes
 		$table = new table();
 		$table->set_table_tpl_path($wpbi_url['tpl']);
 		$table->set_table_pagination($pagination_html);
-		//$table->set_css_class('widefat post fixed');
+		$table->set_css_class(basename($_POST[$wpbi_settings['parameter']['tb-style']],'.css'));
 		$table->set_css_style(basename($_POST[$wpbi_settings['parameter']['tb-style']],'.css'));
 		$table->set_rows($my_test_rows);
 		$table->set_cols($my_test_cols);
@@ -227,6 +228,7 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['tes
 		$table->set_title($_POST[$wpbi_settings['parameter']['tb-title']]);
 		$table->has_header(isset($_POST[$wpbi_settings['parameter']['tb-header']]));
 		$table->has_footer(isset($_POST[$wpbi_settings['parameter']['tb-footer']]));
+		$table->set_can_download(isset($_POST[$wpbi_settings['parameter']['tb-download']]));
 		$table->encode_html(!isset($_POST[$wpbi_settings['parameter']['tb-html-values']]));
 		$test_output = $test_output.$table->get_html();
 			
@@ -321,7 +323,7 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
 		$table = new table();
 		$table->set_table_tpl_path($wpbi_url['tpl']);
 		$table->set_table_pagination($pagination_html);
-		//$table->set_css_class('widefat post fixed');
+		$table->set_css_class(basename($_POST[$wpbi_settings['parameter']['tb-style']],'.css'));
 		$table->set_css_style(basename($vo_table->style_id,'.css'));
 		$table->set_rows($my_test_rows);
 		$table->set_cols($my_test_cols);
@@ -329,16 +331,15 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
 		$table->set_title($vo_table->title);
 		$table->has_header($vo_table->has_header);
 		$table->has_footer($vo_table->has_footer);
+		$table->set_can_download($vo_table->can_download);
 		$table->encode_html(!($vo_table->encode_html));
 		$test_output = $test_output.$table->get_html();
-	
-			
 	}
 	
 	//Prepare output
 	$template_site->assign_vars(array(
 	/*Style*/
-	'TPL_CSS'				=> $wpbi_url['styles']['url'].(isset($table->css_style) ?
+	'TPL_CSS'				=> $wpbi_url['styles']['url']."tables/".(isset($table->css_style) ?
 								$table->css_style : 
 								$_POST[$wpbi_settings['parameter']['tb-style']]).'.css',
 	
@@ -439,7 +440,7 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 	//Styles
 		$styles = new styles();
 		$styles->set_rootdir($wpbi_url['styles']['directory']);
-		$styles_lst = $styles->get_styles(); 
+		$styles_lst = $styles->get_styles('\tables');
 		$style_options = '';
 		for($stl=0; $stl<sizeof($styles_lst);$stl++){
 			$checked = ''; 
@@ -452,7 +453,7 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 	$template_site->assign_vars(array(
 	
 		/*Style*/
-		'TPL_CSS'				=> $wpbi_url['styles']['url'].(!isset($_POST[$wpbi_settings['parameter']['tb-style']]) ?
+		'TPL_CSS'				=> $wpbi_url['styles']['url'] . "tables/" . (!isset($_POST[$wpbi_settings['parameter']['tb-style']]) ?
 								$vo_table->css_style : 
 								$_POST[$wpbi_settings['parameter']['tb-style']]),
 		
@@ -484,10 +485,16 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 									? 'checked' : '',
 		'VW_EDIT_FOOTER' 		=> $wpbi_dialog['form']['label']['table-footer'],
 		'P_VW_FOOTER'			=> $wpbi_settings['parameter']['tb-footer'],
-		'V_VW_FOOTER'			=> $_POST[$wpbi_settings['parameter']['tb-header']],
+		'V_VW_FOOTER'			=> $_POST[$wpbi_settings['parameter']['tb-footer']],
 		'V_VW_FOOTER_CHECKED'	=> (isset($_POST[$wpbi_settings['parameter']['tb-footer']])) ||
 									($_POST[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['edit-test'] && $vo_table->has_footer)
 									 ? 'checked' : '',
+        'VW_EDIT_DOWNLOAD' 		=> $wpbi_dialog['form']['label']['table-download'],
+        'P_VW_DOWNLOAD'			=> $wpbi_settings['parameter']['tb-download'],
+        'V_VW_DOWNLOAD'			=> $_POST[$wpbi_settings['parameter']['tb-download']],
+        'V_VW_DOWNLOAD_CHECKED'	=> (isset($_POST[$wpbi_settings['parameter']['tb-download']])) ||
+            ($_POST[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['edit-test'] && $vo_table->can_download)
+                ? 'checked' : '',
 		'VW_EDIT_HTML_VALUES' 		=> $wpbi_dialog['form']['label']['table-html-values'],
 		'P_VW_HTML_VALUES'			=> $wpbi_settings['parameter']['tb-html-values'],
 		'V_VW_HTML_VALUES'			=> $_POST[$wpbi_settings['parameter']['tb-html-values']],
@@ -542,10 +549,11 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 								$_POST[$wpbi_settings['parameter']['tb-style']],
 								isset($_POST[$wpbi_settings['parameter']['tb-header']]) ? 1 : 0,
 								isset($_POST[$wpbi_settings['parameter']['tb-footer']]) ? 1 : 0,
-								NULL, 
+								isset($_POST[$wpbi_settings['parameter']['tb-download']]) ? 1 : 0,
+								NULL,
 								isset($_POST[$wpbi_settings['parameter']['tb-html-values']]) ? 1 : 0
 							);
-	$vo_old_table = new vo_table($_POST[$wpbi_settings['parameter']['tb-id']], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	$vo_old_table = new vo_table($_POST[$wpbi_settings['parameter']['tb-id']], NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	$dao_table = new dao_table($wpdb, $wpbi_sql['tname']['tables']);
 	$dao_table->edit($vo_old_table, $vo_new_table);
 	
@@ -665,7 +673,7 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		//Styles
 		$styles = new styles();
 		$styles->set_rootdir($wpbi_url['styles']['directory']);
-		$styles_lst = $styles->get_styles(); 
+		$styles_lst = $styles->get_styles('\tables');
 		$style_options = '';
 		for($stl=0; $stl<sizeof($styles_lst);$stl++){
 			$checked = ''; 
@@ -676,7 +684,7 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		$template_site->assign_vars(array(
 	
 		/* New view form 2 */
-		'TPL_CSS'				=> $wpbi_url['styles']['url'].$_POST[$wpbi_settings['parameter']['tb-style']],
+		'TPL_CSS'				=> $wpbi_url['styles']['url'] . "tables/" . $_POST[$wpbi_settings['parameter']['tb-style']],
 		'VW_NEW_STYLE_OPTIONS'	=> $style_options,
 		'VW_NEW_SETTINGS' 		=> $wpbi_dialog['form']['label']['settings'],
 		'VW_NEW_VALUES' 		=> $wpbi_dialog['form']['label']['values'],
@@ -696,6 +704,10 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		'P_VW_FOOTER'			=> $wpbi_settings['parameter']['tb-footer'],
 		'V_VW_FOOTER'			=> $_POST[$wpbi_settings['parameter']['tb-footer']],
 		'V_VW_FOOTER_CHECKED'	=> isset($_POST[$wpbi_settings['parameter']['tb-footer']]) ? 'checked' : '',
+        'VW_NEW_DOWNLOAD' 		=> $wpbi_dialog['form']['label']['table-download'],
+        'P_VW_DOWNLOAD'			=> $wpbi_settings['parameter']['tb-download'],
+        'V_VW_DOWNLOAD'			=> $_POST[$wpbi_settings['parameter']['tb-download']],
+        'V_VW_DOWNLOAD_CHECKED'	=> isset($_POST[$wpbi_settings['parameter']['tb-download']]) ? 'checked' : '',
 		'VW_NEW_HTML_VALUES' 		=> $wpbi_dialog['form']['label']['table-html-values'],
 		'P_VW_HTML_VALUES'			=> $wpbi_settings['parameter']['tb-html-values'],
 		'V_VW_HTML_VALUES'			=> $_POST[$wpbi_settings['parameter']['tb-html-values']],

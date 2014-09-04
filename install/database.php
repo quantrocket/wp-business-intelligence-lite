@@ -32,16 +32,16 @@
 
 //include_once('settings.php');
 
-$qy_table_databases = '
-CREATE TABLE IF NOT EXISTS `'.$wpbi_sql['tname']['databases'].'` (
-  `DB_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `DB_NAME` varchar(256) NOT NULL,
-  `DB_HOST` varchar(256) NOT NULL,
-  `DB_USER` varchar(256) NOT NULL,
-  `DB_PASS` varchar(2048) NOT NULL,
-  PRIMARY KEY (`DB_ID`)
+$qy_table_databases = "
+CREATE TABLE ". $wpbi_sql['tname']['databases'] ." (
+DB_ID int(10) unsigned NOT NULL AUTO_INCREMENT,
+DB_NAME varchar(256) NOT NULL,
+DB_HOST varchar(256) NOT NULL,
+DB_USER varchar(256) NOT NULL,
+DB_PASS varchar(2048) NOT NULL,
+PRIMARY KEY  (DB_ID)
 ) -- ENGINE = INNODB DEFAULT CHARACTER SET utf8 COLLATE utf8_bin
-';
+";
 
 $qy_table_queries = '
 CREATE TABLE IF NOT EXISTS `'.$wpbi_sql['tname']['queries'].'` (
@@ -53,22 +53,24 @@ CREATE TABLE IF NOT EXISTS `'.$wpbi_sql['tname']['queries'].'` (
 ) -- ENGINE = INNODB DEFAULT CHARACTER SET utf8 COLLATE utf8_bin
 ';
 
-$qy_table_views = '
-CREATE TABLE IF NOT EXISTS `'.$wpbi_sql['tname']['tables'].'` (
-`TABLE_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `QUERY_ID` int(11) NOT NULL,
-  `NAME` varchar(64) NOT NULL,
-  `TITLE` varchar(64) NOT NULL,
-  `ROWS_PER_PG` int(11) NOT NULL,
-  `STYLE_ID` varchar(64) NOT NULL,
-  `HAS_HEADER` int(11) NOT NULL,
-  `HAS_FOOTER` int(11) NOT NULL,
-  `TABLE_KEY` varchar(32) NOT NULL,
-  `ENCODE_HTML` int(11) NOT NULL,
-  PRIMARY KEY (`TABLE_ID`),
-  UNIQUE KEY `TABLE_KEY` (`TABLE_KEY`) 
+$qy_table_views = "
+CREATE TABLE ".$wpbi_sql['tname']['tables']." (
+TABLE_ID int(11) NOT NULL AUTO_INCREMENT,
+  QUERY_ID int(11) NOT NULL,
+  NAME varchar(64) NOT NULL,
+  TITLE varchar(64) NOT NULL,
+  ROWS_PER_PG int(11) NOT NULL,
+  STYLE_ID varchar(64) NOT NULL,
+  HAS_HEADER int(11) NOT NULL,
+  HAS_FOOTER int(11) NOT NULL,
+  CAN_DOWNLOAD int(11) NOT NULL DEFAULT '0',
+  TABLE_KEY varchar(32) NOT NULL,
+  ENCODE_HTML int(11) NOT NULL,
+  PRIMARY KEY  (TABLE_ID),
+  UNIQUE KEY TABLE_KEY (TABLE_KEY)
 ) -- ENGINE = INNODB DEFAULT CHARACTER SET utf8 COLLATE utf8_bin
-';
+";
+
 
 $qy_tb_cols = '
 CREATE TABLE IF NOT EXISTS `'.$wpbi_sql['tname']['cols'].'` (
@@ -82,8 +84,8 @@ CREATE TABLE IF NOT EXISTS `'.$wpbi_sql['tname']['cols'].'` (
 ';
 
 $qy_chart_views = "
-CREATE TABLE IF NOT EXISTS ".$wpbi_sql['tname']['charts']." (
-CHART_ID int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE ".$wpbi_sql['tname']['charts']." (
+  CHART_ID int(11) NOT NULL AUTO_INCREMENT,
   QUERY_ID int(11) NOT NULL,
   CHART_KEY varchar(32) NOT NULL,
   CHART_NAME varchar(64) NOT NULL,
@@ -109,6 +111,7 @@ CHART_ID int(11) NOT NULL AUTO_INCREMENT,
   CHART_X_LEGEND_SIZE int(11) NOT NULL,
   CHART_Y_COLOR varchar(7) NOT NULL,
   CHART_Y_PRECISION int(11) NOT NULL,
+  CHART_Y_AXIS_RANGE varchar(32) NOT NULL,
   CHART_Y_CURRENCY varchar(11) NOT NULL,
   CHART_Y_THICKNESS int(11) NOT NULL,
   CHART_Y_GRID_COLOR varchar(7) NOT NULL,
@@ -119,8 +122,11 @@ CHART_ID int(11) NOT NULL AUTO_INCREMENT,
   CHART_Y_LEGEND varchar(64) NOT NULL,
   CHART_Y_LEGEND_COLOR varchar(7) NOT NULL,
   CHART_Y_LEGEND_SIZE int(11) NOT NULL,
-  PRIMARY KEY (CHART_ID),
-  UNIQUE KEY CHART_KEY (CHART_KEY)
+  CHART_SNAPSHOT int(1) NOT NULL DEFAULT '0',
+  CHART_STACKED int(1) NOT NULL DEFAULT '0',
+  CHART_TIME_FORMAT varchar(32) NOT NULL DEFAULT '%d/%m/%Y',
+PRIMARY KEY  (CHART_ID),
+UNIQUE KEY CHART_KEY (CHART_KEY)
 ) -- ENGINE = INNODB DEFAULT CHARACTER SET utf8 COLLATE utf8_bin
 ";
 

@@ -32,9 +32,13 @@ class nvd3_placeholder
     var $style = "<style>";
     var $cssElements = array();
 
-    public function __construct($name)
+    var $download_button = false;
+    var $snapshot_button = true;
+
+    public function __construct($chart)
     {
-        $this->name = $name;
+        $this->name = 'ph_'.str_replace(' ', '_', $chart->name);
+        $this->snapshot_button = $chart->snapshot;
     }
 
     public function addStyleElement($name, $values)
@@ -62,8 +66,18 @@ class nvd3_placeholder
 
         $this->style .= '</style>';
 
-        $html = '<div id="' .$this->name. '">
-            <svg></svg>
+        $html = '';
+
+        //add download button
+        if($this->snapshot_button)
+        {
+            $url = site_url();
+            $html = '<div id="camera"><img id="camera" title="download picture" src="' . $url . 'wp-content/plugins/wp-business-intelligence/images/camera.png" onclick="chartPicture(\'' .substr($this->name, 3). '\')"></div>';
+            $html .= '<div id="camera"><img id="camera" title="download PDF" src="' . $url . 'wp-content/plugins/wp-business-intelligence/images/pdf.jpg" onclick="chartPdf(\'' .substr($this->name, 3). '\')"></div>';
+        }
+
+        $html .= '<div id="' .$this->name. '">
+            <svg id="svg' .substr($this->name, 2). '"></svg>
             </div>';
 
         return $this->style . $html;
