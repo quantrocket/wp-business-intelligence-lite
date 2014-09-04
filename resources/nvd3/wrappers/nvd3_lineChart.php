@@ -138,7 +138,7 @@ class nvd3_lineChart
             }
 
             return "nv.addGraph(function() {
-                chart = nv.models.lineChart();
+                var chart = nv.models.lineChart()". $forceY .";
 
                 var dataSeries = " . $ds->values ."
 
