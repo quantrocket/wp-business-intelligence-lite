@@ -72,8 +72,8 @@ class nvd3_placeholder
         if($this->snapshot_button)
         {
             $url = site_url();
-            $html = '<div id="camera"><img id="camera" title="download picture" src="' . $url . 'wp-content/plugins/wp-business-intelligence/images/camera.png" onclick="chartPicture(\'' .substr($this->name, 3). '\')"></div>';
-            $html .= '<div id="camera"><img id="camera" title="download PDF" src="' . $url . 'wp-content/plugins/wp-business-intelligence/images/pdf.jpg" onclick="chartPdf(\'' .substr($this->name, 3). '\')"></div>';
+            $html = '<div id="camera"><img id="camera" title="download picture" src="' . $url . '/wp-content/plugins/wp-business-intelligence/images/camera.png" onclick="chartPicture(\'' .substr($this->name, 3). '\')"></div>';
+            $html .= '<div id="camera"><img id="camera" title="download PDF" src="' . $url . '/wp-content/plugins/wp-business-intelligence/images/pdf.jpg" onclick="chartPdf(\'' .substr($this->name, 3). '\')"></div>';
         }
 
         $html .= '<div id="' .$this->name. '">
