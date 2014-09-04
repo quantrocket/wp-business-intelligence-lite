@@ -1,0 +1,14 @@
+#barfancybox{
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: .3;
+    visibility: hidden;
+}
+
+#innerbarfancybox{
+    margin: auto;
+    width: 25%;
+    background: #a9dba9;
+    visibility: hidden;
+}
