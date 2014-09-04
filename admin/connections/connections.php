@@ -46,7 +46,10 @@ $template_site->set_filenames(array(
 /***   ADD ACTION    ***/
 /***********************/
 if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['add']){
-	$vo_database = new vo_database(NULL, $_POST[$wpbi_settings['parameter']['db_name']], $_POST[$wpbi_settings['parameter']['db_host']], $_POST[$wpbi_settings['parameter']['db_user']], $_POST[$wpbi_settings['parameter']['db_pass']]);
+	$vo_database = new vo_database(NULL, $_POST[$wpbi_settings['parameter']['db_name']],
+									 $_POST[$wpbi_settings['parameter']['db_host']],
+									 $_POST[$wpbi_settings['parameter']['db_user']],
+									 $_POST[$wpbi_settings['parameter']['db_pass']]);
 	$dao_database = new dao_database($wpdb, $wpbi_sql['tname']['databases']);
 	$dao_database->add($vo_database);
     //wls_simple_log("WPBI", " New connection added");
@@ -86,13 +89,22 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['drop
 
 /**** Test a new connection ***/
 if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test'] || $_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edit-test']){
-	$test_is_ok = mysql_connect($_POST[$wpbi_settings['parameter']['db_host']], $_POST[$wpbi_settings['parameter']['db_user']], $_POST[$wpbi_settings['parameter']['db_pass']]);// &&  mysql_select_db($_POST[$wpbi_settings['parameter']['db_name']]);
-	$test_result = '';
-	if($test_is_ok){
-		$test_result = $wpbi_dialog['msg']['ok']['connection-working'];
-	} else {
-		$test_result = $wpbi_dialog['msg']['error']['connection-error'];
-	}
+    $mysql_connection = new wpbi_mysql($_POST[$wpbi_settings['parameter']['db_user']],
+        $_POST[$wpbi_settings['parameter']['db_pass']],
+        $_POST[$wpbi_settings['parameter']['db_name']],
+        $_POST[$wpbi_settings['parameter']['db_host']]);
+
+    if($mysql_connection->dbh == null){
+
+        $test_error = explode('?', strip_tags($mysql_connection->error->get_error_message()));
+        array_splice($test_error, -1);
+        $test_error = implode('?', $test_error) . '?';
+        $test_result = $wpbi_dialog['msg']['error']['connection-error'] . $test_error;
+    }
+    else
+    {
+        $test_result = $wpbi_dialog['msg']['ok']['connection-working'];
+    }
 
 }
 /**** Test a saved connection ***/
@@ -102,14 +114,23 @@ else if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value'][
 	$tgt_database = new vo_database($_GET[$wpbi_settings['parameter']['db_id']], NULL, NULL, NULL, NULL);
 	$vo_database = $dao_database->select($tgt_database);
 	$vo_database = $vo_database[0];
-	
-	$test_is_ok = mysql_connect($vo_database->host, $vo_database->user, $vo_database->pass);
-	$test_result = '';
-	if($test_is_ok){
-		$test_result = $wpbi_dialog['msg']['ok']['connection-working'];
-	} else {
-		$test_result = $wpbi_dialog['msg']['error']['connection-error'].$vo_database->host.$vo_database->user.$vo_database->pass;
-	}
+
+    $mysql_connection = new wpbi_mysql($vo_database->user,
+        $vo_database->pass,
+        $vo_database->name,
+        $vo_database->host);
+
+    if($mysql_connection->dbh == null){
+        $test_error = explode('?', strip_tags($mysql_connection->error->get_error_message()));
+        array_splice($test_error, -1);
+        $test_error = implode('?', $test_error) . '?';
+        $test_result = $wpbi_dialog['msg']['error']['connection-error'].$test_error;
+    }
+    else
+    {
+        $test_result = $wpbi_dialog['msg']['ok']['connection-working'];
+    }
+
 	echo '
 	<script>
 		jQuery(document).ready(function() {
@@ -172,11 +193,19 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 }
 
 /**** Edit database: save modifications ***/
-if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edit'] && isset($_POST[$wpbi_settings['parameter']['db_id']]) && isset($_POST[$wpbi_settings['parameter']['db_host']]) && isset($_POST[$wpbi_settings['parameter']['db_name']]) && isset($_POST[$wpbi_settings['parameter']['db_user']]) && isset($_POST[$wpbi_settings['parameter']['db_pass']])){
+if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edit']
+	&& isset($_POST[$wpbi_settings['parameter']['db_id']])
+	&& isset($_POST[$wpbi_settings['parameter']['db_host']])
+	&& isset($_POST[$wpbi_settings['parameter']['db_name']])
+	&& isset($_POST[$wpbi_settings['parameter']['db_user']])
+	&& isset($_POST[$wpbi_settings['parameter']['db_pass']])){
 
 	$selected_db = $_POST[$wpbi_settings['parameter']['db_id']];
 	$old_db = new vo_database($selected_db, NULL, NULL, NULL, NULL);
-	$new_db = new vo_database($selected_db, $_POST[$wpbi_settings['parameter']['db_name']], $_POST[$wpbi_settings['parameter']['db_host']], $_POST[$wpbi_settings['parameter']['db_user']], $_POST[$wpbi_settings['parameter']['db_pass']]);
+	$new_db = new vo_database($selected_db, $_POST[$wpbi_settings['parameter']['db_name']],
+											$_POST[$wpbi_settings['parameter']['db_host']],
+											$_POST[$wpbi_settings['parameter']['db_user']],
+											$_POST[$wpbi_settings['parameter']['db_pass']]);
 	$dao_database = new dao_database($wpdb, $wpbi_sql['tname']['databases']);
 	$dao_database->edit($old_db, $new_db);
 
@@ -196,7 +225,7 @@ if($_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['edit
 	/* Header */
 	'PG_TITLE' 			=> $wpbi_dialog['page']['connections']['title'],
 	'PG_DESCRIPTION' 	=> $wpbi_dialog['page']['connections']['description'],
-	
+
 	/* New query form */
 	'CONN_NEW_NAME' 		=> $wpbi_dialog['field']['connections']['name'],
 	'CONN_NEW_HOST' 		=> $wpbi_dialog['field']['connections']['host'],
@@ -215,6 +244,7 @@ if($_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['edit
 	'V_TEST_ACTION' 	=> $wpbi_settings['value']['test'],
 	'LBL_BTN_ADD' 		=> $wpbi_dialog['label']['button']['add'],
 	'LBL_BTN_TEST' 		=> $wpbi_dialog['label']['button']['test'],
+    'DB_TEST_DESCRIPTION'   => $wpbi_dialog['page']['connections']['test-description'],
 	'CONN_TEST_RESULT'	=> $test_result
 	)
 	);
@@ -257,9 +287,9 @@ if($_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['edit
 	
 	//Execute query limitng the resultset
 	$qy_databases_rows = $wpdb->get_results($query->limit_qy_to($pagination->item_start-1, $pagination->pg_interval),'ARRAY_N');
-	
+
 	//Output table
-	$column_headers = array($wpbi_dialog['header']['connections']['id'],$wpbi_dialog['header']['connections']['alias'],$wpbi_dialog['header']['connections']['name'],$wpbi_dialog['header']['connections']['host'], $wpbi_dialog['header']['connections']['user']);
+	$column_headers = array('ID', $wpbi_dialog['header']['connections']['alias'],$wpbi_dialog['header']['connections']['name'],$wpbi_dialog['header']['connections']['host'], $wpbi_dialog['header']['connections']['user']);
 	$single_actions = array ( 	"edit"  => array ( 	"label" 	=> "Edit",
 	                                   				"page" 		=> $wpbi_url['slug']['connections'],
 	                                   				"action" 	=> $wpbi_settings['value']['edit'],
@@ -286,6 +316,7 @@ if($_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['edit
 	$table_form->set_cols($column_headers);
 	$table_form->has_header(true);
 	$table_form->has_footer(true);
+    $table_form->can_download(false);
 	$table_form->encode_html(true);
 	$table_form->set_single_actions($single_actions);
 	$table_form->set_global_actions($global_actions);

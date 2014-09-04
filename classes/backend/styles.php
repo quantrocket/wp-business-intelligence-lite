@@ -39,12 +39,12 @@ function set_rootdir($rootdir){
 	$this->rootdir = $rootdir;
 }
 
-function get_styles(){
+function get_styles($subdir = ''){
 	// create an array to hold directory list
     $results = array();
 
     // create a handler for the directory
-    $handler = opendir($this->rootdir);
+    $handler = opendir($this->rootdir . $subdir);
 
     // open directory and walk through the filenames
     while ($file = readdir($handler)) {

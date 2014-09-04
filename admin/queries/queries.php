@@ -130,10 +130,10 @@ if(($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['te
 	$total_rows = intval($total_rows[0][0]); 
 
 	if($total_rows == 0){
-		$test_output = $test_output.$wpbi_dialog['msg']['query']['no-records'];
+		$test_output .= $test_output.$wpbi_dialog['msg']['query']['no-records'];
 	}
 	else {
-	//Execute query limitng the resultset
+	//Execute query limiting the resultset
 	$my_test_rows = $my_test_db->get_results($query->limit_qy_to(0, $wpbi_settings['parameter']['page-interval']),'ARRAY_N');
 	$my_test_cols = $my_test_db->get_col_info('name');
 	

@@ -39,8 +39,10 @@ var $has_header;
 var $has_footer;
 var $table_key;
 var $encode_html;
+var $can_download;
 
-function vo_table($id, $query_id, $name, $title, $rows_per_pg, $style_id, $has_header, $has_footer, $table_key, $encode_html){
+function vo_table($id, $query_id, $name, $title, $rows_per_pg, $style_id, 
+					$has_header, $has_footer, $can_download, $table_key, $encode_html){
 $this->id = $id;
 $this->query_id = $query_id;
 $this->name = $name;
@@ -51,6 +53,7 @@ $this->has_header = $has_header;
 $this->has_footer = $has_footer;
 $this->table_key = $table_key;
 $this->encode_html = $encode_html;
+$this->can_download = $can_download;
 }
 
 function set_id($id){$this->id = $id;}
@@ -63,7 +66,7 @@ function set_has_header($has_header){$this->has_header = $has_header;}
 function set_has_footer($has_footer){$this->has_footer = $has_footer;}
 function set_table_key($table_key){$this->table_key = $table_key;}
 function set_encode_html($encode_html){$this->encode_html = $encode_html;}
-
+function set_can_download($can_download){$this->can_download = $can_download;}
 
 }
 

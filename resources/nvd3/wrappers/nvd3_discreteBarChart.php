@@ -41,13 +41,15 @@ class nvd3_discreteBarChart
     var $nvd3Settings = NULL;
     var $xAxisFormat = '.1f';
     var $yAxisFormat = '.1f';
+    var $yAxisRange = '';
 
     public function __construct($chart)
     {
         $this->nvd3Settings = new nvd3_settings();
-        $this->placeholder = new nvd3_placeholder('ph_'.str_replace(' ', '_', $chart->name));
+        $this->placeholder = new nvd3_placeholder($chart);
         $this->xAxisFormat = '.'.$chart->x_axis_precision.'f';
         $this->yAxisFormat = '.'.$chart->y_axis_precision.'f';
+        $this->yAxisRange = $chart->y_axis_range;
 
         wp_enqueue_script('nvd3-tooltip', $this->nvd3Settings->wpbi_url['nvd3']['tooltip'] );
         wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'] );
@@ -73,17 +75,28 @@ class nvd3_discreteBarChart
 
     public function getCode()
     {
+        $forceY = '';
+
+        if($this->yAxisRange != '')
+        {
+            $min = explode(',', $this->yAxisRange)[0];
+            $max = explode(',', $this->yAxisRange)[1];
+            $forceY = '.forceY([' . $min . ', ' . $max . ']);';
+        }
+
         return "nv.addGraph(function() {
                 var chart = nv.models.discreteBarChart()
                               .x(function(d) { return d.label })
                               .y(function(d) { return d.value })
-                              .staggerLabels( $this->staggerLabels )
+                              .margin({top: 20, right:10, bottom:100, left:100})
                               .tooltips( $this->tooltips )
                               .showValues( $this->showLabels )
-                              .valueFormat(d3.format('$this->yAxisFormat'));
+                              .valueFormat(d3.format('$this->yAxisFormat'))" . $forceY . ";
 
                 chart.yAxis
                     .tickFormat(d3.format('$this->yAxisFormat'));
+
+                chart.xAxis.rotateLabels(-45);
 
                 d3.select('#".$this->placeholder->name." svg')
                     .datum(nvd3Data_".$this->placeholder->name.")
@@ -117,7 +130,6 @@ class nvd3_discreteBarChart
     public function getHtml()
     {
         global $wpbi_url;
-        return '<link rel="stylesheet" href="'. $wpbi_url['styles']['url'] . 'style_barchart.css" />
-                <div id="barfancybox"><div id="innerbarfancybox"></div></div>';
+        return '<link rel="stylesheet" href="'. $wpbi_url['styles']['url'] . 'style_barchart.css" />';
     }
 }

@@ -32,23 +32,27 @@ class nvd3_lineChart
     var $yAxisFormat = ',.1f';
     var $xAxisLabel = 'x label';
     var $yAxisLabel = 'y label';
+    var $yAxisRange = '';
     var $x_axis_istime = false;
     var $dataSeries;
-    var $showMaxMin=true;
+    var $showMaxMin = true;
     var $placeholder = NULL;
     var $showTooltips = "true";
     var $transitionDuration = "500";
     var $nvd3Settings = NULL;
     var $required_js_libs = NULL;
     var $hasTextLabels = false;
+    var $timeFormat = "%d/%m/%Y";
 
     public function __construct($chart)
     {
         $this->nvd3Settings = new nvd3_settings();
-        $this->placeholder = new nvd3_placeholder('ph_'.str_replace(' ', '_', $chart->name));
+        $this->placeholder = new nvd3_placeholder($chart);
         $this->x_axis_istime = $chart->x_axis_istime;
         $this->xAxisFormat = '.'.$chart->x_axis_precision.'f';
         $this->yAxisFormat = '.'.$chart->y_axis_precision.'f';
+        $this->yAxisRange = $chart->y_axis_range;
+        $this->timeFormat = $chart->time_format;
         $this->required_js_libs = array();
 
         if(is_array($chart->x_axis_labels->labels))
@@ -84,6 +88,14 @@ class nvd3_lineChart
     public function getCode()
     {
         $x_axis_text="";
+        $forceY = '';
+
+        if($this->yAxisRange != '')
+        {
+            $min = explode(',', $this->yAxisRange)[0];
+            $max = explode(',', $this->yAxisRange)[1];
+            $forceY = '.forceY([' . $min . ', ' . $max . ']);';
+        }
 
         if(!$this->hasTextLabels)
         {
@@ -97,11 +109,11 @@ class nvd3_lineChart
         if($this->x_axis_istime)
         {
            return "nv.addGraph(function() {
-                      var chart = nv.models.lineChart();
+                      var chart = nv.models.lineChart()". $forceY .";
 
                       chart.xAxis
                           .tickFormat(function(d) {
-                            return d3.time.format('%d/%m/%Y')(new Date(d))
+                            return d3.time.format('" . $this->timeFormat . "')(new Date(d))
                           });
 
                       chart.yAxis

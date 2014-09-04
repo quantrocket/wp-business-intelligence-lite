@@ -49,11 +49,13 @@ function select($vo_table){
 		$where_clause = "where `table_id` = $id";
 	}
 
-	$query = "SELECT `TABLE_ID`, `QUERY_ID`, `NAME`, `TITLE`, `ROWS_PER_PG`, `STYLE_ID`, `HAS_HEADER`, `HAS_FOOTER`, `TABLE_KEY`, `ENCODE_HTML` FROM ".$this->table_name." $where_clause order by name asc";
+	$query = "SELECT `TABLE_ID`, `QUERY_ID`, `NAME`, `TITLE`, `ROWS_PER_PG`, `STYLE_ID`, `HAS_HEADER`, `HAS_FOOTER`,
+	`CAN_DOWNLOAD`, `TABLE_KEY`, `ENCODE_HTML` FROM ".$this->table_name." $where_clause order by name asc";
 	$rows = $this->wpdb->get_results($query);	
 	$vo_table = array();
 	foreach($rows as $row){
-		$item = new vo_table($row->TABLE_ID,$row->QUERY_ID,$row->NAME,$row->TITLE,$row->ROWS_PER_PG, $row->STYLE_ID,$row->HAS_HEADER,$row->HAS_FOOTER,$row->TABLE_KEY,$row->ENCODE_HTML);
+		$item = new vo_table($row->TABLE_ID,$row->QUERY_ID,$row->NAME,$row->TITLE,$row->ROWS_PER_PG, $row->STYLE_ID,$row->HAS_HEADER,$row->HAS_FOOTER,
+            $row->CAN_DOWNLOAD, $row->TABLE_KEY,$row->ENCODE_HTML);
 		array_push($vo_table, $item);
 	}
 
@@ -70,11 +72,13 @@ function select_by_key($vo_table){
 		$where_clause = "where `table_key` = '$id'";
 	}
 
-	$query = "SELECT `TABLE_ID`, `QUERY_ID`, `NAME`, `TITLE`, `ROWS_PER_PG`, `STYLE_ID`, `HAS_HEADER`, `HAS_FOOTER`, `TABLE_KEY`, `ENCODE_HTML` FROM ".$this->table_name." $where_clause order by name asc";
+	$query = "SELECT `TABLE_ID`, `QUERY_ID`, `NAME`, `TITLE`, `ROWS_PER_PG`, `STYLE_ID`, `HAS_HEADER`, `HAS_FOOTER`,
+	`CAN_DOWNLOAD`, `TABLE_KEY`, `ENCODE_HTML` FROM ".$this->table_name." $where_clause order by name asc";
 	$rows = $this->wpdb->get_results($query);	
 	$vo_table = array();
 	foreach($rows as $row){
-		$item = new vo_table($row->TABLE_ID,$row->QUERY_ID,$row->NAME,$row->TITLE,$row->ROWS_PER_PG, $row->STYLE_ID,$row->HAS_HEADER,$row->HAS_FOOTER,$row->TABLE_KEY,$row->ENCODE_HTML);
+		$item = new vo_table($row->TABLE_ID,$row->QUERY_ID,$row->NAME,$row->TITLE,$row->ROWS_PER_PG, $row->STYLE_ID,$row->HAS_HEADER,$row->HAS_FOOTER,
+            $row->CAN_DOWNLOAD, $row->TABLE_KEY,$row->ENCODE_HTML);
 		array_push($vo_table, $item);
 	}
 
@@ -92,10 +96,12 @@ function add($vo_table){
 	$style_id = $vo_table->style_id;
 	$has_header = $vo_table->has_header;
 	$has_footer = $vo_table->has_footer;
+	$can_download = $vo_table->can_download;
 	$table_key = $vo_table->table_key;
 	$encode_html = $vo_table->encode_html;
  
-	$query = "INSERT INTO ".$this->table_name."(`QUERY_ID`, `NAME`, `TITLE`, `ROWS_PER_PG`, `STYLE_ID`, `HAS_HEADER`, `HAS_FOOTER`, `TABLE_KEY`, `ENCODE_HTML`) values ($query_id, '$name','$title',$rows_per_pg,'$style_id',$has_header,$has_footer,'$table_key',$encode_html)";
+	$query = "INSERT INTO ".$this->table_name."(`QUERY_ID`, `NAME`, `TITLE`, `ROWS_PER_PG`, `STYLE_ID`, `HAS_HEADER`, `HAS_FOOTER`,
+	`CAN_DOWNLOAD`, `TABLE_KEY`, `ENCODE_HTML`) values ($query_id, '$name','$title',$rows_per_pg,'$style_id',$has_header,$has_footer,$can_download,'$table_key',$encode_html)";
 
 return $this->wpdb->query($query);
 
@@ -111,10 +117,12 @@ function edit($vo_table_old, $vo_table_new){
 	$style_id = $vo_table_new->style_id;
 	$has_header = $vo_table_new->has_header;
 	$has_footer = $vo_table_new->has_footer;
+	$can_download = $vo_table_new->can_download;
 	$table_key = $vo_table_new->table_key; //Not included in edit statement
 	$encode_html = $vo_table_new->encode_html;
 
-	$query = "UPDATE ".$this->table_name." set `query_id` = $query_id, `name` = '$name', `title` = '$title', `rows_per_pg` = $rows_per_pg, `style_id` = '$style_id', `has_header` = $has_header, `has_footer` = $has_footer, `encode_html` = $encode_html where `table_id` = $id";
+	$query = "UPDATE ".$this->table_name." set `query_id` = $query_id, `name` = '$name', `title` = '$title', `rows_per_pg` = $rows_per_pg,
+	`style_id` = '$style_id', `has_header` = $has_header, `has_footer` = $has_footer, `can_download` = $can_download, `encode_html` = $encode_html where `table_id` = $id";
 
 	return $this->wpdb->query($query);
 

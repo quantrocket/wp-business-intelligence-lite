@@ -3,11 +3,7 @@
 Plugin Name: WP Business Intelligence Lite
 Plugin URI: http://www.wpbusinessintelligence.com
 Description: WP Business Intelligence Lite lets you create and insert dynamic charts into any post or page. You just have to connect to a database and run your SQL queries to retrieve the desired data.
-<<<<<<< .mine
-Version: 1.4
-=======
-Version: 1.3
->>>>>>> .r944506
+Version: 1.4.1
 Author: WP Business Intelligence
 Author URI: http://www.wpbusinessintelligence.com/who-we-are
 License: GPL3
@@ -74,8 +70,15 @@ function wpbi_admin_init() {
 
     wp_register_script( 'jquery-alphanumeric', $wpbi_url['jquery']['alphanumeric']);
     wp_register_script( 'colorpicker-colorpicker', $wpbi_url['colorpicker']['colorpicker']);
+
     wp_register_script( 'nvd3-d3js', $wpbi_url['nvd3']['d3js']);
     wp_register_script( 'nvd3-nvd3', $wpbi_url['nvd3']['nvd3'], array('nvd3-d3js'));
+    wp_register_script( 'wpbi-wpbi', $wpbi_url['wpbi']['wpbi'], array('nvd3-nvd3'));
+    wp_register_script( 'wpbi-rgbcolor', $wpbi_url['wpbi']['rgbcolor'], array('nvd3-nvd3'));
+    wp_register_script( 'wpbi-canvg', $wpbi_url['wpbi']['canvg'], array('nvd3-nvd3'));
+    wp_register_script( 'wpbi-svgenie', $wpbi_url['wpbi']['svgenie'], array('nvd3-nvd3'));
+    wp_register_script( 'wpbi-jspdf', $wpbi_url['wpbi']['jspdf'], array('nvd3-nvd3'));
+    wp_register_script( 'wpbi-jssvgtopdf', $wpbi_url['wpbi']['jssvgtopdf'], array('wpbi-jspdf'));
 
 }
 
@@ -145,19 +148,6 @@ function wpbi_initWPDBconnection()
     }
 }
 
-
-// Update DB tables when necessary
-
-function apply_db_updates(){
-    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-
-    global $qy_chart_views;
-
-    //necessary for upgrade from 1.0.5 to 1.0.6
-    dbDelta( $qy_chart_views );
-}
-
-
 // Create the menu box wpbi (Connections, Queries, Charts)
 function wpbi_menu() {
 	
@@ -170,21 +160,19 @@ function wpbi_menu() {
 	} else{
 		error_reporting(E_ERROR );
 	}
-	
-	//Check tables existence and create in case they don't exist
+    
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-	$wpdb->query($qy_table_databases);
-	$wpdb->query($qy_table_queries);
-  	$wpdb->query($qy_table_views);
-	$wpdb->query($qy_tb_cols);
-	$wpdb->query($qy_chart_views);
-	$wpdb->query($qy_ch_cols);
-	$wpdb->query($qy_table_vars);
+    dbDelta($qy_table_databases);
+    dbDelta($qy_table_queries);
+    dbDelta($qy_table_views);
+    dbDelta($qy_tb_cols);
+    dbDelta($qy_chart_views);
+    dbDelta($qy_ch_cols);
+    dbDelta($qy_table_vars);
 	//$wpdb->query($qy_fk);
 
-    apply_db_updates();
-
-    // Add a new top-level menu (ill-advised):
+    // Add a new top-level menu:
     add_menu_page('WP BI', 'WP Business Intelligence', 'manage_options', $wpbi_url['slug']['preferences'], 'wpbi_page', plugins_url('wp-business-intelligence-lite/images/chart-icon.png'), '110');
 
     // Add a second submenu to the custom top-level menu:
@@ -209,6 +197,24 @@ function wpbi_plugin_scripts() {
     wp_register_script( 'colorpicker-colorpicker', $wpbi_url['colorpicker']['colorpicker']);
     wp_register_script( 'nvd3-d3js', $wpbi_url['nvd3']['d3js']);
     wp_register_script( 'nvd3-nvd3', $wpbi_url['nvd3']['nvd3'], array('nvd3-d3js'));
+    wp_register_script( 'wpbi-wpbi', $wpbi_url['wpbi']['wpbi'], array('nvd3-nvd3'));
+    wp_register_script( 'wpbi-rgbcolor', $wpbi_url['wpbi']['rgbcolor'], array('nvd3-nvd3'));
+    wp_register_script( 'wpbi-canvg', $wpbi_url['wpbi']['canvg'], array('nvd3-nvd3'));
+    wp_register_script( 'wpbi-svgenie', $wpbi_url['wpbi']['svgenie'], array('nvd3-nvd3'));
+    wp_register_script( 'wpbi-jspdf', $wpbi_url['wpbi']['jspdf'], array('nvd3-nvd3'));
+    wp_register_script( 'wpbi-jssvgtopdf', $wpbi_url['wpbi']['jssvgtopdf'], array('wpbi-jspdf'));
+
+    wp_enqueue_style('colorpicker-css', $wpbi_url['colorpicker']['css']);    
+
+    wp_enqueue_script( 'jquery-alphanumeric');
+    wp_enqueue_script( 'colorpicker-colorpicker');    
+    wp_enqueue_script( 'nvd3-d3js');
+    wp_enqueue_script( 'wpbi-wpbi');
+    wp_enqueue_script( 'wpbi-rgbcolor');
+    wp_enqueue_script( 'wpbi-canvg');
+    wp_enqueue_script( 'wpbi-svgenie');
+    wp_enqueue_script( 'wpbi-jspdf');
+    wp_enqueue_script( 'wpbi-jssvgtopdf');
 
 }
 
@@ -249,9 +255,15 @@ function charts_page() {
     wp_enqueue_style('nvd3-css', $wpbi_url['nvd3']['css']);
 
     wp_enqueue_script( 'jquery-alphanumeric');
-    wp_enqueue_script( 'colorpicker-colorpicker');
+    wp_enqueue_script( 'colorpicker-colorpicker');    
     wp_enqueue_script( 'nvd3-d3js');
     wp_enqueue_script( 'nvd3-nvd3');
+    wp_enqueue_script( 'wpbi-wpbi');
+    wp_enqueue_script( 'wpbi-rgbcolor');
+    wp_enqueue_script( 'wpbi-canvg');
+    wp_enqueue_script( 'wpbi-svgenie');
+    wp_enqueue_script( 'wpbi-jspdf');
+    wp_enqueue_script( 'wpbi-jssvgtopdf');
 
 	//include the related administration page
 	include_once($wpbi_url['page']['charts']);

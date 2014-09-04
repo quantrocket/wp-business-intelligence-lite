@@ -147,7 +147,7 @@ class d3_dataMap {
                 $hierarchy[$node]["children"] = array();
             }
 
-            $returnArray = $this->buildHierarchy($hierarchy[$node]["children"], $row, $depth + 1);
+            $returnArray = $this->buildHierarchy($hierarchy[$node]["children"], $row, $depth + 1, $total, $previousTotal);
 
             $hierarchy[$node]["value"] += $returnArray[0];
             $hierarchy[$node]["previous"] += $returnArray[1];
@@ -215,7 +215,7 @@ class d3_dataMap {
                 $hierarchy[$node]["children"] = array();
             }
 
-            $returnArray = $this->buildHierarchyBubble($hierarchy[$node]["children"], $row, $depth + 1);
+            $returnArray = $this->buildHierarchyBubble($hierarchy[$node]["children"], $row, $depth + 1, $total, $previousTotal);
 
             $hierarchy[$node]["value"] += $returnArray[0];
             $hierarchy[$node]["previous"] += $returnArray[1];

@@ -74,6 +74,9 @@ var $bg_colour = NULL;
 var $type = 1;
 var $elements = array();
 var $element_name_font_size = 10;
+var $snapshot = false;
+var $stacked = false;
+var $time_format = "%d/%m/%Y";
 
 var $series;
 var $options;
@@ -358,10 +361,9 @@ function create_element($name, $values){
 		case self::PIE:				//assign array data
 									$this->elements[$name]->set_values($values);
 									break;
-									
+
 		case self::BAR_HORIZONTAL:	$this->x_axis_max_val = ($this->x_axis_max_val > max($values)) ? $this->x_axis_max_val : max($values);
-
-
+		
 		default:					//Set legend
 									$this->elements[$name]->set_key( $name, $this->element_name_font_size );
 									//assign array data
@@ -508,9 +510,24 @@ function set_y_precision($y_precision){
     $this->y_axis_precision = $y_precision;
 }
 
+//Set chart y axis range
+function set_y_range($y_range){
+    $this->y_axis_range = $y_range;
+}
+
 //Set chart y axis currency
 function set_y_currency($y_currency){
     $this->y_axis_currency = $y_currency;
+}
+
+//Set camera visibility
+function set_snapshot($snapshot = false){
+    $this->snapshot = $snapshot;
+}
+
+//Set stacked mode
+function set_stacked($stacked = false){
+    $this->stacked = $stacked;
 }
 
 //Set chart x_axis labels color 
@@ -539,7 +556,15 @@ function convert_to_time($labels)
     $unixtime = array();
     foreach($labels as $date)
     {
-        $newtime = strtotime($date) * 1000;
+        if(is_numeric($date))
+        {
+            $newtime = $date * 1000;
+        }
+        else
+        {
+            $newtime = strtotime($date) * 1000;
+        }
+
         array_push($unixtime, $newtime);
     }
     return $unixtime;
@@ -683,8 +708,10 @@ function set_y_axis_step_percent($y_axis_step_percent){
 	$this->y_axis_step_percent = $y_axis_step_percent;
 }
 
+//Set time format
+function set_time_format($time_format){
+    $this->time_format = $time_format;
+}
 
 
 }
-
-?>

@@ -52,7 +52,9 @@ if(isset($_GET['t'])){
 	echo '<br>';
 	echo '</body></html>';	
 } else if(isset($_GET['c'])){
-	echo get_html_4_chart($_GET['c']);	
+    echo get_iframe_chart_header();
+	echo get_html_4_chart($_GET['c']);
+    echo get_iframe_chart_footer();
 } else{
 	echo 'No values';
 }

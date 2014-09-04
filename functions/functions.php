@@ -54,7 +54,7 @@ function get_html_4_table($id){
 	$test_output = ''; //Store the test output 
 
 	//Get table metadata
-	$vo_table = new vo_table($table_id, NULL, NULL, NULL, NULL, NULL, NULL, NULL, $table_id, NULL);
+	$vo_table = new vo_table($table_id, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, $table_id, NULL);
 	$dao_table = new dao_table($wpdb, $wpbi_sql['tname']['tables']);
 	$vo_table = $search_by_key ? $dao_table->select_by_key($vo_table) : $dao_table->select($vo_table);
 	$vo_table = $vo_table[0];
@@ -95,7 +95,7 @@ function get_html_4_table($id){
 			$pagination->set_pg_parameter($table_id.'_paged');
 			$pagination->set_current_page(isset( $_GET[$pagination->pg_parameter] ) ? abs( (int) $_GET[$pagination->pg_parameter] ) : 1);
 			$pagination->set_rows($total_rows);
-			//$pagination->set_css_class('widefat post fixed');
+			//$pagination->set_css_class(basename($vo_table->style_id,'.css'));
 			$pagination->set_css_style(basename($vo_table->style_id,'.css'));
 			$pagination->set_pagination_stats($wpbi_dialog['table']['pagination']['stats']);
 			$pagination->set_paginate_links(
@@ -134,7 +134,7 @@ function get_html_4_table($id){
 		$table = new table();
 		$table->set_table_tpl_path($wpbi_url['tpl']);
 		$table->set_table_pagination($pagination_html);
-		//$table->set_css_class('widefat post fixed');
+		$table->set_css_class(basename($vo_table->style_id,'.css'));
 		$table->set_css_style(basename($vo_table->style_id,'.css'));
 		$table->set_rows($my_test_rows);
 		$table->set_cols($my_test_cols);
@@ -142,16 +142,15 @@ function get_html_4_table($id){
 		$table->set_title($vo_table->title);
 		$table->has_header($vo_table->has_header);
 		$table->has_footer($vo_table->has_footer);
+		$table->set_can_download($vo_table->can_download);
 		$table->encode_html(!($vo_table->encode_html));
 		$test_output = $test_output.$table->get_html();
-	
-			
 	}
 	
 	//Prepare output
 	$template_site->assign_vars(array(
 	/*Style*/
-	'TPL_CSS'				=> $wpbi_url['styles']['url'].$table->css_style.'.css'
+	'TPL_CSS'				=> $wpbi_url['styles']['url'] . "tables/" . $table->css_style.'.css'
 	));
 	
 	ob_start();
@@ -262,6 +261,7 @@ function get_html_4_chart($id){
 		$wpbi_chart	-> set_type($vo_chart->chart_type);
 		$wpbi_chart	-> set_x_axis_step_percent($vo_chart->chart_x_grid_lines);
 		$wpbi_chart	-> set_y_axis_step_percent($vo_chart->chart_y_grid_lines);
+        $wpbi_chart	-> set_time_format($vo_chart->chart_time_format);
 
 		//Get values, labels, colors
 		$label_color = array();
@@ -415,8 +415,11 @@ function get_html_4_chart($id){
 		$wpbi_chart	-> set_x_axis_thickness($vo_chart->chart_x_thickness);
         $wpbi_chart	-> set_x_precision($vo_chart->chart_x_axis_precision);
         $wpbi_chart	-> set_y_precision($vo_chart-> chart_y_axis_precision);
+        $wpbi_chart	-> set_y_range($vo_chart-> chart_y_axis_range);
         $wpbi_chart	-> set_y_currency($vo_chart-> chart_y_axis_currency);
-		
+        $wpbi_chart	-> set_snapshot($vo_chart-> chart_snapshot == 1);
+        $wpbi_chart	-> set_stacked($vo_chart-> chart_stacked == 1);
+
 		//Main legend for stacked chart
 		if($wpbi_chart->type == chart::BAR_STACKED){
 			$stacked_keys = array();
@@ -445,7 +448,7 @@ function get_html_4_chart($id){
 			'CH_NEW_CHART_RESIZE'       => 'chart_resize',
 			'CH_NEW_CHART_JSON' 		=> $wpbi_chart->get_json_code(),
             'CH_NEW_CHART_NVD3_CODE'    => $wpbi_chart->get_nvd3_chart_code(),
-            'CH_NEW_CHART_NVD3_HTML'  => $wpbi_chart->get_nvd3_chart_html(),
+            'CH_NEW_CHART_NVD3_HTML'    => $wpbi_chart->get_nvd3_chart_html(),
             'CH_NEW_CHART_NVD3_DATA'    => $wpbi_chart->get_nvd3_chart_data(),
             'CH_NEW_CHART_NVD3_PLACEHOLDER' => $wpbi_chart->get_nvd3_chart_placeholder()
 		)
@@ -458,4 +461,48 @@ function get_html_4_chart($id){
 	
 	return $chart_output;
 }
+
+function get_iframe_chart_header()
+{
+    $url = site_url();
+
+    $header = '
+        <!doctype html>
+        <!--[if lt IE 7 ]> <html class="no-js ie6" lang="it-IT"> <![endif]-->
+        <!--[if IE 7 ]>    <html class="no-js ie7" lang="it-IT"> <![endif]-->
+        <!--[if IE 8 ]>    <html class="no-js ie8" lang="it-IT"> <![endif]-->
+        <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="it-IT"> <!--<![endif]-->
+        <head>
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        ';
+
+    $header .= "<script type='text/javascript' src='" . $url . "wp-includes/js/jquery/jquery.js?ver=1.11.0'></script>
+        <script type='text/javascript' src='" . $url . "wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>";
+
+    return $header . '</head><body>';
+}
+
+function get_iframe_chart_footer()
+{
+    $url = plugin_dir_url('wp-business-intelligence.php');
+
+    $footer = "
+        <link rel='stylesheet' id='bootstrap-css-css'  href='" . $url . "wp-business-intelligence/css/bootstrap.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='dc-css-css'  href='" . $url . "wp-business-intelligence/css/dc.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='960-css-css'  href='" . $url . "wp-business-intelligence/css/960.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='wpbi-dash-css-css'  href='" . $url . "wp-business-intelligence/css/wpbidash.css' type='text/css' media='all' />
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence/resources/jquery-alphanumeric/jquery.alphanumeric.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence/resources/colorpicker/jquery.colorPicker.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence/resources/nvd3/js/lib/d3.v3.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/crossfilter.min.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/underscore.min.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/dc.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/bootstrap.min.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/wpbidash.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/wpbi.js'></script>";
+    return $footer . '</body></html>';
+}
+
 ?>

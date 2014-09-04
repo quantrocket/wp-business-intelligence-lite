@@ -49,6 +49,10 @@ jQuery(document).ready(function() {
 				<td  align="left" scope="row">{VW_EDIT_ROWS_PER_PG}</td>
 				<td align="left" valign="top"><input name="{P_VW_ROWS_PER_PG}" type="text" id="{P_VW_ROWS_PER_PG}" value="{V_VW_ROWS_PER_PG}" maxlength="11"></td>
 	        </tr>
+            <tr valign="top">
+                <td  align="left" scope="row">{VW_EDIT_DOWNLOAD}</td>
+                <td align="left" valign="top"><input type="checkbox" name="{P_VW_DOWNLOAD}" value="{V_VW_DOWNLOAD}" {V_VW_DOWNLOAD_CHECKED}></td>
+            </tr>
 		</tbody>
 	</table></td>
         <td align="left" valign="top"><table class="widefat">

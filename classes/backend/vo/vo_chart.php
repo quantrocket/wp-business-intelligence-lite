@@ -66,8 +66,19 @@ var $chart_y_labels_rotation;
 var $chart_y_legend;
 var $chart_y_legend_color;
 var $chart_y_legend_size;
+var $chart_snapshot;
+var $chart_stacked;
+var $chart_time_format;
 
-function vo_chart($chart_id=NULL, $query_id=NULL, $chart_key=NULL, $chart_name=NULL, $chart_type=NULL, $chart_title=NULL, $chart_title_size=NULL, $chart_title_color=NULL, $chart_bg_color=NULL, $chart_width=NULL,$chart_width_percent=NULL, $chart_height=NULL, $chart_height_percent=NULL, $chart_x_color=NULL, $chart_x_precision=NULL, $chart_x_thickness=NULL, $chart_x_grid_color=NULL, $chart_x_grid_lines=NULL, $chart_x_labels_color=NULL, $chart_x_labels_size=NULL, $chart_x_labels_rotation=NULL, $chart_x_legend=NULL, $chart_x_legend_color=NULL, $chart_x_legend_size=NULL, $chart_y_color=NULL, $chart_y_precision=NULL, $chart_y_currency=NULL, $chart_y_thickness=NULL, $chart_y_grid_color=NULL, $chart_y_grid_lines=NULL, $chart_y_labels_color=NULL, $chart_y_labels_size=NULL, $chart_y_labels_rotation=NULL, $chart_y_legend=NULL, $chart_y_legend_color=NULL, $chart_y_legend_size=NULL){
+function vo_chart($chart_id=NULL, $query_id=NULL, $chart_key=NULL, $chart_name=NULL, $chart_type=NULL, $chart_title=NULL,
+                  $chart_title_size=NULL, $chart_title_color=NULL, $chart_bg_color=NULL, $chart_width=NULL,
+                  $chart_width_percent=NULL, $chart_height=NULL, $chart_height_percent=NULL, $chart_x_color=NULL,
+                  $chart_x_precision=NULL, $chart_x_thickness=NULL, $chart_x_grid_color=NULL, $chart_x_grid_lines=NULL,
+                  $chart_x_labels_color=NULL, $chart_x_labels_size=NULL, $chart_x_labels_rotation=NULL, $chart_x_legend=NULL,
+                  $chart_x_legend_color=NULL, $chart_x_legend_size=NULL, $chart_y_color=NULL, $chart_y_precision=NULL,
+                  $chart_y_currency=NULL, $chart_y_thickness=NULL, $chart_y_grid_color=NULL, $chart_y_grid_lines=NULL,
+                  $chart_y_labels_color=NULL, $chart_y_labels_size=NULL, $chart_y_labels_rotation=NULL, $chart_y_legend=NULL,
+                  $chart_y_legend_color=NULL, $chart_y_legend_size=NULL, $chart_snapshot = false, $chart_stacked = false, $chart_time_format="%d/%m/%Y", $chart_y_range=''){
 
         $this->chart_id = $chart_id;
         $this->query_id = $query_id;
@@ -95,6 +106,7 @@ function vo_chart($chart_id=NULL, $query_id=NULL, $chart_key=NULL, $chart_name=N
         $this->chart_x_legend_size = $chart_x_legend_size;
         $this->chart_y_color = $chart_y_color;
         $this->chart_y_axis_precision = $chart_y_precision;
+        $this->chart_y_axis_range = $chart_y_range;
         $this->chart_y_axis_currency = $chart_y_currency;
         $this->chart_y_thickness = $chart_y_thickness;
         $this->chart_y_grid_color = $chart_y_grid_color;
@@ -105,7 +117,9 @@ function vo_chart($chart_id=NULL, $query_id=NULL, $chart_key=NULL, $chart_name=N
         $this->chart_y_legend = $chart_y_legend;
         $this->chart_y_legend_color = $chart_y_legend_color;
         $this->chart_y_legend_size = $chart_y_legend_size;
-
+        $this->chart_snapshot = $chart_snapshot;
+        $this->chart_stacked = $chart_stacked;
+        $this->chart_time_format = $chart_time_format;
 }
 
 function set_chart_id($chart_id){$this->chart_id = $chart_id;}
@@ -123,6 +137,8 @@ function set_chart_title($chart_title){$this->chart_title = $chart_title;}
 function set_chart_title_size($chart_title_size = 10){$this->chart_title_size = $chart_title_size;}
 
 function set_chart_title_color($chart_title_color = "#000000"){$this->chart_title_color = $chart_title_color;}
+
+function set_chart_time_format($chart_time_format){$this->chart_time_format = $chart_time_format;}
 
 function set_chart_bg_color($chart_bg_color = "#000000"){$this->chart_bg_color = $chart_bg_color;}
 
@@ -158,6 +174,8 @@ function set_chart_x_legend_size($chart_x_legend_size = 15){$this->chart_x_legen
 
 function set_chart_y_precision($chart_y_precision = 1){$this->chart_y_axis_precision = is_null($chart_y_precision) ? 1 : $chart_y_precision ;}
 
+function set_chart_y_range($chart_y_range = ''){$this->chart_y_axis_range = is_null($chart_y_range) ? '' : $chart_y_range ;}
+
 function set_chart_y_currency($chart_y_currency = '$'){$this->chart_y_axis_currency = is_null($chart_y_currency) ? '$' : $chart_y_currency ;}
 
 function set_chart_y_color($chart_y_color = "#DAD5E0"){$this->chart_y_color = is_null($chart_y_color) ? "#DAD5E0" : $chart_y_color ;}
@@ -179,6 +197,10 @@ function set_chart_y_legend($chart_y_legend){$this->chart_y_legend = $chart_y_le
 function set_chart_y_legend_color($chart_y_legend_color ="#000000"){$this->chart_y_legend_color = is_null($chart_y_legend_color) ? "#000000" : $chart_y_legend_color ;}
 
 function set_chart_y_legend_size($chart_y_legend_size = 15){$this->chart_y_legend_size = is_null($chart_y_legend_size) ? 15 : $chart_y_legend_size ;}
+
+function set_chart_snapshot($chart_snapshot = false){$this->chart_snapshot = $chart_snapshot;}
+
+function set_chart_stacked($chart_stacked = false){$this->chart_stacked = $chart_stacked;}
 
 }
 

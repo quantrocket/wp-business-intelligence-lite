@@ -54,7 +54,7 @@ function wpbi_mce_tag( $atts, $content = null ) {
   if($type == 'table'){
 	if($iframe=='y'){
 		//Get Key
-		$vo_table = new vo_table($id, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+		$vo_table = new vo_table($id, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 		$dao_table = new dao_table($wpdb, $wpbi_sql['tname']['tables']);
 		$vo_table = $dao_table->select($vo_table);
 		$vo_table = $vo_table[0];
@@ -62,7 +62,8 @@ function wpbi_mce_tag( $atts, $content = null ) {
 		//Prepare output
 		$template_site->assign_vars(array(
 		'IFRAME_JS_AUTOHEIGHT'	=> $wpbi_url['jquery']['iframe-auto-height'],
-		'IFRAME_SRC'			=> $wpbi_url['iframe']['src'].'?t='.$table_key
+		'IFRAME_SRC'			=> $wpbi_url['iframe']['src'].'?t='.$table_key,
+		'IFRAME_WIDTH'			=> '100%'
 		));
 	
 		ob_start();
@@ -74,12 +75,13 @@ function wpbi_mce_tag( $atts, $content = null ) {
 	} else{
 		$code = get_html_4_table($id);
 	}
-  } else if($type == 'chart'){
-  	if($iframe=='y'){
+  }
+  else if($type == 'chart'){
+    if($iframe=='y'){
 		//Get Key
 		$selected_charts = $id;
-		$vo_chart = new vo_chart(NULL);		
-		$vo_chart->set_chart_id($selected_charts);				
+		$vo_chart = new vo_chart(NULL);
+		$vo_chart->set_chart_id($selected_charts);
 		$vo_chart->set_chart_key($selected_charts);
 		$dao_chart = new dao_chart($wpdb, $wpbi_sql['tname']['charts']);
 		$vo_chart = $dao_chart->select($vo_chart);
@@ -89,7 +91,9 @@ function wpbi_mce_tag( $atts, $content = null ) {
 		//Prepare output
 		$template_site->assign_vars(array(
 		'IFRAME_JS_AUTOHEIGHT'	=> $wpbi_url['jquery']['iframe-auto-height'],
-		'IFRAME_SRC'			=> $wpbi_url['iframe']['src'].'?c='.$chart_key
+		'IFRAME_SRC'			=> $wpbi_url['iframe']['src'].'?c='.$chart_key,
+        'IFRAME_WIDTH'          => is_numeric($vo_chart->width) ? $vo_chart->width.'px' : '800px'
+
 		));
 	
 		ob_start();
