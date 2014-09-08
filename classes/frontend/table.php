@@ -187,9 +187,9 @@ function get_html(){
 
     if($this->can_download > 0)
     {
-		$url = site_url();
+        $url = site_url();
         $table_id = str_replace(' ', '', $this->title);
-        $can_download = '<a href="#" id="download_' . $table_id . '"><img id="tablecsv" title="download table data" src="' . $url . '/wp-content/plugins/wp-business-intelligence/images/CSV.png"></a>';
+        $can_download = '<a href="#" id="download_' . $table_id . '"><img id="tablecsv" title="download table data" src="' . $url . '/wp-content/plugins/wp-business-intelligence-lite/images/CSV.png"></a>';
     }
 	
 	//Table

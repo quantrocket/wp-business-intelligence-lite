@@ -4,7 +4,7 @@ Donate link: http://www.wpbusinessintelligence.com/contact-us/
 Tags: charts, tables, d3, line chart, pie chart, bar chart, donut chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
 Tested up to: 3.9.2
-Stable tag: 1.4
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,9 +77,8 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * Removed file with potential vulnerability
 = 1.4 =
 * Charts and tables IDs are shown in the dashboard
-= 1.4.1 = 
-* Added posibility to download charts and tables data
 = 1.5 =
+* Added posibility to download charts and tables data
 * Charts and table download as PDF or image
 * Additional controls on charts
 
@@ -108,7 +107,7 @@ In order to add more Datatables features you will have to edit the "table.tpl" f
 At the very top of the file you will find the table initialisation call with the default options. You will have to edit this code in compliance with the [Datatables API](http://datatables.net/api).
 
 ### Can I pass parameters to the queries? ###
-Yes, you can make queries parametric via WP constants and URL query string
+Yes, you can make queries parametric via WordPress constants
 
 == Upgrade Notice == 
 

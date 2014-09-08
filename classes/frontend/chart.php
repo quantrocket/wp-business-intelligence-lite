@@ -409,7 +409,7 @@ function create_element($name, $values){
 	}
 	
 	//steps
-    if(isset($this->x_axis_max_val))
+    /*if(isset($this->y_axis_max_val))
     {
         if(!is_numeric($this->y_axis_max_val))
         {
@@ -432,7 +432,7 @@ function create_element($name, $values){
             $this->x_axis_step = intval((($this->x_axis_max_val - $this->x_axis_min_val)*$this->x_axis_step_percent)/100);
         }
     }
-	
+	*/
 	return $this->elements[$name];
 }
 
