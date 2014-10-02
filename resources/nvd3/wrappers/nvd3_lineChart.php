@@ -30,8 +30,8 @@ class nvd3_lineChart
 {
     var $xAxisFormat = ',.1f';
     var $yAxisFormat = ',.1f';
-    var $xAxisLabel = 'x label';
-    var $yAxisLabel = 'y label';
+    var $xAxisLabel = '';
+    var $yAxisLabel = '';
     var $yAxisRange = '';
     var $x_axis_istime = false;
     var $dataSeries;
@@ -52,6 +52,8 @@ class nvd3_lineChart
         $this->xAxisFormat = '.'.$chart->x_axis_precision.'f';
         $this->yAxisFormat = '.'.$chart->y_axis_precision.'f';
         $this->yAxisRange = $chart->y_axis_range;
+        $this->yAxisLabel = $chart->y_axis_label;
+        $this->xAxisLabel = $chart->x_axis_label;
         $this->timeFormat = $chart->time_format;
         $this->required_js_libs = array();
 
@@ -92,8 +94,9 @@ class nvd3_lineChart
 
         if($this->yAxisRange != '')
         {
-            $min = explode(',', $this->yAxisRange)[0];
-            $max = explode(',', $this->yAxisRange)[1];
+            $range = explode(',', $this->yAxisRange);
+            $min = $range[0];
+            $max = $range[1];
             $forceY = '.forceY([' . $min . ', ' . $max . ']);';
         }
 
@@ -116,8 +119,13 @@ class nvd3_lineChart
                             return d3.time.format('" . $this->timeFormat . "')(new Date(d))
                           });
 
+                      chart.xAxis.axisLabel('" . $this->xAxisLabel . "');
+
                       chart.yAxis
                           .tickFormat(d3.format('".$this->yAxisFormat."'));
+
+                      chart.yAxis.axisLabel('" . $this->yAxisLabel . "');
+                      chart.margin({top: 30, right: 20, bottom: 75, left: 75});
 
                       d3.select('#".$this->placeholder->name." svg')
                           .datum(nvd3Data_".$this->placeholder->name.")
@@ -147,13 +155,18 @@ class nvd3_lineChart
                  ".$x_axis_text."
 
                 chart.yAxis
-                      .axisLabel('".$this->yAxisLabel."')
+                      //.axisLabel('".$this->yAxisLabel."')
                       .tickFormat(d3.format('".$this->yAxisFormat."'));
+
+                chart.yAxis.axisLabel('" . $this->yAxisLabel . "');
 
                 chart.xAxis
                       .tickFormat(function(d){
                         return dataSeries[d].x;
                         });
+
+                chart.xAxis.axisLabel('" . $this->xAxisLabel . "');
+                chart.margin({top: 30, right: 20, bottom: 75, left: 75});
 
                 d3.select('#".$this->placeholder->name." svg')
                     .datum(nvd3Data_".$this->placeholder->name.")

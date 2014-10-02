@@ -431,8 +431,8 @@ function create_element($name, $values){
         {
             $this->x_axis_step = intval((($this->x_axis_max_val - $this->x_axis_min_val)*$this->x_axis_step_percent)/100);
         }
-    }
-	*/
+    }*/
+	
 	return $this->elements[$name];
 }
 
@@ -489,7 +489,6 @@ function get_nvd3_chart_placeholder()
     return $ph;
 }
 
-
 //Set chart bg_colour 
 function set_bg_colour($bg_colour){
 	$this->bg_colour = $bg_colour;
@@ -505,6 +504,12 @@ function set_x_precision($x_precision){
     $this->x_axis_precision = $x_precision;
 }
 
+//Set chart x axis label
+function set_x_label($x_label){
+    $this->x_axis_label = $x_label;
+}
+
+
 //Set chart y axis precision
 function set_y_precision($y_precision){
     $this->y_axis_precision = $y_precision;
@@ -513,6 +518,11 @@ function set_y_precision($y_precision){
 //Set chart y axis range
 function set_y_range($y_range){
     $this->y_axis_range = $y_range;
+}
+
+//Set chart y axis label
+function set_y_label($y_label){
+    $this->y_axis_label = $y_label;
 }
 
 //Set chart y axis currency

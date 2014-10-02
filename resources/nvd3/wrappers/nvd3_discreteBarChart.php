@@ -35,21 +35,29 @@ class nvd3_discreteBarChart
     var $tooltips = "true";
     var $showLabels = "true";
     var $transitionDuration = "500";
+    var $x_axis_istime = false;
     var $height = "400px";
     var $width = "500px";
     var $placeholder = NULL;
     var $nvd3Settings = NULL;
     var $xAxisFormat = '.1f';
     var $yAxisFormat = '.1f';
+    var $xAxisLabel = '';
+    var $yAxisLabel = '';
     var $yAxisRange = '';
+    var $timeFormat = "%d/%m/%Y";
 
     public function __construct($chart)
     {
         $this->nvd3Settings = new nvd3_settings();
         $this->placeholder = new nvd3_placeholder($chart);
+        $this->x_axis_istime = $chart->x_axis_istime;
         $this->xAxisFormat = '.'.$chart->x_axis_precision.'f';
         $this->yAxisFormat = '.'.$chart->y_axis_precision.'f';
+        $this->timeFormat = $chart->time_format;
         $this->yAxisRange = $chart->y_axis_range;
+        $this->xAxisLabel = $chart->x_axis_label;
+        $this->yAxisLabel = $chart->y_axis_label;
 
         wp_enqueue_script('nvd3-tooltip', $this->nvd3Settings->wpbi_url['nvd3']['tooltip'] );
         wp_enqueue_script('nvd3-utils', $this->nvd3Settings->wpbi_url['nvd3']['utils'] );
@@ -79,36 +87,81 @@ class nvd3_discreteBarChart
 
         if($this->yAxisRange != '')
         {
-            $min = explode(',', $this->yAxisRange)[0];
-            $max = explode(',', $this->yAxisRange)[1];
+            $range = explode(',', $this->yAxisRange);
+            $min = $range[0];
+            $max = $range[1];
             $forceY = '.forceY([' . $min . ', ' . $max . ']);';
         }
 
-        return "nv.addGraph(function() {
-                var chart = nv.models.discreteBarChart()
-                              .x(function(d) { return d.label })
-                              .y(function(d) { return d.value })
-                              .margin({top: 20, right:10, bottom:100, left:100})
-                              .tooltips( $this->tooltips )
-                              .showValues( $this->showLabels )
-                              .valueFormat(d3.format('$this->yAxisFormat'))" . $forceY . ";
+        if($this->x_axis_istime)
+        {
+            return "nv.addGraph(function() {
+                    var chart = nv.models.discreteBarChart()
+                                  .x(function(d) { return d.label })
+                                  .y(function(d) { return d.value })
+                                  .margin({top: 30, right:20, bottom:85, left:75})
+                                  .tooltips( $this->tooltips )
+                                  .showValues( $this->showLabels )
+                                  .valueFormat(d3.format('$this->yAxisFormat'))" . $forceY . ";
 
-                chart.yAxis
-                    .tickFormat(d3.format('$this->yAxisFormat'));
+                    chart.yAxis
+                        .tickFormat(d3.format('$this->yAxisFormat'));
 
-                chart.xAxis.rotateLabels(-45);
+                    chart.yAxis.axisLabel('" . $this->yAxisLabel . "');
 
-                d3.select('#".$this->placeholder->name." svg')
-                    .datum(nvd3Data_".$this->placeholder->name.")
-                    .transition().duration(".$this->transitionDuration.")
-                    .call(chart);
+                    chart.xAxis
+                          .tickFormat(function(d) {
+                            return d3.time.format('" . $this->timeFormat . "')(new Date(parseInt(d)))
+                          });
 
-                  nv.utils.windowResize(chart.update);
+                    chart.xAxis.rotateLabels(-45);
 
-                d3.selectAll('.nv-bar').attr('class', '".$this->placeholder->name."Class');
+                    chart.xAxis.axisLabel('" . $this->xAxisLabel . "');
 
-                return chart;
-            });";
+                    d3.select('#".$this->placeholder->name." svg')
+                        .datum(nvd3Data_".$this->placeholder->name.")
+                        .transition().duration(".$this->transitionDuration.")
+                        .call(chart);
+
+                      nv.utils.windowResize(chart.update);
+
+                    d3.selectAll('.nv-bar').attr('class', '".$this->placeholder->name."Class');
+
+                    return chart;
+                });";
+        }
+        else
+        {
+            return "nv.addGraph(function() {
+                    var chart = nv.models.discreteBarChart()
+                                  .x(function(d) { return d.label })
+                                  .y(function(d) { return d.value })
+                                  .margin({top: 30, right: 20, bottom: 85, left: 75})
+                                  .tooltips( $this->tooltips )
+                                  .showValues( $this->showLabels )
+                                  .valueFormat(d3.format('$this->yAxisFormat'))" . $forceY . ";
+
+                    chart.yAxis
+                        .tickFormat(d3.format('$this->yAxisFormat'));
+
+                    chart.xAxis.rotateLabels(-45);
+
+                    chart.xAxis.axisLabel('" . $this->xAxisLabel . "');
+                    chart.yAxis.axisLabel('" . $this->yAxisLabel . "');
+
+
+                    d3.select('#".$this->placeholder->name." svg')
+                        .datum(nvd3Data_".$this->placeholder->name.")
+                        .transition().duration(".$this->transitionDuration.")
+                        .call(chart);
+
+                      nv.utils.windowResize(chart.update);
+
+                    d3.selectAll('.nv-bar').attr('class', '".$this->placeholder->name."Class');
+
+                    return chart;
+                });";
+        }
     }
 
     // create the CSS style for the placeholder

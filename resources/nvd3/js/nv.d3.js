@@ -5886,6 +5886,7 @@ nv.models.linePlusBarChart = function() {
     , getY = function(d) { return d.y }
     , color = nv.utils.defaultColor()
     , showLegend = true
+    , reduceXTicks = true // if false a tick will show for every data point
     , tooltips = true
     , tooltip = function(key, x, y, e, graph) {
         return '<h3>' + key + '</h3>' +
@@ -6094,6 +6095,16 @@ nv.models.linePlusBarChart = function() {
         .ticks( availableWidth / 100 )
         .tickSize(-availableHeight, 0);
 
+        var xTicks = g.select('.nv-x.nv-axis > g').selectAll('g');
+
+        if (reduceXTicks)
+            xTicks
+                .filter(function(d,i) {
+                    return i % Math.ceil(data[0].values.length / (availableWidth / 100)) !== 0;
+                })
+                .selectAll('text, line')
+                .style('opacity', 0);
+
       g.select('.nv-x.nv-axis')
           .attr('transform', 'translate(0,' + y1.range()[0] + ')');
       d3.transition(g.select('.nv-x.nv-axis'))
@@ -6291,6 +6302,12 @@ nv.models.linePlusBarChart = function() {
     noData = _;
     return chart;
   };
+
+    chart.reduceXTicks= function(_) {
+        if (!arguments.length) return reduceXTicks;
+        reduceXTicks = _;
+        return chart;
+    };
 
   //============================================================
 

@@ -335,18 +335,21 @@ function get_html_4_chart($id){
 													}
 													break;
 			case chart::BAR_STACKED:		if(sizeof($label_x) > 0){
-														$wpbi_chart	-> set_x_axis_labels($label_x,
-														$vo_chart->chart_x_labels_size, 
-														$vo_chart->chart_x_labels_color);
-													}
-													$wpbi_chart-> set_y_axis_labels_color($vo_chart->chart_y_labels_color);
-													$wpbi_chart-> set_y_axis_labels_size($vo_chart->chart_y_labels_size);
-													foreach($data_stacked as $key => $value){
-
-														$wpbi_chart	-> create_element('BAR_STACKED', $value);
-														$wpbi_chart	-> elements['BAR_STACKED'] -> set_colours($stacked_label_color);
-													}
-													break;
+                                                    $wpbi_chart	-> set_x_axis_labels($label_x,
+                                                        $_POST[$wpbi_settings['parameter']['ch-x-label-size']],
+                                                        $_POST[$wpbi_settings['parameter']['ch-x-label-color']]);
+                                                        $wpbi_chart->x_axis_istime = (sizeof($istime_cols) > 0);
+                                                        if($wpbi_chart->x_axis_istime){
+                                                            $wpbi_chart->x_axis_labels->labels = $wpbi_chart->convert_to_time($wpbi_chart->x_axis_labels->labels);
+                                                        }
+                                                    }
+                                                        $wpbi_chart-> set_y_axis_labels_color($_POST[$wpbi_settings['parameter']['ch-y-label-color']]);
+                                                        $wpbi_chart-> set_y_axis_labels_size($_POST[$wpbi_settings['parameter']['ch-y-label-size']]);
+                                                        foreach($data_stacked as $key => $value){
+                                                            $wpbi_chart	-> create_element('BAR_STACKED', $value);
+                                                            $wpbi_chart	-> elements['BAR_STACKED'] -> set_colours($stacked_label_color);
+                                                        }
+                                                        break;
             case chart::STACKED_AREA:
 			case chart::LINE_AREA:		if(sizeof($label_x) > 0){
 														$wpbi_chart	-> set_x_axis_labels($label_x,
@@ -405,6 +408,7 @@ function get_html_4_chart($id){
 		//Set legends
 		$wpbi_chart	-> set_y_legend($vo_chart->chart_y_legend,$vo_chart->chart_y_legend_size, $vo_chart->chart_y_legend_color);
 		$wpbi_chart	-> set_x_legend($vo_chart->chart_x_legend,$vo_chart->chart_x_legend_size, $vo_chart->chart_x_legend_color);
+        $wpbi_chart	-> set_x_label($vo_chart-> chart_x_axis_label);
 		$wpbi_chart	-> set_x_axis_labels_rotation($vo_chart->chart_x_labels_rotation);
 		$wpbi_chart	-> set_y_axis_labels_rotation($vo_chart->chart_y_labels_rotation);
 		$wpbi_chart	-> set_y_axis_color($vo_chart->chart_y_color);
@@ -416,6 +420,7 @@ function get_html_4_chart($id){
         $wpbi_chart	-> set_x_precision($vo_chart->chart_x_axis_precision);
         $wpbi_chart	-> set_y_precision($vo_chart-> chart_y_axis_precision);
         $wpbi_chart	-> set_y_range($vo_chart-> chart_y_axis_range);
+        $wpbi_chart	-> set_y_label($vo_chart-> chart_y_axis_label);
         $wpbi_chart	-> set_y_currency($vo_chart-> chart_y_axis_currency);
         $wpbi_chart	-> set_snapshot($vo_chart-> chart_snapshot == 1);
         $wpbi_chart	-> set_stacked($vo_chart-> chart_stacked == 1);
@@ -478,8 +483,8 @@ function get_iframe_chart_header()
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
         ';
 
-    $header .= "<script type='text/javascript' src='" . $url . "wp-includes/js/jquery/jquery.js?ver=1.11.0'></script>
-        <script type='text/javascript' src='" . $url . "wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>";
+    $header .= "<script type='text/javascript' src='" . $url . "/wp-includes/js/jquery/jquery.js?ver=1.11.0'></script>
+        <script type='text/javascript' src='" . $url . "/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>";
 
     return $header . '</head><body>';
 }
@@ -489,18 +494,9 @@ function get_iframe_chart_footer()
     $url = plugin_dir_url('wp-business-intelligence.php');
 
     $footer = "
-        <link rel='stylesheet' id='bootstrap-css-css'  href='" . $url . "wp-business-intelligence/css/bootstrap.css' type='text/css' media='all' />
-        <link rel='stylesheet' id='dc-css-css'  href='" . $url . "wp-business-intelligence/css/dc.css' type='text/css' media='all' />
-        <link rel='stylesheet' id='960-css-css'  href='" . $url . "wp-business-intelligence/css/960.css' type='text/css' media='all' />
-        <link rel='stylesheet' id='wpbi-dash-css-css'  href='" . $url . "wp-business-intelligence/css/wpbidash.css' type='text/css' media='all' />
         <script type='text/javascript' src='" . $url . "wp-business-intelligence/resources/jquery-alphanumeric/jquery.alphanumeric.js'></script>
         <script type='text/javascript' src='" . $url . "wp-business-intelligence/resources/colorpicker/jquery.colorPicker.js'></script>
         <script type='text/javascript' src='" . $url . "wp-business-intelligence/resources/nvd3/js/lib/d3.v3.js'></script>
-        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/crossfilter.min.js'></script>
-        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/underscore.min.js'></script>
-        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/dc.js'></script>
-        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/bootstrap.min.js'></script>
-        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/wpbidash.js'></script>
         <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/wpbi.js'></script>";
     return $footer . '</body></html>';
 }

@@ -32,7 +32,7 @@
 //##########################     ENGLISH      ###########################
 //#######################################################################
 
-$wpbi_dialog['disclaimer']['software']['version']				= 	__('1.5', 'wpbusinessintelligence');
+$wpbi_dialog['disclaimer']['software']['version']				= 	__('1.6', 'wpbusinessintelligence');
 $wpbi_dialog['disclaimer']['license']['gpl']					= 	__('
 	<b>Terms of use</b><br>
 	<br>
@@ -192,6 +192,8 @@ $wpbi_dialog['form']['label']['chart-height']				= 	__('Height', 'wpbusinessinte
 $wpbi_dialog['form']['label']['chart-x-precision']				= 	__('X axis precision', 'wpbusinessintelligence');
 $wpbi_dialog['form']['label']['chart-y-precision']				= 	__('Y axis precision', 'wpbusinessintelligence');
 $wpbi_dialog['form']['label']['chart-y-range']				= 	__('Y axis range (MIN,MAX)', 'wpbusinessintelligence');
+$wpbi_dialog['form']['label']['chart-y-label']				= 	__('Y axis label', 'wpbusinessintelligence');
+$wpbi_dialog['form']['label']['chart-x-label']				= 	__('X axis label', 'wpbusinessintelligence');
 $wpbi_dialog['form']['label']['chart-y-currency']				= 	__('Y axis currency', 'wpbusinessintelligence');
 $wpbi_dialog['form']['label']['chart-snapshot']				= 	__('Enable chart download', 'wpbusinessintelligence');
 $wpbi_dialog['form']['label']['chart-stacked']				= 	__('Default to stacked', 'wpbusinessintelligence');

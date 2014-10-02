@@ -78,7 +78,8 @@ function vo_chart($chart_id=NULL, $query_id=NULL, $chart_key=NULL, $chart_name=N
                   $chart_x_legend_color=NULL, $chart_x_legend_size=NULL, $chart_y_color=NULL, $chart_y_precision=NULL,
                   $chart_y_currency=NULL, $chart_y_thickness=NULL, $chart_y_grid_color=NULL, $chart_y_grid_lines=NULL,
                   $chart_y_labels_color=NULL, $chart_y_labels_size=NULL, $chart_y_labels_rotation=NULL, $chart_y_legend=NULL,
-                  $chart_y_legend_color=NULL, $chart_y_legend_size=NULL, $chart_snapshot = false, $chart_stacked = false, $chart_time_format="%d/%m/%Y", $chart_y_range=''){
+                  $chart_y_legend_color=NULL, $chart_y_legend_size=NULL, $chart_snapshot = false, $chart_stacked = false,
+                  $chart_time_format="%d/%m/%Y", $chart_y_range='', $chart_y_label='', $chart_x_label=''){
 
         $this->chart_id = $chart_id;
         $this->query_id = $query_id;
@@ -98,6 +99,7 @@ function vo_chart($chart_id=NULL, $query_id=NULL, $chart_key=NULL, $chart_name=N
         $this->chart_x_thickness = $chart_x_thickness;
         $this->chart_x_grid_color = $chart_x_grid_color;
         $this->chart_x_grid_lines = $chart_x_grid_lines;
+        $this->chart_x_axis_label = $chart_x_label;
         $this->chart_x_labels_color = $chart_x_labels_color;
         $this->chart_x_labels_size = $chart_x_labels_size;
         $this->chart_x_labels_rotation = $chart_x_labels_rotation;
@@ -107,6 +109,7 @@ function vo_chart($chart_id=NULL, $query_id=NULL, $chart_key=NULL, $chart_name=N
         $this->chart_y_color = $chart_y_color;
         $this->chart_y_axis_precision = $chart_y_precision;
         $this->chart_y_axis_range = $chart_y_range;
+        $this->chart_y_axis_label = $chart_y_label;
         $this->chart_y_axis_currency = $chart_y_currency;
         $this->chart_y_thickness = $chart_y_thickness;
         $this->chart_y_grid_color = $chart_y_grid_color;
@@ -160,6 +163,8 @@ function set_chart_x_grid_color($chart_x_grid_color = "#DAD5E0"){$this->chart_x_
 
 function set_chart_x_grid_lines($chart_x_grid_lines = 15){$this->chart_x_grid_lines = is_null($chart_x_grid_lines) ? 15 : $chart_x_grid_lines ;}
 
+function set_chart_x_label($chart_x_label = ''){$this->chart_x_axis_label = is_null($chart_x_label) ? '' : $chart_x_label ;}
+
 function set_chart_x_labels_color($chart_x_labels_color = "#000000"){$this->chart_x_labels_color = is_null($chart_x_labels_color) ? "#000000" : $chart_x_labels_color ;}
 
 function set_chart_x_labels_size($chart_x_labels_size = 10){$this->chart_x_labels_size = is_null($chart_x_labels_size) ? 10 : $chart_x_labels_size ;}
@@ -175,6 +180,8 @@ function set_chart_x_legend_size($chart_x_legend_size = 15){$this->chart_x_legen
 function set_chart_y_precision($chart_y_precision = 1){$this->chart_y_axis_precision = is_null($chart_y_precision) ? 1 : $chart_y_precision ;}
 
 function set_chart_y_range($chart_y_range = ''){$this->chart_y_axis_range = is_null($chart_y_range) ? '' : $chart_y_range ;}
+
+function set_chart_y_label($chart_y_label = ''){$this->chart_y_axis_label = is_null($chart_y_label) ? '' : $chart_y_label ;}
 
 function set_chart_y_currency($chart_y_currency = '$'){$this->chart_y_axis_currency = is_null($chart_y_currency) ? '$' : $chart_y_currency ;}
 

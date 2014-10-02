@@ -61,7 +61,11 @@ function init_help() {
             jQuery('#yPrecisionLabel').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
             jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#{P_CH_Y_LABEL}').show();
+            jQuery('#{P_CH_X_LABEL}').show();
             jQuery('#yRangeLabel').show();
+            jQuery('#yLabelLabel').show();
+            jQuery('#xLabelLabel').show();
             jQuery('#{P_CH_STACKED}').hide();
             jQuery('#stackedLabel').hide();
             jQuery('#{P_CH_Y_CURRENCY}').hide();
@@ -81,6 +85,10 @@ function init_help() {
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
             jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#{P_CH_Y_LABEL}').show();
+            jQuery('#{P_CH_X_LABEL}').show();
+            jQuery('#yLabelLabel').show();
+            jQuery('#xLabelLabel').show();
             jQuery('#yRangeLabel').show();
             jQuery('#xPrecisionLabel').show();
             jQuery('#yPrecisionLabel').show();
@@ -102,10 +110,14 @@ function init_help() {
             jQuery("#help_lineandbarchart").hide();
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
-            jQuery('#{P_CH_Y_RANGE}').hide();
+            jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#{P_CH_Y_LABEL}').show();
+            jQuery('#{P_CH_X_LABEL}').show();
+            jQuery('#yLabelLabel').show();
+            jQuery('#xLabelLabel').show();
             jQuery('#xPrecisionLabel').show();
             jQuery('#yPrecisionLabel').show();
-            jQuery('#yRangeLabel').hide();
+            jQuery('#yRangeLabel').show();
             jQuery('#{P_CH_STACKED}').show();
             jQuery('#stackedLabel').show();
             jQuery('#{P_CH_Y_CURRENCY}').hide();
@@ -126,6 +138,10 @@ function init_help() {
             jQuery('#{P_CH_Y_PRECISION}').show();
             jQuery('#{P_CH_Y_RANGE}').show();
             jQuery('#yRangeLabel').show();
+            jQuery('#{P_CH_Y_LABEL}').show();
+            jQuery('#{P_CH_X_LABEL}').show();
+            jQuery('#yLabelLabel').show();
+            jQuery('#xLabelLabel').show();
             jQuery('#xPrecisionLabel').show();
             jQuery('#yPrecisionLabel').show();
             jQuery('#{P_CH_STACKED}').hide();
@@ -149,6 +165,10 @@ function init_help() {
             jQuery('#{P_CH_Y_PRECISION}').hide();
             jQuery('#{P_CH_Y_RANGE}').hide();
             jQuery('#yRangeLabel').hide();
+            jQuery('#{P_CH_Y_LABEL}').hide();
+            jQuery('#{P_CH_X_LABEL}').hide();
+            jQuery('#yLabelLabel').hide();
+            jQuery('#xLabelLabel').hide();
             jQuery('#xPrecisionLabel').hide();
             jQuery('#yPrecisionLabel').hide();
             jQuery('#{P_CH_STACKED}').hide();
@@ -171,6 +191,10 @@ function init_help() {
             jQuery('#{P_CH_Y_PRECISION}').show();
             jQuery('#{P_CH_Y_RANGE}').hide();
             jQuery('#yRangeLabel').hide();
+            jQuery('#{P_CH_Y_LABEL}').hide();
+            jQuery('#{P_CH_X_LABEL}').hide();
+            jQuery('#yLabelLabel').hide();
+            jQuery('#xLabelLabel').hide();
             jQuery('#xPrecisionLabel').show();
             jQuery('#yPrecisionLabel').show();
             jQuery('#{P_CH_STACKED}').hide();
@@ -193,6 +217,10 @@ function init_help() {
             jQuery('#{P_CH_Y_PRECISION}').show();
             jQuery('#{P_CH_Y_RANGE}').show();
             jQuery('#yRangeLabel').show();
+            jQuery('#{P_CH_Y_LABEL}').show();
+            jQuery('#{P_CH_X_LABEL}').show();
+            jQuery('#yLabelLabel').show();
+            jQuery('#xLabelLabel').show();
             jQuery('#xPrecisionLabel').show();
             jQuery('#yPrecisionLabel').show();
             jQuery('#{P_CH_STACKED}').hide();
@@ -215,6 +243,10 @@ function init_help() {
             jQuery('#{P_CH_Y_PRECISION}').show();
             jQuery('#{P_CH_Y_RANGE}').show();
             jQuery('#yRangeLabel').show();
+            jQuery('#{P_CH_Y_LABEL}').show();
+            jQuery('#{P_CH_X_LABEL}').show();
+            jQuery('#yLabelLabel').show();
+            jQuery('#xLabelLabel').show();
             jQuery('#xPrecisionLabel').show();
             jQuery('#yPrecisionLabel').show();
             jQuery('#{P_CH_STACKED}').hide();
@@ -236,6 +268,10 @@ function init_help() {
             jQuery('#{P_CH_X_PRECISION}').show();
             jQuery('#{P_CH_Y_PRECISION}').show();
             jQuery('#{P_CH_Y_RANGE}').show();
+            jQuery('#{P_CH_Y_LABEL}').show();
+            jQuery('#{P_CH_X_LABEL}').show();
+            jQuery('#yLabelLabel').show();
+            jQuery('#xLabelLabel').show();
             jQuery('#yRangeLabel').show();
             jQuery('#xPrecisionLabel').show();
             jQuery('#yPrecisionLabel').show();
@@ -281,6 +317,10 @@ function init_help() {
             jQuery('#{P_CH_Y_PRECISION}').show();
             jQuery('#{P_CH_Y_RANGE}').show();
             jQuery('#yRangeLabel').show();
+            jQuery('#{P_CH_Y_LABEL}').show();
+            jQuery('#{P_CH_X_LABEL}').show();
+            jQuery('#yLabelLabel').show();
+            jQuery('#xLabelLabel').show();
             jQuery('#xPrecisionLabel').show();
             jQuery('#yPrecisionLabel').show();
             jQuery('#{P_CH_STACKED}').hide();
@@ -348,7 +388,16 @@ function init_help() {
                 <td width="120" align="right" scope="row"><div id="yRangeLabel"  align="left">{CH_NEW_Y_RANGE}</div></td>
                 <td align="left" valign="top">
                     <input style="width:120px;" name="{P_CH_Y_RANGE}" type="text" id="{P_CH_Y_RANGE}" value="{V_CH_Y_RANGE}" maxlength="32">
-
+            </tr>
+            <tr valign="top">
+                <td width="120" align="right" scope="row"><div id="xLabelLabel"  align="left">{CH_NEW_X_LABEL}</div></td>
+                <td align="left" valign="top">
+                    <input style="width:120px;" name="{P_CH_X_LABEL}" type="text" id="{P_CH_X_LABEL}" value="{V_CH_X_LABEL}" maxlength="32">
+            </tr>
+            <tr valign="top">
+                <td width="120" align="right" scope="row"><div id="yLabelLabel"  align="left">{CH_NEW_Y_LABEL}</div></td>
+                <td align="left" valign="top">
+                    <input style="width:120px;" name="{P_CH_Y_LABEL}" type="text" id="{P_CH_Y_LABEL}" value="{V_CH_Y_LABEL}" maxlength="32">
             </tr>
             <tr valign="top">
                 <td width="199" align="right" scope="row"><div id="timeFormatLabel" align="left">{CH_NEW_TIME_FORMAT}</div></td>

@@ -74,6 +74,7 @@ if($_POST[$wpbi_settings['parameter']['action']] == 'add'){
 	$vo_chart->set_chart_x_thickness($_POST[$wpbi_settings['parameter']['ch-x-axis-thick']]);
 	$vo_chart->set_chart_x_grid_color($_POST[$wpbi_settings['parameter']['ch-x-grid-color']]);
 	$vo_chart->set_chart_x_grid_lines($_POST[$wpbi_settings['parameter']['ch-x-grid-step']]);
+    $vo_chart->set_chart_x_label($_POST[$wpbi_settings['parameter']['ch-x-label']]);
 	$vo_chart->set_chart_x_labels_color($_POST[$wpbi_settings['parameter']['ch-x-label-color']]);
 	$vo_chart->set_chart_x_labels_size($_POST[$wpbi_settings['parameter']['ch-x-label-size']]);
 	$vo_chart->set_chart_x_labels_rotation($_POST[$wpbi_settings['parameter']['ch-x-label-rotation']]);
@@ -82,6 +83,7 @@ if($_POST[$wpbi_settings['parameter']['action']] == 'add'){
 	$vo_chart->set_chart_x_legend_size($_POST[$wpbi_settings['parameter']['ch-x-legend-size']]);
     $vo_chart->set_chart_y_precision($_POST[$wpbi_settings['parameter']['ch-y-precision']]);
     $vo_chart->set_chart_y_range($_POST[$wpbi_settings['parameter']['ch-y-range']]);
+    $vo_chart->set_chart_y_label($_POST[$wpbi_settings['parameter']['ch-y-label']]);
     $vo_chart->set_chart_y_currency($_POST[$wpbi_settings['parameter']['ch-y-currency']]);
 	$vo_chart->set_chart_y_color($_POST[$wpbi_settings['parameter']['ch-y-axis-color']]);
 	$vo_chart->set_chart_y_thickness($_POST[$wpbi_settings['parameter']['ch-y-axis-thick']]);
@@ -289,6 +291,8 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['tes
         $wpbi_chart	-> set_x_precision($_POST[$wpbi_settings['parameter']['ch-x-precision']]);
         $wpbi_chart	-> set_y_precision($_POST[$wpbi_settings['parameter']['ch-y-precision']]);
         $wpbi_chart	-> set_y_range($_POST[$wpbi_settings['parameter']['ch-y-range']]);
+        $wpbi_chart -> set_y_label($_POST[$wpbi_settings['parameter']['ch-y-label']]);
+        $wpbi_chart -> set_x_label($_POST[$wpbi_settings['parameter']['ch-x-label']]);
         $wpbi_chart	-> set_y_currency($_POST[$wpbi_settings['parameter']['ch-y-currency']]);
 		$wpbi_chart	-> set_bg_colour($_POST[$wpbi_settings['parameter']['ch-bgcolor']]);
 		$wpbi_chart	-> set_title(($_POST[$wpbi_settings['parameter']['ch-title']]));
@@ -372,6 +376,10 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['tes
 														$wpbi_chart	-> set_x_axis_labels($label_x,
 														$_POST[$wpbi_settings['parameter']['ch-x-label-size']],
 														$_POST[$wpbi_settings['parameter']['ch-x-label-color']]);
+                                                        $wpbi_chart->x_axis_istime = (sizeof($istime_cols) > 0);
+                                                        if($wpbi_chart->x_axis_istime){
+                                                            $wpbi_chart->x_axis_labels->labels = $wpbi_chart->convert_to_time($wpbi_chart->x_axis_labels->labels);
+                                                        }
 													}
 													$wpbi_chart-> set_y_axis_labels_color($_POST[$wpbi_settings['parameter']['ch-y-label-color']]);
 													$wpbi_chart-> set_y_axis_labels_size($_POST[$wpbi_settings['parameter']['ch-y-label-size']]);
@@ -533,6 +541,7 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
 	$values_cols = array();	
 	$stacked_label_cols = array();	
 	$stacked_label_cols_color = array();
+    $istime_cols = array();
 	$col_idx=0;
 	foreach($vo_ch_cols as $vo_ch_col){
 		array_push($tx_label_cols, $vo_ch_col->col_label);
@@ -545,7 +554,7 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
 			array_push($stacked_label_cols, $vo_ch_col->col_label);
 			array_push($stacked_label_cols_color, $vo_ch_col->col_color);
 		}
-        if($vo_ch_col->is_time){
+        if($vo_ch_col->is_time == 1){
             array_push($istime_cols, $col_idx);
         }
 
@@ -570,6 +579,8 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
         $wpbi_chart	-> set_x_precision($_POST[$wpbi_settings['parameter']['ch-x-precision']]);
         $wpbi_chart	-> set_y_precision($_POST[$wpbi_settings['parameter']['ch-y-precision']]);
         $wpbi_chart	-> set_y_range($_POST[$wpbi_settings['parameter']['ch-y-range']]);
+        $wpbi_chart -> set_y_label($_POST[$wpbi_settings['parameter']['ch-y-label']]);
+        $wpbi_chart -> set_x_label($_POST[$wpbi_settings['parameter']['ch-x-label']]);
         $wpbi_chart	-> set_y_currency($_POST[$wpbi_settings['parameter']['ch-y-currency']]);
 
 		//Get values, labels, colors
@@ -639,19 +650,22 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
 													$wpbi_chart	-> elements[$key] -> set_colours($wpbi_settings['pie-chart']['color-set']);
 													}
 													break;
-			case chart::BAR_STACKED:		if(sizeof($label_x) > 0){
-														$wpbi_chart	-> set_x_axis_labels($label_x,
-														$vo_chart->chart_x_labels_size, 
-														$vo_chart->chart_x_labels_color);
-													}
-													$wpbi_chart-> set_y_axis_labels_color($vo_chart->chart_y_labels_color);
-													$wpbi_chart-> set_y_axis_labels_size($vo_chart->chart_y_labels_size);
-													foreach($data_stacked as $key => $value){
-
-														$wpbi_chart	-> create_element('BAR_STACKED', $value);
-														$wpbi_chart	-> elements['BAR_STACKED'] -> set_colours($stacked_label_color);
-													}
-													break;
+			case chart::BAR_STACKED:		    if(sizeof($label_x) > 0){
+                                                    $wpbi_chart	-> set_x_axis_labels($label_x,
+                                                        $_POST[$wpbi_settings['parameter']['ch-x-label-size']],
+                                                        $_POST[$wpbi_settings['parameter']['ch-x-label-color']]);
+                                                    $wpbi_chart->x_axis_istime = (sizeof($istime_cols) > 0);
+                                                    if($wpbi_chart->x_axis_istime){
+                                                        $wpbi_chart->x_axis_labels->labels = $wpbi_chart->convert_to_time($wpbi_chart->x_axis_labels->labels);
+                                                    }
+                                                }
+                                                $wpbi_chart-> set_y_axis_labels_color($_POST[$wpbi_settings['parameter']['ch-y-label-color']]);
+                                                $wpbi_chart-> set_y_axis_labels_size($_POST[$wpbi_settings['parameter']['ch-y-label-size']]);
+                                                foreach($data_stacked as $key => $value){
+                                                    $wpbi_chart	-> create_element('BAR_STACKED', $value);
+                                                    $wpbi_chart	-> elements['BAR_STACKED'] -> set_colours($stacked_label_color);
+                                                }
+                                                break;
             case chart::STACKED_AREA:
 			case chart::LINE_AREA:		if(sizeof($label_x) > 0){
 														$wpbi_chart	-> set_x_axis_labels($label_x,
@@ -927,6 +941,8 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
         'CH_EDIT_X_PRECISION'			=> $wpbi_dialog['form']['label']['chart-x-precision'],
         'CH_EDIT_Y_PRECISION'			=> $wpbi_dialog['form']['label']['chart-y-precision'],
         'CH_EDIT_Y_RANGE'			=> $wpbi_dialog['form']['label']['chart-y-range'],
+        'CH_EDIT_Y_LABEL'			=> $wpbi_dialog['form']['label']['chart-y-label'],
+        'CH_EDIT_X_LABEL'			=> $wpbi_dialog['form']['label']['chart-x-label'],
         'CH_EDIT_Y_CURRENCY'			=> $wpbi_dialog['form']['label']['chart-y-currency'],
         'CH_EDIT_SNAPSHOT'			=> $wpbi_dialog['form']['label']['chart-snapshot'],
         'CH_EDIT_STACKED'			=> $wpbi_dialog['form']['label']['chart-stacked'],
@@ -944,6 +960,8 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
         'P_CH_X_PRECISION' 			=> $wpbi_settings['parameter']['ch-x-precision'],
         'P_CH_Y_PRECISION' 			=> $wpbi_settings['parameter']['ch-y-precision'],
         'P_CH_Y_RANGE'  			=> $wpbi_settings['parameter']['ch-y-range'],
+        'P_CH_Y_LABEL'  			=> $wpbi_settings['parameter']['ch-y-label'],
+        'P_CH_X_LABEL'  			=> $wpbi_settings['parameter']['ch-x-label'],
         'P_CH_SNAPSHOT' 			=> $wpbi_settings['parameter']['ch-snapshot'],
         'P_CH_STACKED' 			    => $wpbi_settings['parameter']['ch-stacked'],
         'P_CH_Y_CURRENCY' 			=> $wpbi_settings['parameter']['ch-y-currency'],
@@ -1007,6 +1025,12 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
         'V_CH_Y_RANGE' 		    => 	isset($_POST[$wpbi_settings['parameter']['ch-y-range']]) ?
                                     $_POST[$wpbi_settings['parameter']['ch-y-range']] :
                                     $vo_chart->chart_y_axis_range,
+        'V_CH_Y_LABEL' 		    => 	isset($_POST[$wpbi_settings['parameter']['ch-y-label']]) ?
+                                    $_POST[$wpbi_settings['parameter']['ch-y-label']] :
+                                    $vo_chart->chart_y_axis_label,
+        'V_CH_X_LABEL' 		    => 	isset($_POST[$wpbi_settings['parameter']['ch-x-label']]) ?
+                                    $_POST[$wpbi_settings['parameter']['ch-x-label']] :
+                                    $vo_chart->chart_x_axis_label,
         'V_CH_Y_CURRENCY' 		=> 	isset($_POST[$wpbi_settings['parameter']['ch-y-currency']]) ?
                                     $_POST[$wpbi_settings['parameter']['ch-y-currency']] :
                                     $vo_chart->chart_y_axis_currency,
@@ -1163,6 +1187,7 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 	$vo_new_chart->set_chart_x_thickness($_POST[$wpbi_settings['parameter']['ch-x-axis-thick']]);
 	$vo_new_chart->set_chart_x_grid_color($_POST[$wpbi_settings['parameter']['ch-x-grid-color']]);
 	$vo_new_chart->set_chart_x_grid_lines($_POST[$wpbi_settings['parameter']['ch-x-grid-step']]);
+    $vo_new_chart->set_chart_x_label($_POST[$wpbi_settings['parameter']['ch-x-label']]);
 	$vo_new_chart->set_chart_x_labels_color($_POST[$wpbi_settings['parameter']['ch-x-label-color']]);
 	$vo_new_chart->set_chart_x_labels_size($_POST[$wpbi_settings['parameter']['ch-x-label-size']]);
 	$vo_new_chart->set_chart_x_labels_rotation($_POST[$wpbi_settings['parameter']['ch-x-label-rotation']]);
@@ -1172,6 +1197,7 @@ if($_POST[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 	$vo_new_chart->set_chart_y_color($_POST[$wpbi_settings['parameter']['ch-y-axis-color']]);
     $vo_new_chart->set_chart_y_precision($_POST[$wpbi_settings['parameter']['ch-y-precision']]);
     $vo_new_chart->set_chart_y_range($_POST[$wpbi_settings['parameter']['ch-y-range']]);
+    $vo_new_chart->set_chart_y_label($_POST[$wpbi_settings['parameter']['ch-y-label']]);
     $vo_new_chart->set_chart_y_currency($_POST[$wpbi_settings['parameter']['ch-y-currency']]);
 	$vo_new_chart->set_chart_y_thickness($_POST[$wpbi_settings['parameter']['ch-y-axis-thick']]);
 	$vo_new_chart->set_chart_y_grid_color($_POST[$wpbi_settings['parameter']['ch-y-grid-color']]);
@@ -1360,6 +1386,8 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
         'CH_NEW_X_PRECISION'			=> $wpbi_dialog['form']['label']['chart-x-precision'],
         'CH_NEW_Y_PRECISION'			=> $wpbi_dialog['form']['label']['chart-y-precision'],
         'CH_NEW_Y_RANGE'			=> $wpbi_dialog['form']['label']['chart-y-range'],
+        'CH_NEW_Y_LABEL'			=> $wpbi_dialog['form']['label']['chart-y-label'],
+        'CH_NEW_X_LABEL'			=> $wpbi_dialog['form']['label']['chart-x-label'],
         'CH_NEW_Y_CURRENCY'			=> $wpbi_dialog['form']['label']['chart-y-currency'],
         'CH_NEW_SNAPSHOT'			=> $wpbi_dialog['form']['label']['chart-snapshot'],
         'CH_NEW_STACKED'			=> $wpbi_dialog['form']['label']['chart-stacked'],
@@ -1374,6 +1402,8 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
         'P_CH_X_PRECISION' 			=> $wpbi_settings['parameter']['ch-x-precision'],
         'P_CH_Y_PRECISION' 			=> $wpbi_settings['parameter']['ch-y-precision'],
         'P_CH_Y_RANGE' 			    => $wpbi_settings['parameter']['ch-y-range'],
+        'P_CH_Y_LABEL' 			    => $wpbi_settings['parameter']['ch-y-label'],
+        'P_CH_X_LABEL' 			    => $wpbi_settings['parameter']['ch-x-label'],
         'P_CH_SNAPSHOT' 			=> $wpbi_settings['parameter']['ch-snapshot'],
         'P_CH_STACKED' 			=> $wpbi_settings['parameter']['ch-stacked'],
         'P_CH_Y_CURRENCY' 			=> $wpbi_settings['parameter']['ch-y-currency'],
@@ -1431,8 +1461,14 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
         'V_CH_Y_PRECISION' 	    => 	is_numeric($_POST[$wpbi_settings['parameter']['ch-y-precision']]) ?
                                     abs(intval($_POST[$wpbi_settings['parameter']['ch-y-precision']])) :
                                     '1',
-        'V_CH_Y_RANGE' 	    => 	isset($_POST[$wpbi_settings['parameter']['ch-y-range']]) ?
+        'V_CH_Y_RANGE' 	        => 	isset($_POST[$wpbi_settings['parameter']['ch-y-range']]) ?
                                     $_POST[$wpbi_settings['parameter']['ch-y-range']] :
+                                    '',
+        'V_CH_Y_LABEL' 	        => 	isset($_POST[$wpbi_settings['parameter']['ch-y-label']]) ?
+                                    $_POST[$wpbi_settings['parameter']['ch-y-label']] :
+                                    '',
+        'V_CH_X_LABEL' 	        => 	isset($_POST[$wpbi_settings['parameter']['ch-x-label']]) ?
+                                    $_POST[$wpbi_settings['parameter']['ch-x-label']] :
                                     '',
         'V_CH_Y_CURRENCY' 	    => 	isset($_POST[$wpbi_settings['parameter']['ch-y-currency']]) ?
                                     $_POST[$wpbi_settings['parameter']['ch-y-currency']] :
