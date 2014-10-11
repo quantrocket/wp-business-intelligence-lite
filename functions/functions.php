@@ -494,10 +494,10 @@ function get_iframe_chart_footer()
     $url = plugin_dir_url('wp-business-intelligence.php');
 
     $footer = "
-        <script type='text/javascript' src='" . $url . "wp-business-intelligence/resources/jquery-alphanumeric/jquery.alphanumeric.js'></script>
-        <script type='text/javascript' src='" . $url . "wp-business-intelligence/resources/colorpicker/jquery.colorPicker.js'></script>
-        <script type='text/javascript' src='" . $url . "wp-business-intelligence/resources/nvd3/js/lib/d3.v3.js'></script>
-        <script type='text/javascript' src='" . $url . "wp-business-intelligence/js/wpbi.js'></script>";
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence-lite/resources/jquery-alphanumeric/jquery.alphanumeric.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence-lite/resources/colorpicker/jquery.colorPicker.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence-lite/resources/nvd3/js/lib/d3.v3.js'></script>
+        <script type='text/javascript' src='" . $url . "wp-business-intelligence-lite/js/wpbi.js'></script>";
     return $footer . '</body></html>';
 }
 

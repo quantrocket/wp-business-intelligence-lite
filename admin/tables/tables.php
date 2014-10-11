@@ -348,7 +348,7 @@ if($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['test
 	'PG_DESCRIPTION' 	=> sprintf($wpbi_dialog['table']['saved']['test'], $vo_table->name, htmlentities($query->stmt))
 	));
 	
-	//$template_site->pparse('css');
+	$template_site->pparse('css');
 	$template_site->pparse('header');
 	echo $test_output;
 	$template_site->pparse('footer');
@@ -440,7 +440,7 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 	//Styles
 		$styles = new styles();
 		$styles->set_rootdir($wpbi_url['styles']['directory']);
-		$styles_lst = $styles->get_styles('tables');
+		$styles_lst = $styles->get_styles('\tables');
 		$style_options = '';
 		for($stl=0; $stl<sizeof($styles_lst);$stl++){
 			$checked = ''; 
@@ -530,7 +530,7 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
     wp_enqueue_script('datatables-jquery', $wpbi_url['datatables']['jquerymin'] );
 	
 	//Parse tpl
-	//$template_site->pparse('css');
+	$template_site->pparse('css');
 	$template_site->pparse('header');
 	$template_site->pparse('tables-edit-2');
 
@@ -673,7 +673,7 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		//Styles
 		$styles = new styles();
 		$styles->set_rootdir($wpbi_url['styles']['directory']);
-		$styles_lst = $styles->get_styles('tables');
+		$styles_lst = $styles->get_styles('\tables');
 		$style_options = '';
 		for($stl=0; $stl<sizeof($styles_lst);$stl++){
 			$checked = ''; 
@@ -743,7 +743,7 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 	} //End set action
 	
 	//Parse tpl
-	//$template_site->pparse('css');
+	$template_site->pparse('css');
 	$template_site->pparse('header');
 	$template_site->pparse('tables-new-1');
 	echo $set_output;
