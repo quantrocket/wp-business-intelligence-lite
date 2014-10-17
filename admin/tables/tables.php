@@ -440,7 +440,7 @@ if(($_GET[$wpbi_settings['parameter']['action']] == $wpbi_settings['value']['edi
 	//Styles
 		$styles = new styles();
 		$styles->set_rootdir($wpbi_url['styles']['directory']);
-		$styles_lst = $styles->get_styles('\tables');
+		$styles_lst = $styles->get_styles('tables');
 		$style_options = '';
 		for($stl=0; $stl<sizeof($styles_lst);$stl++){
 			$checked = ''; 
@@ -673,7 +673,7 @@ if(	$_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['tes
 		//Styles
 		$styles = new styles();
 		$styles->set_rootdir($wpbi_url['styles']['directory']);
-		$styles_lst = $styles->get_styles('\tables');
+		$styles_lst = $styles->get_styles('tables');
 		$style_options = '';
 		for($stl=0; $stl<sizeof($styles_lst);$stl++){
 			$checked = ''; 
