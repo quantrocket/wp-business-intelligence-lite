@@ -1,6 +1,6 @@
 === WP Business Intelligence Lite ===
 Contributors: calberti
-Donate link: http://www.wpbusinessintelligence.com/contact-us/
+Donate link: http://www.wpbusinessintelligence.com/products-and-services/
 Tags: charts, tables, d3, line chart, pie chart, bar chart, donut chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
 Tested up to: 4.0
