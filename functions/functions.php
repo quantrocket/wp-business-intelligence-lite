@@ -216,7 +216,12 @@ function get_html_4_chart($id){
 	$my_test_db = new wpdb($vo_database->user,$vo_database->pass,$vo_database->name,$vo_database->host);
 	$query = new query($vo_query->statement, $wpdb, $wpbi_sql['tname']['vars']);
 	$total_rows = $my_test_db->get_results($query->count_qy_results(),'ARRAY_N');
-	$total_rows = intval($total_rows[0][0]); 
+	if(count($total_rows) == 0){
+		return "<div style='padding:40px;'><h1 style='color: red;'>The query returned no data</h1>" .
+			"<p>Please check the DB connectivity or your SQL query syntax</p></div>";
+	}
+	$total_rows = intval($total_rows[0][0]);
+
 	
 	//get query resultset
 	$my_test_rows = $my_test_db->get_results($query->stmt,'ARRAY_N');
