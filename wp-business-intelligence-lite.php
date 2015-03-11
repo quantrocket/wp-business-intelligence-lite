@@ -3,7 +3,7 @@
 Plugin Name: WP Business Intelligence Lite
 Plugin URI: http://www.wpbusinessintelligence.com
 Description: WP Business Intelligence Lite lets you create and insert dynamic charts into any post or page. You just have to connect to a database and run your SQL queries to retrieve the desired data.
-Version: 1.6
+Version: 1.6.1
 Author: WP Business Intelligence
 Author URI: http://www.wpbusinessintelligence.com/who-we-are
 License: GPL3

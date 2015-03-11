@@ -3,7 +3,7 @@ Contributors: calberti
 Donate link: http://www.wpbusinessintelligence.com/products-and-services/pricing
 Tags: charts, tables, d3, line chart, pie chart, bar chart, donut chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
-Tested up to: 4.1
+Tested up to: 4.1.1
 Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -86,7 +86,7 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * X and Y labels added
 * Validated on WP 4.0
 = 1.6.1 =
-* Validated on WP 4.1
+* Validated on WP 4.1.1
 * Error message added in case of no data
 == Frequently Asked Questions == 
 
