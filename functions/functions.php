@@ -47,8 +47,13 @@ function get_html_4_table($id){
 	
 	//id or key
 	$search_by_key = false;
-	if(!is_numeric($table_id) && strlen($table_id) == 32) {
-		$search_by_key = true;
+	if(!is_numeric($table_id))  {
+		if(strlen($table_id) == 32) {
+			$search_by_key = true;
+		}
+		else{
+			return '<p>Could not create table. Wrong ID provided.</p>';
+		}
 	}
 	
 	$test_output = ''; //Store the test output 
@@ -179,8 +184,13 @@ function get_html_4_chart($id){
 	
 	//id or key
 	$search_by_key = false;
-	if(!is_numeric($chart_id) && strlen($chart_id) == 32) {
-		$search_by_key = true;
+	if(!is_numeric($chart_id))  {
+		if(strlen($chart_id) == 32) {
+			$search_by_key = true;
+		}
+		else{
+			return '<p>Could not create table. Wrong ID provided.</p>';
+		}
 	}
 
 	$test_output = ''; //Store the test output 
