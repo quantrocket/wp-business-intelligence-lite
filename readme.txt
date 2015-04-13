@@ -4,7 +4,7 @@ Donate link: http://www.wpbusinessintelligence.com/products-and-services/pricing
 Tags: charts, tables, d3, line chart, pie chart, bar chart, donut chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
 Tested up to: 4.1.1
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,10 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * Error message added in case of no data
 = 1.6.2 =
 * SQL injection vulnerability fixed
+= 1.6.3 =
+* SQL injection vulnerability fix enhanced
+
+
 == Frequently Asked Questions == 
 
 In order to get a full overview about WP Business Intelligence, please visit [the official documentation page](http://www.wpbusinessintelligence.com/support/wp-business-intelligence-faq/)

@@ -121,6 +121,8 @@ class nvd3_lineChart
 
                       chart.xAxis.axisLabel('" . $this->xAxisLabel . "');
 
+                      chart.showXAxis(true);
+
                       chart.yAxis
                           .tickFormat(d3.format('".$this->yAxisFormat."'));
 
@@ -146,6 +148,7 @@ class nvd3_lineChart
             }
 
             return "nv.addGraph(function() {
+
                 var chart = nv.models.lineChart()". $forceY .";
 
                 var dataSeries = " . $ds->values ."
@@ -164,6 +167,7 @@ class nvd3_lineChart
                       .tickFormat(function(d){
                         return dataSeries[d].x;
                         });
+                chart.showXAxis(true);
 
                 chart.xAxis.axisLabel('" . $this->xAxisLabel . "');
                 chart.margin({top: 30, right: 20, bottom: 75, left: 75});

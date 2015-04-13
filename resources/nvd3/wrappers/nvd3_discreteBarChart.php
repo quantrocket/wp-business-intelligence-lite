@@ -114,6 +114,8 @@ class nvd3_discreteBarChart
                             return d3.time.format('" . $this->timeFormat . "')(new Date(parseInt(d)))
                           });
 
+                          chart.showXAxis(true);
+
                     chart.xAxis.rotateLabels(-45);
 
                     chart.xAxis.axisLabel('" . $this->xAxisLabel . "');
@@ -123,7 +125,7 @@ class nvd3_discreteBarChart
                         .transition().duration(".$this->transitionDuration.")
                         .call(chart);
 
-                      nv.utils.windowResize(chart.update);
+                      //nv.utils.windowResize(chart.update);
 
                     d3.selectAll('.nv-bar').attr('class', '".$this->placeholder->name."Class');
 
@@ -146,6 +148,8 @@ class nvd3_discreteBarChart
 
                     chart.xAxis.rotateLabels(-45);
 
+                    chart.showXAxis(true);
+
                     chart.xAxis.axisLabel('" . $this->xAxisLabel . "');
                     chart.yAxis.axisLabel('" . $this->yAxisLabel . "');
 
@@ -155,7 +159,7 @@ class nvd3_discreteBarChart
                         .transition().duration(".$this->transitionDuration.")
                         .call(chart);
 
-                      nv.utils.windowResize(chart.update);
+                      //nv.utils.windowResize(chart.update);
 
                     d3.selectAll('.nv-bar').attr('class', '".$this->placeholder->name."Class');
 

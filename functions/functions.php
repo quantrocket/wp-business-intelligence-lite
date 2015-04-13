@@ -48,7 +48,7 @@ function get_html_4_table($id){
 	//id or key
 	$search_by_key = false;
 	if(!is_numeric($table_id))  {
-		if(strlen($table_id) == 32) {
+		if((strlen($table_id) == 32) && (strpos($table_id, ' ') === false)) {
 			$search_by_key = true;
 		}
 		else{
@@ -185,7 +185,7 @@ function get_html_4_chart($id){
 	//id or key
 	$search_by_key = false;
 	if(!is_numeric($chart_id))  {
-		if(strlen($chart_id) == 32) {
+		if((strlen($chart_id) == 32) && (strpos($chart_id, ' ') === false)) {
 			$search_by_key = true;
 		}
 		else{
