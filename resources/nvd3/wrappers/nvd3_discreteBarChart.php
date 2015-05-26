@@ -114,7 +114,7 @@ class nvd3_discreteBarChart
                             return d3.time.format('" . $this->timeFormat . "')(new Date(parseInt(d)))
                           });
 
-                          chart.showXAxis(true);
+                chart.showXAxis(true);
 
                     chart.xAxis.rotateLabels(-45);
 

@@ -178,7 +178,7 @@ if($_GET[$wpbi_settings['parameter']['action']] != $wpbi_settings['value']['edit
 		$pagination->set_pagination_stats($wpbi_dialog['table']['pagination']['stats']);
 		$pagination->set_paginate_links(
 						paginate_links( array(
-			    		'base' => add_query_arg( $pagination->pg_parameter, '%#%' ),
+			    		'base' => esc_url(add_query_arg( $pagination->pg_parameter, '%#%' )),
 					    'format' => '',
 					    'prev_text' => __($wpbi_dialog['table']['pagination']['prev_text']),
 			    		'next_text' => __($wpbi_dialog['table']['pagination']['next_text']),

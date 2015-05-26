@@ -3,8 +3,8 @@ Contributors: calberti
 Donate link: http://www.wpbusinessintelligence.com/products-and-services/pricing
 Tags: charts, tables, d3, line chart, pie chart, bar chart, donut chart, nvd3, data analytics, business intelligence, bi, reporting
 Requires at least: 3.4
-Tested up to: 4.1.1
-Stable tag: 1.6.3
+Tested up to: 4.2.2
+Stable tag: 1.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,9 @@ A detailed installation guide is available on the [WP Business Intelligence Supp
 * SQL injection vulnerability fixed
 = 1.6.3 =
 * SQL injection vulnerability fix enhanced
+= 1.6.4 =
+* color class renamed to wpbi_color
+* add_query_arg escaped to fix vulnerability
 
 
 == Frequently Asked Questions == 

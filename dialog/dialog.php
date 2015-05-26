@@ -32,7 +32,7 @@
 //##########################     ENGLISH      ###########################
 //#######################################################################
 
-$wpbi_dialog['disclaimer']['software']['version']				= 	__('1.6.3', 'wpbusinessintelligence');
+$wpbi_dialog['disclaimer']['software']['version']				= 	__('1.6.4', 'wpbusinessintelligence');
 $wpbi_dialog['disclaimer']['license']['gpl']					= 	__('
 	<b>Terms of use</b><br>
 	<br>
